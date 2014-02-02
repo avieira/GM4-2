@@ -7,4 +7,5 @@ class Matrice{
 	public:Matrice();
 	public:void setMatrice(vector<vector<double> > matrice);
 	public:vector<vector<double> > getMatrice();
+	public:Matrice* transpose();
 };

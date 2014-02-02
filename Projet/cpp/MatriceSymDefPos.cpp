@@ -5,10 +5,10 @@
 
 MatriceSymDefPos::MatriceSymDefPos(){Matrice();};
 
-Matrice* MatriceSymDefPos::decompoCholesk(){
+MatriceTriangInf* MatriceSymDefPos::decompoCholesk(){
 	int i,j,k;
 	int taille=this->getMatrice().size();
-	Matrice *result=new Matrice();
+	MatriceTriangInf *result=new MatriceTriangInf();
 
 	vector< vector<double> > matRes(taille, vector<double>(taille));
 
@@ -33,4 +33,8 @@ Matrice* MatriceSymDefPos::decompoCholesk(){
 	result->setMatrice(matRes);
 
 	return result;
+}
+
+MatriceSymDefPos* MatriceSymDefPos::transpose(){
+	return this;
 }

@@ -1,7 +1,8 @@
 #include<string>
-#include"Matrice.h"
+#include"MatriceTriang.h"
 
 class MatriceSymDefPos : public Matrice{
 	public:MatriceSymDefPos();
-	public:Matrice* decompoCholesk();
+	public:MatriceTriangInf* decompoCholesk();
+	public:MatriceSymDefPos* transpose();
 };

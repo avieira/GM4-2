@@ -27,14 +27,43 @@ int main(){
 	test->setMatrice(mat);
 
 //--------------------------------------------------------------------------
+//              Décomposition de Cholesky
+//--------------------------------------------------------------------------
 
-	Matrice *result=test->decompoCholesk();
+	MatriceTriangInf *result=test->decompoCholesk();
 
 	for(int i=0;i<result->getMatrice().size();i++){
 		for(int j=0;j<result->getMatrice().size();j++)
 			cout<<result->getMatrice()[i][j]<<" ";
 		cout<<endl;
 	}
+
+//--------------------------------------------------------------------------
+//		Essai de transposée
+//--------------------------------------------------------------------------
+
+	MatriceTriangSup* transpo=result->transpose();
+
+	for(int i=0;i<transpo->getMatrice().size();i++){
+		for(int j=0;j<transpo->getMatrice().size();j++)
+			cout<<transpo->getMatrice()[i][j]<<" ";
+		cout<<endl;
+	}
+
+//--------------------------------------------------------------------------
+//              Remontée de Gauss
+//--------------------------------------------------------------------------
+	vector<double> vectResult;
+	vector<double> vectTest(transpo->getMatrice().size(),8);
+
+	vectTest[1]=12;
+	vectTest[2]=12;
+	vectTest[3]=2;
+
+	vectResult=transpo->remontGauss(vectTest);
+
+	for(int i=0;i<vectResult.size();i++)
+		cout<<vectResult[i]<<endl;
 
 	return 0;
 }
