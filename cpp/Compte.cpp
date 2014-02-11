@@ -4,6 +4,7 @@
 #include"Compte.h"
 
 using namespace std;
+int Compte::nombreComptes=0;
 
 Compte::Compte(double x){
 	solde=x;
@@ -11,11 +12,17 @@ Compte::Compte(double x){
 	numeroCompte=nombreComptes;
 }
 
-template<typename U> void Compte::deposer(const U x){
+Compte::Compte(const Compte &x){
+	solde=x.solde;
+	numeroCompte=x.numeroCompte;
+	titulaires=x.titulaires;
+}
+
+void Compte::deposer(const double x){
 	solde+=x;
 }
 
-template<typename U> void Compte::retirer(const U x){
+void Compte::retirer(const double x){
 	solde-=x;
 }
 

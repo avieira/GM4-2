@@ -18,13 +18,11 @@ class Compte{
 	public:
 		Compte(const double);
 		Compte(const Compte &);
-		virtual ~Compte();
+		//virtual ~Compte();
 
-		template <typename U>
-		virtual void deposer(const U);
+		virtual void deposer(const double);
 
-		template<typename U>
-		virtual void retirer(const U);
+		virtual void retirer(const double);
 
 		virtual double getSolde();
 		static int nbComptes();
@@ -32,8 +30,9 @@ class Compte{
 		virtual vector<string> getTitulaires();
 		virtual void ajouterTitulaires(const string);
 		virtual bool retirerTitulaires(const int);
+
 		virtual string operator [] (const int);
-		virtual friend ostream& operator <<(ostream &out, Compte &c);
+		friend ostream& operator <<(ostream &out, Compte &c);
 };
 
 #endif
