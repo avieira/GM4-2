@@ -1,0 +1,28 @@
+graph G{
+	graph[rankdir=LR]
+	node[shape=plaintext]
+	Section[
+		label=< <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"> 
+			<TR><TD BGCOLOR="tan2">Section</TD></TR>
+			<TR><TD ROWSPAN="1" BGCOLOR="navajowhite2"><U>nomSection</U></TD></TR>
+			</TABLE>>
+	]
+
+	etreCompose[
+		shape=oval
+		label="etreComposé"
+		style="filled"
+		fillcolor=gray89
+	]
+
+	Section -- etreCompose [label = "0..n"]
+
+	SousSection[
+		label=< <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"> 
+			<TR><TD BGCOLOR="tan2">Sous-Section</TD></TR>
+			<TR><TD ROWSPAN="1" BGCOLOR="navajowhite2">description</TD></TR>
+			</TABLE>>
+	]
+
+	SousSection--etreCompose[label="1,1", shape="orbox"]
+}
