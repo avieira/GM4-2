@@ -10,7 +10,7 @@ graph G{
 
 	etreCompose[
 		shape=oval
-		label="etreComposé"
+		label="composé"
 		style="filled"
 		fillcolor=gray89
 	]
@@ -25,4 +25,144 @@ graph G{
 	]
 
 	SousSection--etreCompose[label="1,1", shape="orbox"]
+
+	contenir1[
+		shape=oval
+		label="contenir1"
+		style="filled"
+		fillcolor=gray89
+	]
+
+	Sujet[
+		label=< <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"> 
+			<TR><TD BGCOLOR="tan2">Sujet</TD></TR>
+			</TABLE>>
+	]
+
+	SousSection--contenir1[label="0..n", shape="orbox"]
+	Sujet--contenir1[label="1,1", shape="orbox"]
+
+	contenir2[
+		shape=oval
+		label="contenir2"
+		style="filled"
+		fillcolor=gray89
+	]
+
+	Post[
+		label=< <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"> 
+			<TR><TD BGCOLOR="tan2">Post</TD></TR>
+			<TR><TD ROWSPAN="1" BGCOLOR="navajowhite2">Date <BR/> Texte</TD></TR>
+			</TABLE>>
+	]
+
+	Sujet--contenir2[label="0..n", shape="orbox"]
+	Post--contenir2[label="1,1", shape="orbox"]
+
+	ecritPar[
+		shape=oval
+		label="ecritPar"
+		style="filled"
+		fillcolor=gray89
+	]
+
+	Personne[
+		label=< <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"> 
+			<TR><TD BGCOLOR="tan2">Personne</TD></TR>
+			<TR><TD ROWSPAN="1" BGCOLOR="navajowhite2"><U>pseudo</U><BR/> avatar <BR/> anniv <BR/> dateInscrip <BR/> dateDerConnex </TD></TR>
+			</TABLE>>
+	]
+
+	Personne--ecritPar[label="0..n", shape="orbox"]
+	Post--ecritPar[label="1,1", shape="orbox"]
+
+	recoit[
+		shape=oval
+		label="reçoit"
+		style="filled"
+		fillcolor=gray89
+	]
+
+	SujetMP[
+		label=< <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"> 
+			<TR><TD BGCOLOR="tan2">SujetMP</TD></TR>
+			<TR><TD ROWSPAN="1" BGCOLOR="navajowhite2"><U>n°</U><BR/> date <BR/> titre </TD></TR>
+			</TABLE>>
+	]
+
+	recoit--{Personne;SujetMP}[label="0..n", shape="orbox"]
+
+	contenir3[
+		shape=oval
+		label="contenir3"
+		style="filled"
+		fillcolor=gray89
+	]
+
+	MP[
+		label=< <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"> 
+			<TR><TD BGCOLOR="tan2">MP</TD></TR>
+			<TR><TD ROWSPAN="1" BGCOLOR="navajowhite2"> texte </TD></TR>
+			</TABLE>>
+	]
+
+	MP--contenir3[label="0..n", shape="orbox"]
+	SujetMP--contenir3[label="1,1", shape="orbox"]
+
+	redige[
+		shape=oval
+		label="redige"
+		style="filled"
+		fillcolor=gray89
+	]
+	Personne--redige[label="0..n", shape="orbox"]
+	MP--redige[label="1,1", shape="orbox"]
+
+
+	concoit[
+		shape=oval
+		label="conçoit"
+		style="filled"
+		fillcolor=gray89
+	]
+
+	Source[
+		label=< <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"> 
+			<TR><TD BGCOLOR="tan2">Source</TD></TR>
+			<TR><TD ROWSPAN="1" BGCOLOR="navajowhite2"> <U>nomSource</U> <BR/> ref </TD></TR>
+			</TABLE>>
+	]
+
+	Date[
+		label=< <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"> 
+			<TR><TD BGCOLOR="tan2">Date</TD></TR>
+			<TR><TD ROWSPAN="1" BGCOLOR="navajowhite2"> <U>jour</U> <BR/> <U>mois</U> <BR/> <U>année</U> <BR/> <U>heure</U></TD></TR>
+			</TABLE>>
+	]
+
+	News[
+		label=< <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"> 
+			<TR><TD BGCOLOR="tan2">News</TD></TR>
+			<TR><TD ROWSPAN="1" BGCOLOR="navajowhite2"> <U>n°News</U> <BR/> texte </TD></TR>
+			</TABLE>>
+	]
+
+	concoit--{Personne;Source;News}[label="0..n", shape="orbox"]
+	Date--concoit[label="1..n", shape="orbox"]
+
+	poste[
+		shape=oval
+		label="poste"
+		style="filled"
+		fillcolor=gray89
+	]
+
+	Commentaire[
+		label=< <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"> 
+			<TR><TD BGCOLOR="tan2">Commentaire</TD></TR>
+			<TR><TD ROWSPAN="1" BGCOLOR="navajowhite2"> <U>n°Comm</U> <BR/> texte <BR/> date </TD></TR>
+			</TABLE>>
+	]
+
+	poste--{Personne;News;Commentaire}[label="0..n", shape="orbox"]
 }
