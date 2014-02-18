@@ -67,14 +67,14 @@ string Compte::operator [] (const int i){
 ostream& operator << (ostream &out, Compte &c){
 	out<<"Compte ";
 	out<<c.numeroCompte<<", ";
-	if(c.getTitulaires().size())
+	if(c.getTitulaires().size()==0)
 		out<<"0 titulaire : ";
 	else{
 		out<<c.getTitulaires().size()<<" titulaires ("<<c[0];
-		for(int i=0;i<c.getTitulaires().size();i++)
+		for(int i=1;i<c.getTitulaires().size();i++)
 			out<<", "<<c[i];
 		out<<") : ";
 	}
-	out<<c.getSolde();
+	out<<"solde:"<<c.getSolde();
 	return out;
 }
