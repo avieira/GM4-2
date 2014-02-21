@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tableinstance2:TableInstance2 xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tableinstance="http://www.eclipse.org/EMF_Facet/ModelCellEditor/0.1.0/tableinstance" xmlns:tableinstance2="http://www.eclipse.org/EMF_Facet/Table/0.1.0/tableinstance2" customizations="//@localCustomizations.0 //@localCustomizations.1" description="">
+  <columns xsi:type="tableinstance:DefaultLabelColumn"/>
+  <columns xsi:type="tableinstance:MetaClassColumn"/>
+  <columns xsi:type="tableinstance:EContainerColumn"/>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/emf/2002/Ecore#//EModelElement/eAnnotations"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Element/ownedElement"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Element/owner"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Element/ownedComment"/>
+  </columns>
+  <columns xsi:type="tableinstance:AttributeColumn">
+    <attribute href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/name"/>
+  </columns>
+  <columns xsi:type="tableinstance:AttributeColumn">
+    <attribute href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/visibility"/>
+  </columns>
+  <columns xsi:type="tableinstance:AttributeColumn">
+    <attribute href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/qualifiedName"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/clientDependency"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/namespace"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//NamedElement/nameExpression"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Namespace/elementImport"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Namespace/packageImport"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Namespace/ownedRule"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Namespace/member"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Namespace/importedMember"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Namespace/ownedMember"/>
+  </columns>
+  <columns xsi:type="tableinstance:AttributeColumn">
+    <attribute href="http://www.eclipse.org/uml2/3.0.0/UML#//RedefinableElement/isLeaf"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//RedefinableElement/redefinedElement"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//RedefinableElement/redefinitionContext"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//ParameterableElement/owningTemplateParameter"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//ParameterableElement/templateParameter"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Type/package"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//TemplateableElement/templateBinding"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//TemplateableElement/ownedTemplateSignature"/>
+  </columns>
+  <columns xsi:type="tableinstance:AttributeColumn">
+    <attribute href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier/isAbstract"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier/generalization"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier/powertypeExtent"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier/feature"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier/inheritedMember"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier/redefinedClassifier"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier/general"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier/substitution"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier/attribute"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier/representation"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier/collaborationUse"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier/ownedUseCase"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Classifier/useCase"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//StructuredClassifier/ownedAttribute"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//StructuredClassifier/part"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//StructuredClassifier/role"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//StructuredClassifier/ownedConnector"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//EncapsulatedClassifier/ownedPort"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//BehavioredClassifier/ownedBehavior"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//BehavioredClassifier/classifierBehavior"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//BehavioredClassifier/interfaceRealization"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//BehavioredClassifier/ownedTrigger"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Class/nestedClassifier"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Class/ownedOperation"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Class/superClass"/>
+  </columns>
+  <columns xsi:type="tableinstance:AttributeColumn">
+    <attribute href="http://www.eclipse.org/uml2/3.0.0/UML#//Class/isActive"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Class/ownedReception"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Class/extension"/>
+  </columns>
+  <columns xsi:type="tableinstance:AttributeColumn">
+    <attribute href="http://www.eclipse.org/uml2/3.0.0/UML#//Behavior/isReentrant"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Behavior/redefinedBehavior"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Behavior/ownedParameter"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Behavior/context"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Behavior/precondition"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Behavior/postcondition"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Behavior/ownedParameterSet"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Behavior/specification"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Activity/structuredNode"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Activity/variable"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Activity/node"/>
+  </columns>
+  <columns xsi:type="tableinstance:AttributeColumn">
+    <attribute href="http://www.eclipse.org/uml2/3.0.0/UML#//Activity/isReadOnly"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Activity/edge"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Activity/partition"/>
+  </columns>
+  <columns xsi:type="tableinstance:AttributeColumn">
+    <attribute href="http://www.eclipse.org/uml2/3.0.0/UML#//Activity/isSingleExecution"/>
+  </columns>
+  <columns xsi:type="tableinstance:ReferenceColumn">
+    <reference href="http://www.eclipse.org/uml2/3.0.0/UML#//Activity/group"/>
+  </columns>
+  <rows>
+    <element href="platform:/resource/glaf/Models/activity.uml#idActivity"/>
+  </rows>
+  <localCustomizations metamodelURI="http://www.eclipse.org/emf/2002/Ecore" allQuerySetsAvailable="false"/>
+  <localCustomizations metamodelURI="http://www.eclipse.org/uml2/3.0.0/UML" allQuerySetsAvailable="false"/>
+</tableinstance2:TableInstance2>

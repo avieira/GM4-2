@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench progressCount="48" version="2.0">
+<workbenchAdvisor/>
+<window height="768" maximized="true" width="1024" x="65" y="24">
+<fastViewData fastViewLocation="1024"/>
+<perspectiveBar>
+<itemSize x="160"/>
+</perspectiveBar>
+<coolbarLayout>
+<coolItem id="group.file" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="132" y="31"/>
+<coolItem id="additions" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="48" y="31"/>
+<coolItem id="org.eclipse.emf.facet.common.editor.actionSet" itemType="typeToolBarContribution" x="40" y="31"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="48" y="31"/>
+<coolItem id="org.topcased.modeler.uml.editor.UMLEditor" itemType="typeToolBarContribution" x="831" y="31"/>
+<coolItem id="org.topcased.requirement.core.mainToolbar" itemType="typeToolBarContribution" x="40" y="31"/>
+<coolItem id="org.eclipse.papyrus.readonly.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.papyrus.navigation.toolbars.navigationToolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.papyrus.layouttool.toolbarlayout" itemType="typeToolBarContribution" x="48" y="31"/>
+<coolItem id="org.eclipse.papyrus.diagram.ui.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipes.papyrus.menu.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.emf.facet.widgets.nattable.workbench.editor.NatTableEditor.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.papyrus.table.ui.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="group.nav" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="184" y="31"/>
+<coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="group.help" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
+</coolbarLayout>
+<page aggregateWorkingSetId="Aggregate for window 1391770479077" focus="true" label="Workspace - UML/SysML (with former TOPCASED editors)">
+<editors>
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+</editorArea>
+<editor activePart="true" focus="true" id="org.topcased.modeler.uml.editor.UMLEditor" name="activity.umldi" partName="activity.umldi" path="/users/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/glaf/Models/activity.umldi" title="activity.umldi" tooltip="glaf/Models/activity.umldi" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/glaf/Models/activity.umldi"/>
+</editor>
+</editors>
+<views>
+<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
+<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.cdt.ui.cview.groupincludes="false" org.eclipse.cdt.ui.cview.groupmacros="false" org.eclipse.cdt.ui.editor.CUChildren="true" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
+</view>
+<view id="org.topcased.requirement.core.currentView" partName="Current Requirement"/>
+<view id="org.eclipse.papyrus.documentation.view.DocView" partName="Documentation"/>
+<view id="org.eclipse.ui.views.PropertySheet" partName="Properties">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.views.ProblemView" partName="Problems">
+<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="641" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
+</viewState>
+</view>
+<view id="org.topcased.requirement.core.upstreamView" partName="Upstream Requirement"/>
+<view id="org.topcased.ui.navigator.view" partName="Topcased Navigator">
+<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
+</view>
+<view id="org.topcased.modeler.documentation.DocView" partName="Documentation (deprecated)">
+<viewState/>
+</view>
+<view id="org.eclipse.papyrus.modelexplorer.modelexplorer" partName="Model Explorer">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
+<viewState/>
+</view>
+</views>
+<perspectives activePart="org.topcased.modeler.uml.editor.UMLEditor" activePerspective="org.topcased.modeler.uml.TopcasedModelerPerspective">
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="org.topcased.ui.perspective.papyrus.internal.PapyrusModelerPerspective" id="org.topcased.ui.perspective.papyrus.PapyrusModelerPerspective" label="UML/SysML"/>
+<alwaysOnActionSet id="eclipsemonkeyAction.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.emf.facet.common.editor.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOffActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOffActionSet id="fr.tm.elibel.smartqvt.modulesmanager.getregisteredmodules.actionSet"/>
+<new_wizard_action id="org.eclipse.papyrus.wizards.createsysmlproject"/>
+<new_wizard_action id="org.eclipse.papyrus.wizards.1createproject"/>
+<new_wizard_action id="org.eclipse.papyrus.wizards.createsysmlmodel"/>
+<new_wizard_action id="org.eclipse.papyrus.wizards.createmodel"/>
+<new_wizard_action id="org.eclipse.rmf.reqif10.presentation.Reqif10ModelWizardID"/>
+<perspective_action id="org.topcased.modeler.uml.TopcasedModelerPerspective"/>
+<perspective_action id="org.topcased.modeler.aui.AUIPerspective"/>
+<perspective_action id="org.topcased.modeler.sam.SAMPerspective"/>
+<hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<view id="org.topcased.requirement.core.upstreamView"/>
+<view id="org.eclipse.papyrus.modelexplorer.modelexplorer"/>
+<view id="org.topcased.requirement.core.currentView"/>
+<view id="org.eclipse.ui.views.PropertySheet"/>
+<view id="org.eclipse.papyrus.documentation.view.DocView"/>
+<view id="org.eclipse.ui.views.ProblemView"/>
+<fastViewBars/>
+<viewLayoutRec closeable="false" id="org.eclipse.ui.views.PropertySheet"/>
+<viewLayoutRec closeable="false" id="org.eclipse.ui.views.ResourceNavigator"/>
+<viewLayoutRec closeable="false" id="org.eclipse.ui.views.ContentOutline"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="topLeft">&#x0A;<folder activePageID="org.eclipse.ui.navigator.ProjectExplorer" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.navigator.ProjectExplorer" label="Project Explorer"/>
+<page content="org.topcased.requirement.core.upstreamView" label="Upstream Requirement"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.7495049" ratioLeft="757" ratioRight="253" relationship="2" relative="topLeft">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.25940594" ratioLeft="262" ratioRight="748" relationship="2" relative="topLeft"/>
+<info folder="true" part="bottom" ratio="0.6599064" ratioLeft="423" ratioRight="218" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.views.PropertySheet" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
+<page content="org.eclipse.papyrus.documentation.view.DocView" label="Documentation"/>
+<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="folder" ratio="0.49921995" ratioLeft="320" ratioRight="321" relationship="4" relative="topLeft">&#x0A;<folder activePageID="org.eclipse.papyrus.modelexplorer.modelexplorer" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.papyrus.modelexplorer.modelexplorer" label="Model Explorer"/>
+<page content="org.topcased.requirement.core.currentView" label="Current Requirement"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="org.topcased.modeler.uml.perspective.TopcasedModelerPerspective" id="org.topcased.modeler.uml.TopcasedModelerPerspective" label="UML/SysML (with former TOPCASED editors)"/>
+<alwaysOnActionSet id="eclipsemonkeyAction.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.emf.facet.common.editor.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOffActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOffActionSet id="fr.tm.elibel.smartqvt.modulesmanager.getregisteredmodules.actionSet"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.project"/>
+<new_wizard_action id="org.topcased.ui.navigator.wizards.TopcasedProjectWizardID"/>
+<new_wizard_action id="org.topcased.scripting.sysml.sampleScriptsProject"/>
+<new_wizard_action id="org.topcased.scripting.sysmlprofile.sampleScriptsProject"/>
+<new_wizard_action id="org.topcased.scripting.uml.sampleScriptsProject"/>
+<new_wizard_action id="org.eclipse.ui.newWizard"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.folder"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.file"/>
+<new_wizard_action id="org.topcased.editors.ocleditor.newFileWizard"/>
+<new_wizard_action id="org.topcased.jar.reverse.jar2umlwizard"/>
+<new_wizard_action id="org.topcased.modeler.sysml.wizards.NewSysMLDiagrams"/>
+<new_wizard_action id="org.topcased.modeler.uml.wizards.NewUMLDiagrams"/>
+<new_wizard_action id="org.eclipse.rmf.reqif10.presentation.Reqif10ModelWizardID"/>
+<perspective_action id="org.topcased.ui.perspective.papyrus.PapyrusModelerPerspective"/>
+<perspective_action id="org.topcased.modeler.aui.AUIPerspective"/>
+<perspective_action id="org.topcased.modeler.sam.SAMPerspective"/>
+<hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="org.topcased.ui.navigator.view"/>
+<view id="org.topcased.requirement.core.upstreamView"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="org.topcased.requirement.core.currentView"/>
+<view id="org.eclipse.ui.views.PropertySheet"/>
+<view id="org.topcased.modeler.documentation.DocView"/>
+<view id="org.eclipse.ui.views.ProblemView"/>
+<fastViewBars/>
+<viewLayoutRec closeable="false" id="org.eclipse.ui.views.PropertySheet"/>
+<viewLayoutRec closeable="false" id="org.eclipse.ui.views.ResourceNavigator"/>
+<viewLayoutRec closeable="false" id="org.eclipse.ui.views.ContentOutline"/>
+<layout>
+<mainWindow>
+<info folder="true" part="topLeft">
+<folder activePageID="org.topcased.ui.navigator.view" appearance="2" expanded="2">
+<page content="org.topcased.ui.navigator.view" label="Topcased Navigator"/>
+<page content="org.topcased.requirement.core.upstreamView" label="Upstream Requirement"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1434" ratioRight="478" relationship="2" relative="topLeft">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.25993723" ratioLeft="497" ratioRight="1415" relationship="2" relative="topLeft"/>
+<info folder="true" part="bottom" ratio="0.6596685" ratioLeft="597" ratioRight="308" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.views.PropertySheet" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
+<page content="org.topcased.modeler.documentation.DocView" label="Documentation (deprecated)"/>
+<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
+<page content="org.eclipse.emf.facet.widgets.nattable.workbench.view.NatTableView:0" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="folder" ratio="0.49944752" ratioLeft="452" ratioRight="453" relationship="4" relative="topLeft">
+<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<page content="org.topcased.requirement.core.currentView" label="Current Requirement"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+</perspectives>
+<workingSets/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.topcased.modeler.uml.editor.UMLEditor" path="/glaf/Models/activity.umldi"/>
+</editors>
+<item active="true" historyLabel="activity.umldi" index="0"/>
+</navigationHistory>
+<input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
+</page>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+<trimLayout>
+<trimArea IMemento.internal.id="128">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
+</trimArea>
+<trimArea IMemento.internal.id="1024">
+<trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
+<trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+</trimArea>
+</trimLayout>
+</window>
+<mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="Cycle en V.png" tooltip="glaf/Models/Cycle en V.png">
+<persistable path="/glaf/Models/Cycle en V.png"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="activity.png" tooltip="glaf/activity.png">
+<persistable path="/glaf/activity.png"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.topcased.modeler.uml.editor.UMLEditor" name="activity.umldi" tooltip="glaf/Models/activity.umldi">
+<persistable path="/glaf/Models/activity.umldi"/>
+</file>
+</mruList>
+</workbench>
