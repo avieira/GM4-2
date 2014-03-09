@@ -1,0 +1,38 @@
+\section{Modèle Entités/Associations}
+
+\subsection{Schéma du modèle}
+Analysons tout d'abord les besoins pour pouvoir construire notre schéma Entités/Associations.
+\begin{itemize}
+	\item Nous aurons une entité, Personne, qui se trouvera au c\oe ur de notre schéma. En effet, l'inscription des membres sera autant utile aux entités faites pour le site que pour le forum.
+	\item Le forum se décomposera en deux parties indépendantes, mais proches dans la forme
+		\begin{itemize}
+			\item Les posts seront plutôt des messages échangés publiquement. Ils devront bien évidemment être rangés, organisés. Ainsi, des sections contenant elles-même des sous-sections seront créées. Les sous-sections contiendront des sujets, qui contiendront des posts créés par les membres.
+			\item Les membres doivent également pouvoir échanger de façon plus privée. C'est ce à quoi servent les messages privés (MP). Pour classifier les MP, on les range par sujet. On pensera également que plusieurs personnes pourront participer à ces conversations.
+		\end{itemize}
+	\item Cependant, toutes les personnes ne doivent pas toujours voir tous les messages postés sur le forum (comme une partie réservée uniquement aux modérateurs et administrateurs). Il peut être également pratique de voir qui sont les modérateurs par exemple. Une entité Groupe doit donc être créée pour pouvoir identifier plus facilement ces personnes. 
+	\item De la même façon, le site s'organise en deux parties :
+		\begin{itemize}
+			\item Il devra présenter plusieurs nouvelles journalières, appelées news. Elle sera créée par une personne, qui devra également utiliser une source, qui sera toujours enregistrée. 
+			\item Chaque news comprendra aussi potentiellement des commentaires, postés par des membres. 
+		\end{itemize}
+\end{itemize}
+
+\bigskip
+Avec toutes ces considérations, on en arrive finalement au schéma figure \ref{figEA}.\\
+\input{schemaEA}
+
+\clearpage
+\subsection{Commentaire et justification}
+\begin{description}
+	\item[êtreComposé] Une section peut contenir entre 1 et n sous-section. Cependant, une sous-section doit obligatoirement être contenue dans une et une seule section. Comme plusieurs sous-sections peuvent avoir le même nom mais dans des sections différentes, on introduit la sous-section comme une entité faible d'une section avec un nom de sous-section servant de clé primaire. Cela obligera donc chaque sous-section d'une section a avoir des noms différents, ce qui apporte une certaine clarté. 
+	\item[contenir1] De même que précédement, une sous-setion contient plusieurs sujets de conversation. Un sujet doit forcément être dans une sous-section. On introduit également le sujet comme une entité faible de la sous-section, avec le nom du sujet servant de clé primaire.
+	\item[contenir2] On retrouve encore le même genre de cas, avec cette fois-ci les posts des utilisateurs et les sujets
+	\item[ecritPar] Un post ne peut être écrit que par une et une seule personne, et une personne peut écrire autant de posts qu'elle veut (ou même aucun). Par ailleurs, le pseudo est ici utilisé comme clé primaire, ce qui obligera chaque personne a avoir un pseudo différent (ce qui est plus commode).
+	\item[contientMP] Un SujetMP contient plusieurs messages privés (MP). Cependant, un message privé se trouve nécessairement dans un seul sujet. On utilise encore une entité faible dans ce cas là.
+	\item[reçoitMP] Les conversations pouvant se faire en groupe même par messages privés, le choix a été fait de faire passer tout cela par le sujet de la conversation. Ainsi, une personne peut participer à plusieurs conversations, et une conversation peut avoir plusieurs personnes pouvant y accéder. Le choix a été fait de mettre un numéro pour reconnaître le sujet des messages, car un même nom de sujet pourrait être utilisé plusieurs fois facilement.
+	\item[écrit] Le mécanisme est ici le même que pour ecritPar pour les posts.
+	\item[appartient] Ici, on choisit de pouvoir mettre une personne dans plusieurs groupes (et bien sûr qu'un groupe puisse être vide ou avoir autant de personnes que nécessaire). Par exemple, on pourrait avoir une personne qui serait à la fois rédacteur de news et modérateur en même temps. 
+	\item[conçoit] Une personne peut utiliser plusieurs sources et écrire plusieurs news. Une source peut être utilisée plusieurs fois pour plusieurs news différentes. Enfin, une news ne peut être écrite que par une personne (une des limites des schémas E/A) mais peut aussi bien n'utiliser aucune source ou en utiliser plusieurs. Enfin, pour une news et une personne donnée, il ne peut y avoir qu'une seule date possible.
+	\item[comprend] On retrouve une nouvelle fois le même schéma qu'avec post et sujet. 
+	\item[poste] Il s'agit ici d'un utilisateur qui poste un commentaire sur une news. Un commentaire ne peut être posté que par une seule personne, mais une personne peut poster autant de commenaitre qu'il veut.
+\end{description}

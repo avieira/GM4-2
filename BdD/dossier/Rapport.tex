@@ -1,0 +1,47 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{framed}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=3cm]{geometry}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{moreverb}
+\usepackage{titletoc}
+\usepackage{charter}
+\usepackage{soul}
+\usepackage{hyperref}
+\usepackage{wasysym}
+\usepackage{lscape}
+\usepackage{longtable}
+\usepackage{tikz}
+\usetikzlibrary{shapes, positioning}
+\usepackage{gensymb}
+\usepackage[babel=true]{csquotes}
+
+\addto\captionsfrench{
+  \renewcommand{\listfigurename}{ }
+}
+
+\definecolor{bleu}{rgb}{0.1,0.2,0.4}
+\hypersetup{colorlinks=true, urlcolor=bleu, linkcolor=red}
+
+
+\author{Alexandre \bsc{Vieira}}
+\title{Modélisation d'un forum associé à un site internet, création d'une base utilisateurs.}
+\date{\today}
+
+\begin{document}
+\include{en-tete}
+\section*{Introduction}
+\input{intro}
+
+\include{modeleEA}
+\include{modeleRel}
+\end{document}
