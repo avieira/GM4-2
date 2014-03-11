@@ -1,0 +1,83 @@
+CREATE DATABASE IF NOT EXISTS forumSite;
+
+CREATE TABLE Sous-section(
+nomSection VARCHAR(50),
+nomSsSection VARCHAR(100),
+description TEXT,
+PRIMARY KEY nomSection, nomSsSection);
+
+CREATE TABLE Sujet(
+nomSsSection VARCHAR(100),
+nomSujet VARCHAR(200),
+PRIMARY KEY nomSsSection, nomSujet,
+FOREIGN KEY nomSsSection REFERENCES Sous-Section);
+
+CREATE TABLE Post(
+nomSujet VARCHAR(200),
+noPost UNSIGNED SMALLINT AUTO_INCREMENT,
+datePost DATETIME,
+textePost LONGTEXT,
+pseudo VARCHAR(200),
+PRIMARY KEY nomSujet, noPost,
+FOREIGN KEY nomSujet REFERENCES Sujet);
+
+CREATE TABLE Personne(
+pseudo VARCHAR(50),
+avatar MEDIUMBLOB,
+anniversaire DATE,
+dateInscrip DATE,
+dateDerConnex DATE,
+PRIMARY KEY pseudo);
+
+CREATE TABLE SujetMP(
+noSujetMP UNSIGNED SMALLINT AUTO_INCREMENT,
+nomSujet VARCHAR(150),
+dateSujMP DATE,
+PRIMARY KEY noSujetMP);
+
+CREATE TABLE MP(
+noSujetMP UNSIGNED SMALLINT,
+noMP UNSIGNED SMALLINT AUTO_INCREMENT,
+texte LONGTEXT,
+pseudo VARCHAR(50),
+PRIMARY KEY noSujetMP, noMP,
+FOREIGN KEY noSujetMP REFERENCES SujetMP);
+
+CREATE TABLE News(
+noNews UNSIGNED SMALLINT AUTO_INCREMENT,
+texteNews LONGTEXT,
+titre VARCHAR(255),
+PRIMARY KEY noNews);
+
+CREATE TABLE Commentaire(
+noNews UNSIGNED SMALLINT,
+noCom UNSIGNED SMALLINT AUTO_INCREMENT,
+pseudo VARCHAR(50),
+texteCom TEXT,
+dateCom DATETIME,
+PRIMARY KEY noNews, noCom,
+FOREIGN KEY noNews REFERENCES News);
+
+CREATE TABLE RecoitMP(
+noSujetMP UNSIGNED SMALLINT,
+pseudo VARCHAR(50),
+PRIMARY KEY noSujetMP, pseudo,
+FOREIGN KEY noSujetMP REFERENCES SujetMP,
+FOREIGN KEY pseudo REFERENCES Personne);
+
+CREATE TABLE Appartient(
+pseudo VARCHAR(50),
+nomGroupe VARCHAR(50),
+logo MEDIUMBLOB,
+PRIMARY KEY pseudo, nomGroupe
+FOREIGN KEY pseudo REFERENCES Personne);
+
+CREATE TABLE Concoit(
+noNews UNSIGNED SMALLINT,
+pseudo VARCHAR(50),
+nomSource VARCHAR(150),
+date DATE,
+ref TINYTEXT,
+PRIMARY KEY noNews,
+FOREIGN KEY noNews REFERENCES News);
+
