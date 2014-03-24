@@ -1,0 +1,40 @@
+//Constantes
+int n=100,m=100;
+real dt=0.1;
+real mu=0.01;
+real TF=2.;
+
+//Définition du maillage
+mesh Th=square(n,m,[1*x,1*y]);
+//plot(Th, ps="truc.ps");
+
+//Espace d'approximation
+fespace Vh(Th,P1);
+
+//Fonction source
+Vh u, v, uu, a, f, g;
+
+/*problem dHeat(u,v)=
+	int2d(Th)(u*v + dt*mu*(dx(u)*dx(v) +dy(u)*dy(v)))
+	+ int2d(Th) (- uu*v - dt*f*v )
+	+ on(1,2,3,4,u=g);*/
+
+real t = 0;
+uu = 0;
+
+
+f=x^4-mu*t*12*x^2;
+g = t*x^4;
+
+for(real t=0.; t<=TF; t+=dt){
+//	dHeat;
+	solve dHeat(u,v)=
+		int2d(Th)(u*v/dt + mu*(dx(u)*dx(v) +dy(u)*dy(v)))
+		- int2d(Th) ( uu*v/dt + f*v )
+		+ on(1,2,3,4,u=g);
+
+	uu=u;
+
+	plot(u, fill=true, dim=3, value=true, wait=false);
+}
+//P.254 : Evolution problem dans le manuel de FreeFem++
