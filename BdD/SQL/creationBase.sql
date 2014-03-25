@@ -81,3 +81,4 @@ ref TINYTEXT,
 PRIMARY KEY noNews,
 FOREIGN KEY noNews REFERENCES News);
 
+

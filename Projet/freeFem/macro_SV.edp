@@ -1,0 +1,175 @@
+//---------------------------------------------
+// Macros pour récupérer les valeurs i+1 ou j+1 (ou -)
+//---------------------------------------------
+
+int j;
+Vh Xip1j;
+macro XIP1J(X)
+	j=0;
+	for (int i =0; i<Vh.ndof ; i+=1) {
+	if (i==j*(M+1)+M){
+		Xip1j[](i)=X[](i);
+		j+=1;
+	}
+	else
+		Xip1j[](i)=X[](i+1);
+	}
+	#X#ip1j=Xip1j; //
+
+Vh Xim1j;
+macro XIM1J(X)
+	j=0;
+	for (int i =0; i<Vh.ndof ; i+=1){
+	if (i==j*(M+1)){
+		Xim1j[](i)=X[](i);
+		j+=1;
+	}
+	else
+		Xim1j[](i)=X[](i-1);
+	}
+	#X#im1j=Xim1j; //
+
+macro XIJP1(X)
+	for (int i=0; i<Vh.ndof ; i+=1){
+		if (i<Vh.ndof-M-1)
+			Xijp1[](i)=X[](i+M+1);
+		else
+			Xijp1[](i)=X[](i) ;
+		}
+		#X#ijp1=Xijp1 ; //
+
+macro XIJM1(X)
+	for (int i=0; i<Vh.ndof ; i+=1) {
+		if (i<=M)
+			Xijm1[](i)=X[](i) ;
+		else if (i>M)
+			Xijm1[](i)=X[](i-M-1) ;
+	}
+	#X#ijm1=Xijm1 ; //
+
+Uip12jL = U ;
+Uijp12D = U ; 
+Uim12jR = U ; 
+Uijm12U = U ; 
+Vip12jL = V ; 
+Vijp12D = V ;
+Vim12jR = V ; 
+Vijm12U = V ;
+Uim12jL = Uim1j ; 
+Uijm12D = Uijm1 ; 
+Uip12jR = Uip1j ; 
+Uijp12U = Uijp1 ; 
+Vim12jL = Vim1j ; 
+Vijm12D = Vijm1 ; 
+Vip12jR = Vip1j ; 
+Vijp12U = Vijp1 ;
+
+//-----------------------------------------
+// Fonctions de flux et source
+//-----------------------------------------
+
+macro Source (hp,hm) [0.,.5*gravity*(hp^2-hm ^2),.5*gravity*(hp^2-hm^2)] //
+macro F(h,u,v) [h*u, h*u^2+.5*gravity*h^2, h*u*v] //
+macro G(h,u,v) [h*v, h*u*v, h*v^2+.5*gravity*h^2] //
+
+//------------------------------------------
+// HLL
+//------------------------------------------
+
+//------ F -----//
+
+macro lambda1 (u) (u) //
+macro lambda2 (h, u) (u-sqrt(gravity*h)) //
+macro lambda3 (h, u) (u+sqrt(gravity*h)) //
+
+Vh S1L, S2L, S3L, S1R, S2R, S3R ;
+real S12Lm, S3L1m, S23Lm, sL1, sL, S12LM, S3L1M, S23LM, sR1, sR ;
+Vh FHp12, FHUp12, FHVp12, FHm12, FHUm12, FHVm12 ;
+Vh HFL, HUFL, HVFL, HFR, HUFR, HVFR ;
+Vh HGD, HUGD, HVGD, HGU, HUGU, HVGU ;
+
+macro HLLH (hL, uL, vL, hR, uR, vR, s)
+	S1L=lambda1(uL);
+	S1R=lambda1(uR);
+	S2L=lambda2(hL, uL);
+	S2R=lambda2(hR, uR);
+	S3L=lambda3(hL, uL);
+	S3R=lambda3(hR, uR);
+
+	S12Lm=min(S1L[].min, S2L[].min);
+	S12LM=max(S1L[].max, S2L[].max);
+	S3L1m=min(S3L[].min, S1R[].min);
+	S3L1M=max(S3L[].max, S1R[].max);
+	S23Lm=min(S2R[].min, S3R[].min);
+	S23LM=max(S2R[].max, S3R[].max);
+
+	sL1=min(S12Lm ,S3L1m);
+	sR1=max(S12LM ,S3L1M);
+	sL=min(sL1 ,S23Lm);
+	sR=max(sR1 ,S23LM);
+
+	HFL=F(hL ,uL, vL)[0]; HUFL=F(hL ,uL ,vL)[1]; HVFL=F(hL ,uL ,vL)[2];
+	HFR=F(hR ,uR, vR)[0]; HUFR=F(hR ,uR ,vR)[1]; HVFR=F(hR ,uR ,vR)[2];
+
+	if (sL>0){
+		FH#s#12 HFL;
+		FHU#s#12=HUFL;
+		FHV#s#12=HVFL;
+	} else if (sR<0){
+		FH#s#12=HFR;
+		FHU#s#12=HUFR;
+		FHV#s#12=HVFR;
+	} else if(sL<=0 & sR>=0){
+		FH#s#12=(sR*HFL-sL*HFR+sL*sR*(hR-hL))/(sR-sL);
+		FHU#s#12=(sR*HUFL-sL*HUFR+sL*sR*(hR*uR-hL*uL))/(sR-sL);
+		FHV#s#12=(sR*HVFL-sL*HVFR+sL*sR*(hR*vR-hL*vL))/(sR-sL);
+	}
+
+
+//------ G -----//
+
+macro lambda1s(v)(v) //
+macro lambda2s(h,v)(v-sqrt(gravity*h)) //
+macro lambda3s(h,v)(v+sqrt(gravity*h)) //
+
+Vh S1D, S2D, S3D, S1U, S2U, S3U ;
+real S12Dm, S3D1m, S23Dm, sD1, sD, S12DM, S3D1M, S23DM, sU1, sU ;
+Vh GHp12, GHUp12, GHVp12, GHm12, GHUm12, GHVm12 ;
+
+macro HLLG (hL, uL, vL, hR, uR, vR, s)
+	S1D=lambda1s(uL);
+	S1U=lambda1s(uR);
+	S2D=lambda2s(hL,vL);
+	S2U=lambda2s(hR,vR);
+	S3D=lambda3s(hL,vL);
+	S3U=lambda3s(hR,vR);
+
+	S12Dm=min(S1D[].min, S2D[].min);
+	S12DM=max(S1D[].max, S2D[].max);
+	S3D1m=min(S3D[].min, S1U[].min);
+	S3D1M=max(S3D[].max, S1U[].max);
+	S23Dm=min(S2U[].min, S3U[].min);
+	S23DM=max(S2U[].max, S3U[].max);
+
+	sD1=min(S12Dm,S3D1m);
+	sU1=max(S12DM,S3D1M);
+	sD=min(sD1, S23Dm);
+	sU=max(sU1, S23DM);
+
+	HGD=G(hL, uL, vL)[0]; HUGD=G(hL, uL, vL)[1]; HVGD=G(hL ,uL, vL)[2];
+	HGU=G(hR, uR, vR)[0]; HUGU=G(hR, uR, vR)[1]; HVGU=G(hR ,uR, vR)[2];
+	if (sD>0) {
+		GH#s#12=HGD;
+		GHU#s#12=HUGD;
+		GHV#s#12=HVGD;
+	} else if (sU<0){
+		GH#s#12=HGU;
+		GHU#s#12=HUGU;
+		GHV#s#12=HVGU;
+	} else if (sD<=0 & sU>=0){
+		GH#s#12=(sU*HG -sD*HGU +sD*sU*(hR-hL))/(sU-sD);
+		GHU#s#12=(sU*HUGD-sD*HUGU+sD*sU*(hR*uR-hL*uL))/(sU-sD);
+		GHV#s#12=(sU*HVGD-sD*HVGU+sD*sU*(hR*vR-hL*vL))/(sU-sD);
+	}
+//end of the macro
+
