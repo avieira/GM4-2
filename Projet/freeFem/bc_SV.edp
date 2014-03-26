@@ -5,14 +5,14 @@ for (int i=0; i<Vh.ndof ; i=+1) {
 	// for border AB
 	// =============
 	if (i<=M){
-		V[](i)=0;
+		H[](i)=0;
 	}
 
 	// =============
 	// for border BC
 	// =============
 	if (i==bc*(M+1)+M){
-	//	H[](i)=1;
+		H[](i)=1;
 		bc+=1;
 	}
 
@@ -20,7 +20,7 @@ for (int i=0; i<Vh.ndof ; i=+1) {
 	// for border CD
 	// =============
 	if (i>= Vh.ndof-M-1)
-		V[](i)=0;
+		H[](i)=0;
 
 	// =============
 	// for border DA

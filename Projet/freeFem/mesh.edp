@@ -1,2 +1,0 @@
-mesh Th=square(M,N,[x,y]) ;
-fespace Vh(Th,P1);

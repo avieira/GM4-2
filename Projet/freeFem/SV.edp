@@ -1,17 +1,30 @@
 verbosity=0;
 int M=60,N=M,L=4, op=0;
 
-include "mesh.edp";
+mesh Th=square(M,N,[x,y]) ;
+fespace Vh(Th,P1);
 
 real Dx=Th(1).x-Th(0).x, Dy=Th(M+1).y-Th(0).y;
 real a=1., b=1., TF=2., CFL=.5, gravity=9.8, FT=3;
-real dt=CFL/max(abs(a)/Dx,abs(b)/Dy);
 
-Vh u, v;
+Vh u, v, U, V;
 Vh H, HU, HV;
 
 include "macro_SV.edp";
-include "bc_SV.edp";
+
+Vh cflL , cflR , cflD , cflU ;
+cflL = abs ( Uip12jL ) + sqrt ( gravity * Hip12jL ) ;
+cflR = abs ( Uip12jR ) + sqrt ( gravity * Hip12jR ) ;
+cflD = abs ( Vijp12D ) + sqrt ( gravity * Hijp12D ) ;
+cflU = abs ( Vijp12U ) + sqrt ( gravity * Hijp12U ) ;
+Vh maxLR , maxDU ;
+maxLR = max ( cflL , cflR ) ;
+maxDU = max ( cflD , cflU ) ;
+real c = max ( maxLR []. max , maxDU []. max ) ;
+real Dx = Th (1) .x - Th (0) .x , Dy = Th ( M +1) .y - Th (0) . y ;
+real dt = CFL * min ( Dx , Dy ) / c ;
+
+//include "bc_SV.edp";
 
 // Définir le solve
 include "solve_SV.edp";
