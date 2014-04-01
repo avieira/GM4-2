@@ -9,12 +9,18 @@ def auto_compile(path):
 	notifier.loop()
 	
 def onSave(event):
-	if ".tex" in event.name :
+	if ".tex" in event.name:
 		pynotify.init("Mon appli python")
 		try:
 			subprocess.check_call(['mkdir', '-p', 'tmp'])
-			subprocess.check_call(['latexmk', '-pdf', '-output-directory=tmp', '-shell-escape' ,'-halt-on-error' ,'Rapport.tex'])
-			subprocess.check_call(['mv', 'tmp/Rapport.pdf', '.'])
+			#Entre machine INSA et maison : inverser les commentaires du bloc suivant
+			#subprocess.check_call(['latexmk', '-pdf', '-output-directory=tmp', '-shell-escape' ,'-halt-on-error' ,'ficheRev.tex'])
+			#subprocess.check_call(['mv', 'tmp/ficheRev.pdf', '.'])
+
+			subprocess.check_call(['latexmk', '-pdf', 'rapport.tex'])
+			subprocess.check_call(['mv', '*.aux', '*.toc', 'tmp'])
+
+
 		except subprocess.CalledProcessError:
 			message = pynotify.Notification("Build failed.")
 		else:

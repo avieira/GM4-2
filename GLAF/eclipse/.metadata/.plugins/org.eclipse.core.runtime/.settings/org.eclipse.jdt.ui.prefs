@@ -1,5 +1,5 @@
-content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="ws.EspeceAnimalManagerInterface"><rhs name\="ws.EspeceAnimalManager"/></lhs><lhs name\="ws.EspeceAnimalManager"><rhs name\="ws.EspeceAnimalManager"/></lhs><lhs name\="java.lang.Enum"><rhs name\="javax.jws.soap.SOAPBinding$Style"/></lhs></history>
-content_assist_number_of_computers=15
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="ws.EspeceAnimalManagerInterface"><rhs name\="ws.EspeceAnimalManager"/></lhs><lhs name\="ws.EspeceAnimalManager"><rhs name\="ws.EspeceAnimalManager"/></lhs><lhs name\="java.lang.Enum"><rhs name\="javax.jws.soap.SOAPBinding$Style"/></lhs><lhs name\="model.EspeceAnimal"><rhs name\="model.EspeceAnimal"/></lhs></history>
+content_assist_number_of_computers=13
 content_assist_proposals_background=255,255,255
 content_assist_proposals_foreground=60,60,60
 eclipse.preferences.version=1

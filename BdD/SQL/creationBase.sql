@@ -7,19 +7,18 @@ description TEXT,
 PRIMARY KEY nomSection, nomSsSection);
 
 CREATE TABLE Sujet(
-nomSsSection VARCHAR(100),
+idSuj UNSIGNED SMALLINT AUTO_INCREMENT,
 nomSujet VARCHAR(200),
-PRIMARY KEY nomSsSection, nomSujet,
-FOREIGN KEY nomSsSection REFERENCES Sous-Section);
+PRIMARY KEY idSuj);
 
 CREATE TABLE Post(
-nomSujet VARCHAR(200),
+idSuj UNSIGNED SMALLINT,
 noPost UNSIGNED SMALLINT AUTO_INCREMENT,
 datePost DATETIME,
 textePost LONGTEXT,
 pseudo VARCHAR(200),
-PRIMARY KEY nomSujet, noPost,
-FOREIGN KEY nomSujet REFERENCES Sujet);
+PRIMARY KEY idSuj, noPost,
+FOREIGN KEY idSuj REFERENCES Sujet);
 
 CREATE TABLE Personne(
 pseudo VARCHAR(50),

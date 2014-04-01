@@ -10,9 +10,11 @@
 <coolItem id="group.file" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="132" y="31"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="48" y="31"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="120" y="31"/>
 <coolItem id="org.eclipse.emf.facet.common.editor.actionSet" itemType="typeToolBarContribution" x="40" y="31"/>
-<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="48" y="31"/>
+<coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="76" y="31"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="76" y="31"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="124" y="31"/>
 <coolItem id="org.topcased.modeler.uml.editor.UMLEditor" itemType="typeToolBarContribution" x="831" y="31"/>
 <coolItem id="org.topcased.requirement.core.mainToolbar" itemType="typeToolBarContribution" x="40" y="31"/>
 <coolItem id="org.eclipse.papyrus.readonly.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -25,36 +27,68 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="184" y="31"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
-<page aggregateWorkingSetId="Aggregate for window 1391770479077" focus="true" label="Workspace - UML/SysML (with former TOPCASED editors)">
+<page aggregateWorkingSetId="Aggregate for window 1391770479077" focus="true" label="Workspace - Java">
 <editors>
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.topcased.modeler.uml.editor.UMLEditor" name="activity.umldi" partName="activity.umldi" path="/users/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/glaf/Models/activity.umldi" title="activity.umldi" tooltip="glaf/Models/activity.umldi" workbook="DefaultEditorWorkbook">
+<editor id="org.topcased.modeler.uml.editor.UMLEditor" name="activity.umldi" partName="activity.umldi" path="/nfs/usersgm/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/glaf/Models/activity.umldi" title="activity.umldi" tooltip="glaf/Models/activity.umldi" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/glaf/Models/activity.umldi"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ClientCheptelVif.java" partName="ClientCheptelVif.java" path="/nfs/usersgm/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/cheptelVif/src/ws/ClientCheptelVif.java" title="ClientCheptelVif.java" tooltip="cheptelVif/src/ws/ClientCheptelVif.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cheptelVif/src/ws/ClientCheptelVif.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2048" selectionTopPixel="190"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EspeceAnimalManager.java" partName="EspeceAnimalManager.java" path="/nfs/usersgm/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/cheptelVif/src/ws/EspeceAnimalManager.java" title="EspeceAnimalManager.java" tooltip="cheptelVif/src/ws/EspeceAnimalManager.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cheptelVif/src/ws/EspeceAnimalManager.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="437" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EspeceAnimalManagerInterface.java" partName="EspeceAnimalManagerInterface.java" path="/nfs/usersgm/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/cheptelVif/src/ws/EspeceAnimalManagerInterface.java" title="EspeceAnimalManagerInterface.java" tooltip="cheptelVif/src/ws/EspeceAnimalManagerInterface.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cheptelVif/src/ws/EspeceAnimalManagerInterface.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="341" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Test.java" partName="Test.java" path="/nfs/usersgm/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/cheptelVif/src/Test/Test.java" title="Test.java" tooltip="cheptelVif/src/Test/Test.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cheptelVif/src/Test/Test.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="14" selectionOffset="419" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
+<view id="org.topcased.requirement.core.currentView" partName="Current Requirement"/>
+<view id="org.topcased.requirement.core.upstreamView" partName="Upstream Requirement"/>
+<view id="org.topcased.ui.navigator.view" partName="Topcased Navigator">
+<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
+</view>
+<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
+<viewState/>
+</view>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
 <viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.cdt.ui.cview.groupincludes="false" org.eclipse.cdt.ui.cview.groupmacros="false" org.eclipse.cdt.ui.editor.CUChildren="true" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
 </view>
-<view id="org.topcased.requirement.core.currentView" partName="Current Requirement"/>
 <view id="org.eclipse.papyrus.documentation.view.DocView" partName="Documentation"/>
 <view id="org.eclipse.ui.views.PropertySheet" partName="Properties">
 <viewState/>
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="641" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
+<expanded>
+<category IMemento.internal.id="Warnings"/>
+<category IMemento.internal.id="Errors"/>
+</expanded>
+<columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="677" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
@@ -62,21 +96,50 @@
 <visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
 </view>
-<view id="org.topcased.requirement.core.upstreamView" partName="Upstream Requirement"/>
-<view id="org.topcased.ui.navigator.view" partName="Topcased Navigator">
-<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
-</view>
-<view id="org.topcased.modeler.documentation.DocView" partName="Documentation (deprecated)">
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
 <viewState/>
+</view>
+<view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
+<viewState group_libraries="1" layout="2" linkWithEditor="0" rootMode="1" workingSetName="Aggregate for window 1394786986447">
+<customFilters userDefinedPatternsEnabled="false">
+<xmlDefinedFilters>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.LibraryFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.LocalTypesFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.StaticsFilter" isEnabled="false"/>
+<child filterId="org.eclipse.pde.ui.ExternalPluginLibrariesFilter1" isEnabled="true"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.ClosedProjectsFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.NonSharedProjectsFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.NonJavaElementFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.ContainedLibraryFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.CuAndClassFileFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.NonJavaProjectsFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.internal.ui.PackageExplorer.EmptyInnerPackageFilter" isEnabled="true"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.PackageDeclarationFilter" isEnabled="true"/>
+<child filterId="org.eclipse.jdt.internal.ui.PackageExplorer.EmptyPackageFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.ImportDeclarationFilter" isEnabled="true"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.FieldsFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.internal.ui.PackageExplorer.HideInnerClassFilesFilter" isEnabled="true"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.NonPublicFilter" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer_patternFilterId_.*" isEnabled="true"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.EmptyLibraryContainerFilter" isEnabled="true"/>
+<child filterId="org.eclipse.pde.ui.BinaryProjectFilter1" isEnabled="false"/>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.SyntheticMembersFilter" isEnabled="true"/>
+</xmlDefinedFilters>
+</customFilters>
+</viewState>
 </view>
 <view id="org.eclipse.papyrus.modelexplorer.modelexplorer" partName="Model Explorer">
 <viewState/>
 </view>
-<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
+<view id="org.topcased.modeler.documentation.DocView" partName="Documentation (deprecated)">
 <viewState/>
 </view>
+<view id="org.eclipse.jdt.ui.SourceView" partName="Declaration">
+<viewState/>
+</view>
+<view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 </views>
-<perspectives activePart="org.topcased.modeler.uml.editor.UMLEditor" activePerspective="org.topcased.modeler.uml.TopcasedModelerPerspective">
+<perspectives activePart="org.eclipse.ui.console.ConsoleView" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.topcased.ui.perspective.papyrus.internal.PapyrusModelerPerspective" id="org.topcased.ui.perspective.papyrus.PapyrusModelerPerspective" label="UML/SysML"/>
 <alwaysOnActionSet id="eclipsemonkeyAction.actionSet"/>
@@ -231,13 +294,282 @@
 </mainWindow>
 </layout>
 </perspective>
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="org.eclipse.jdt.internal.ui.JavaPerspectiveFactory" id="org.eclipse.jdt.ui.JavaPerspective" label="Java"/>
+<alwaysOnActionSet id="fr.tm.elibel.smartqvt.modulesmanager.getregisteredmodules.actionSet"/>
+<alwaysOnActionSet id="eclipsemonkeyAction.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.emf.facet.common.editor.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.jdt.ui.JavaActionSet"/>
+<alwaysOnActionSet id="org.eclipse.jdt.ui.JavaElementCreationActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<alwaysOnActionSet id="fr.obeo.acceleo.gen.ui.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.acceleo.ide.ui.editors.template.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
+<alwaysOnActionSet id="org.eclipse.jdt.debug.ui.JDTDebugActionSet"/>
+<alwaysOnActionSet id="org.eclipse.jdt.junit.JUnitActionSet"/>
+<alwaysOnActionSet id="org.eclipse.m2m.qvt.oml.runtime.actions"/>
+<show_view_action id="org.eclipse.jdt.ui.PackageExplorer"/>
+<show_view_action id="org.eclipse.jdt.ui.TypeHierarchy"/>
+<show_view_action id="org.eclipse.jdt.ui.SourceView"/>
+<show_view_action id="org.eclipse.jdt.ui.JavadocView"/>
+<show_view_action id="org.eclipse.search.ui.views.SearchView"/>
+<show_view_action id="org.eclipse.ui.console.ConsoleView"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="org.eclipse.ui.views.ProblemView"/>
+<show_view_action id="org.eclipse.ui.views.ResourceNavigator"/>
+<show_view_action id="org.eclipse.ui.views.TaskList"/>
+<show_view_action id="org.eclipse.ui.views.ProgressView"/>
+<show_view_action id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<show_view_action id="org.eclipse.ui.texteditor.TemplatesView"/>
+<show_view_action id="org.eclipse.pde.runtime.LogView"/>
+<show_view_action id="org.eclipse.ant.ui.views.AntView"/>
+<new_wizard_action id="org.eclipse.jdt.ui.wizards.JavaProjectWizard"/>
+<new_wizard_action id="org.eclipse.jdt.ui.wizards.NewPackageCreationWizard"/>
+<new_wizard_action id="org.eclipse.jdt.ui.wizards.NewClassCreationWizard"/>
+<new_wizard_action id="org.eclipse.jdt.ui.wizards.NewInterfaceCreationWizard"/>
+<new_wizard_action id="org.eclipse.jdt.ui.wizards.NewEnumCreationWizard"/>
+<new_wizard_action id="org.eclipse.jdt.ui.wizards.NewAnnotationCreationWizard"/>
+<new_wizard_action id="org.eclipse.jdt.ui.wizards.NewSourceFolderCreationWizard"/>
+<new_wizard_action id="org.eclipse.jdt.ui.wizards.NewSnippetFileCreationWizard"/>
+<new_wizard_action id="org.eclipse.jdt.ui.wizards.NewJavaWorkingSetWizard"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.folder"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.file"/>
+<new_wizard_action id="org.eclipse.ui.editors.wizards.UntitledTextFileWizard"/>
+<new_wizard_action id="org.eclipse.jdt.junit.wizards.NewTestCaseCreationWizard"/>
+<new_wizard_action id="org.eclipse.rmf.reqif10.presentation.Reqif10ModelWizardID"/>
+<perspective_action id="org.eclipse.jdt.ui.JavaBrowsingPerspective"/>
+<perspective_action id="org.eclipse.debug.ui.DebugPerspective"/>
+<hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="org.eclipse.jdt.ui.PackageExplorer"/>
+<view id="org.eclipse.ui.views.ProblemView"/>
+<view id="org.eclipse.jdt.ui.JavadocView"/>
+<view id="org.eclipse.jdt.ui.SourceView"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<fastViewBars/>
+<layout>
+<mainWindow>
+<info folder="true" part="left">
+<folder activePageID="org.eclipse.jdt.ui.PackageExplorer" appearance="2" expanded="2">
+<page content="org.eclipse.jdt.ui.PackageExplorer" label="Package Explorer"/>
+<page content="org.eclipse.jdt.ui.TypeHierarchy" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
+<page content="org.eclipse.ui.navigator.ProjectExplorer" label="LabelNotFound"/>
+<page content="org.eclipse.jdt.junit.ResultView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.74986464" ratioLeft="1385" ratioRight="462" relationship="2" relative="left">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.24959394" ratioLeft="461" ratioRight="1386" relationship="2" relative="left"/>
+<info folder="true" part="bottom" ratio="0.7492163" ratioLeft="717" ratioRight="240" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
+<page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
+<page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="right" ratio="0.7496393" ratioLeft="1039" ratioRight="347" relationship="2" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<page content="org.eclipse.ui.texteditor.TemplatesView" label="LabelNotFound"/>
+<page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
 </perspectives>
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.topcased.modeler.uml.editor.UMLEditor" path="/glaf/Models/activity.umldi"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/model/EspeceAnimal.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/ws/ClientCheptelVif.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/ws/EspeceAnimalManagerInterface.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/ws/EspeceAnimalManager.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/ws/ConvertisseurInterface.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/Test/Test.java"/>
 </editors>
-<item active="true" historyLabel="activity.umldi" index="0"/>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="2048" y="0"/>
+</item>
+<item historyLabel="EspeceAnimal.java" index="0">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="2048" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1662" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1662" y="0"/>
+</item>
+<item historyLabel="EspeceAnimal.java" index="0">
+<position info="not_deleted" x="715" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1662" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1838" y="0"/>
+</item>
+<item historyLabel="EspeceAnimal.java" index="0">
+<position info="not_deleted" x="715" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="3">
+<position info="not_deleted" x="325" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1838" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1702" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="2048" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1943" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="3">
+<position info="not_deleted" x="465" y="0"/>
+</item>
+<item historyLabel="ConvertisseurInterface.java" index="4">
+<position info="not_deleted" x="427" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="3">
+<position info="not_deleted" x="465" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManagerInterface.java" index="2">
+<position info="not_deleted" x="341" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1943" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManagerInterface.java" index="2">
+<position info="not_deleted" x="274" y="12"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="2048" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManagerInterface.java" index="2">
+<position info="not_deleted" x="309" y="6"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1838" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManagerInterface.java" index="2">
+<position info="not_deleted" x="341" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="3">
+<position info="not_deleted" x="465" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1687" y="6"/>
+</item>
+<item historyLabel="EspeceAnimalManagerInterface.java" index="2">
+<position info="not_deleted" x="341" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1943" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManagerInterface.java" index="2">
+<position info="not_deleted" x="341" y="0"/>
+</item>
+<item historyLabel="EspeceAnimal.java" index="0">
+<position info="not_deleted" x="854" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManagerInterface.java" index="2">
+<position info="not_deleted" x="341" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="3">
+<position info="not_deleted" x="557" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1943" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManagerInterface.java" index="2">
+<position info="not_deleted" x="341" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1943" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManagerInterface.java" index="2">
+<position info="not_deleted" x="341" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1943" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManagerInterface.java" index="2">
+<position info="not_deleted" x="341" y="0"/>
+</item>
+<item historyLabel="Test.java" index="5">
+<position info="not_deleted" x="419" y="14"/>
+</item>
+<item historyLabel="EspeceAnimalManagerInterface.java" index="2">
+<position info="not_deleted" x="341" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="3">
+<position info="not_deleted" x="557" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1204" y="0"/>
+</item>
+<item historyLabel="Test.java" index="5">
+<position info="not_deleted" x="419" y="14"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1204" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1879" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1901" y="25"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1941" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1920" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="3">
+<position info="not_deleted" x="437" y="0"/>
+</item>
+<item active="true" historyLabel="ClientCheptelVif.java" index="1">
+<position info="not_deleted" x="1920" y="0"/>
+</item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
@@ -255,6 +587,30 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Test.java" tooltip="cheptelVif/src/Test/Test.java">
+<persistable path="/cheptelVif/src/Test/Test.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EspeceAnimalManagerInterface.java" tooltip="cheptelVif/src/ws/EspeceAnimalManagerInterface.java">
+<persistable path="/cheptelVif/src/ws/EspeceAnimalManagerInterface.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ConvertisseurInterface.java" tooltip="cheptelVif/src/ws/ConvertisseurInterface.java">
+<persistable path="/cheptelVif/src/ws/ConvertisseurInterface.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EspeceAnimal.java" tooltip="cheptelVif/src/model/EspeceAnimal.java">
+<persistable path="/cheptelVif/src/model/EspeceAnimal.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EspeceAnimalManager.java" tooltip="cheptelVif/src/ws/EspeceAnimalManager.java">
+<persistable path="/cheptelVif/src/ws/EspeceAnimalManager.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Convertisseur.java" tooltip="cheptelVif/src/ws/Convertisseur.java">
+<persistable path="/cheptelVif/src/ws/Convertisseur.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Client.java" tooltip="cheptelVif/src/ws/Client.java">
+<persistable path="/cheptelVif/src/ws/Client.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="test.java" tooltip="cheptelVif/src/test.java">
+<persistable path="/cheptelVif/src/test.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="Cycle en V.png" tooltip="glaf/Models/Cycle en V.png">
 <persistable path="/glaf/Models/Cycle en V.png"/>
 </file>

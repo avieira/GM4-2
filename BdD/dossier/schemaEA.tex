@@ -16,12 +16,11 @@
 \draw (SsSection)++(-0.9,0.9) node{\underline{nomSsSec}};
 
 \node[association, below=1cm of SsSection] (contenir1){contenir};
+
 \node[entité, below=1cm of contenir1] (Sujet){\textbf{Sujet}
-	\nodepart{second} };
+	\nodepart{second} {\shortstack{\underline{idSuj}\\nomSuj}}};
 \draw (Sujet) -- (contenir1) node[midway, right]{1..1};
 \draw (contenir1) -- (SsSection) node[midway, right]{0..n};
-\draw (Sujet)-- ++(0,1.2) -- ++(-1.4,0)-- ++(0,-0.65)--cycle;
-\draw (Sujet)++(-0.7,0.85) node{\underline{nomSuj}};
 
 \node[association, below=1cm of Sujet] (contenir2){contenir};
 \node[entité, below=1cm of contenir2] (Post){\textbf{Post}
@@ -63,14 +62,12 @@
 
 \node[association, below=1cm of Personne] (conçoit){conçoit};
 \node[entité, below=1cm of conçoit] (News){\textbf{News}
-	\nodepart{second} {\shortstack{\underline{n\degree News}\\titre\\texte}}};
+	\nodepart{second} {\shortstack{\underline{n\degree News}\\titre\\texte\\date}}};
 \node[entité, left= of conçoit] (Source){\textbf{Source}
 	\nodepart{second} {\shortstack{\underline{nom}\\ref}}};
 \draw (conçoit) -- (Personne) node[midway, right]{0..n};
 \draw (conçoit) -- (News) node[midway, right]{0..n};
 \draw (conçoit) -- (Source) node[midway, above]{0..n};
-\draw (conçoit) -- ++(1,0) -- ++(0,-0.7);
-\draw (conçoit)++(0.85,-0.35) node[right]{- Date};
 
 \node[association, right= of News] (comprend){comprend};
 \node[entité, right=1.5cm of comprend] (Comm){\textbf{Commentaire}

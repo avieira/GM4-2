@@ -7,7 +7,7 @@ fespace Vh(Th,P1);
 real Dx=Th(1).x-Th(0).x, Dy=Th(M+1).y-Th(0).y;
 real a=1., b=1., TF=2., CFL=.5, gravity=9.8, FT=3;
 
-Vh u, v, U, V;
+Vh u, v, U, V, zb;
 Vh H, HU, HV;
 
 include "macro_SV.edp";
@@ -21,10 +21,10 @@ Vh maxLR , maxDU ;
 maxLR = max ( cflL , cflR ) ;
 maxDU = max ( cflD , cflU ) ;
 real c = max ( maxLR []. max , maxDU []. max ) ;
-real Dx = Th (1) .x - Th (0) .x , Dy = Th ( M +1) .y - Th (0) . y ;
+real DX = Th (1) .x - Th (0) .x , DY = Th ( M +1) .y - Th (0) . y ;
 real dt = CFL * min ( Dx , Dy ) / c ;
 
-//include "bc_SV.edp";
+include "bc_SV.edp";
 
 // Définir le solve
 include "solve_SV.edp";

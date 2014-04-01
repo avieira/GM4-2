@@ -5,6 +5,7 @@
 int j;
 Vh Xip1j;
 macro XIP1J(X)
+	Vh #X#ip1j;
 	j=0;
 	for (int i =0; i<Vh.ndof ; i+=1) {
 	if (i==j*(M+1)+M){
@@ -15,11 +16,12 @@ macro XIP1J(X)
 		Xip1j[](i)=X[](i+1);
 	}
 	#X#ip1j=Xip1j; //
-XIP1J ( zb ); XIP1J(H); XIP1J(U); XIP1J(V);
+XIP1J(zb); XIP1J(H); XIP1J(U); XIP1J(V);
 
 
 Vh Xim1j;
 macro XIM1J(X)
+	Vh #X#im1j;
 	j=0;
 	for (int i =0; i<Vh.ndof ; i+=1){
 	if (i==j*(M+1)){
@@ -30,9 +32,11 @@ macro XIM1J(X)
 		Xim1j[](i)=X[](i-1);
 	}
 	#X#im1j=Xim1j; //
-XIM1J ( zb ); XIM1J(H); XIM1J(U); XIM1J(V);
+XIM1J(zb); XIM1J(H); XIM1J(U); XIM1J(V);
 
+Vh Xijp1;
 macro XIJP1(X)
+	Vh #X#ijp1;
 	for (int i=0; i<Vh.ndof ; i+=1){
 		if (i<Vh.ndof-M-1)
 			Xijp1[](i)=X[](i+M+1);
@@ -42,7 +46,9 @@ macro XIJP1(X)
 		#X#ijp1=Xijp1 ; //
 XIJP1 ( zb ); XIJP1(H); XIJP1(U); XIJP1(V)
 
+Vh Xijm1;
 macro XIJM1(X)
+	Vh #X#ijm1;
 	for (int i=0; i<Vh.ndof ; i+=1) {
 		if (i<=M)
 			Xijm1[](i)=X[](i) ;
@@ -50,7 +56,7 @@ macro XIJM1(X)
 			Xijm1[](i)=X[](i-M-1) ;
 	}
 	#X#ijm1=Xijm1 ; //
-XIJM1 ( zb ); XIJM1(H); XIJM1(U); XIJM1(V)
+XIJM1(zb); XIJM1(H); XIJM1(U); XIJM1(V)
 
 Vh Uip12jL = U, Uijp12D = U, Uim12jR = U, Uijm12U = U;
 Vh Vip12jL = V, Vijp12D = V, Vim12jR = V, Vijm12U = V;
@@ -60,14 +66,14 @@ Vh Vim12jL = Vim1j, Vijm12D = Vijm1, Vip12jR = Vip1j, Vijp12U = Vijp1;
 //-----------------------------------------
 //	Hydrostatic reconstruction
 //-----------------------------------------
-Hip12jL = H + zb - max ( zb , zbip1j ) ; Hip12jL = max ( Hip12jL ,0) ;
-Hijp12D = H + zb - max ( zb , zbijp1 ) ; Hijp12D = max ( Hijp12D ,0) ;
-Hip12jR = Hip1j + zbip1j - max ( zb , zbip1j ) ; Hip12jR = max ( Hip12jR ,0) ;
-Hijp12U = Hijp1 + zbijp1 - max ( zb , zbijp1 ) ; Hijp12U = max ( Hijp12U ,0) ;
-Him12jL = Him1j + zbim1j - max ( zbim1j , zb ) ; Him12jL = max ( Him12jL ,0) ;
-Hijm12D = Hijm1 + zbijm1 - max ( zbijm1 , zb ) ; Hijm12D = max ( Hijm12D ,0) ;
-Him12jR = H + zb - max ( zbim1j , zb ) ; Him12jR = max ( Him12jR ,0) ;
-Hijm12U = H + zb - max ( zbijm1 , zb ) ; Hijm12U = max ( Hijm12U ,0) ;
+Vh Hip12jL = H + zb - max ( zb , zbip1j ) ; Hip12jL = max ( Hip12jL ,0) ;
+Vh Hijp12D = H + zb - max ( zb , zbijp1 ) ; Hijp12D = max ( Hijp12D ,0) ;
+Vh Hip12jR = Hip1j + zbip1j - max ( zb , zbip1j ) ; Hip12jR = max ( Hip12jR ,0) ;
+Vh Hijp12U = Hijp1 + zbijp1 - max ( zb , zbijp1 ) ; Hijp12U = max ( Hijp12U ,0) ;
+Vh Him12jL = Him1j + zbim1j - max ( zbim1j , zb ) ; Him12jL = max ( Him12jL ,0) ;
+Vh Hijm12D = Hijm1 + zbijm1 - max ( zbijm1 , zb ) ; Hijm12D = max ( Hijm12D ,0) ;
+Vh Him12jR = H + zb - max ( zbim1j , zb ) ; Him12jR = max ( Him12jR ,0) ;
+Vh Hijm12U = H + zb - max ( zbijm1 , zb ) ; Hijm12U = max ( Hijm12U ,0) ;
 
 
 //-----------------------------------------
@@ -76,9 +82,9 @@ Hijm12U = H + zb - max ( zbijm1 , zb ) ; Hijm12U = max ( Hijm12U ,0) ;
 
 macro Source (hp,hm) [0.,.5*gravity*(hp^2-hm ^2),.5*gravity*(hp^2-hm^2)] //
 
-SU = Source ( Hip12jL , Him12jR ) [0];
-SHU = Source ( Hip12jL , Him12jR ) [1];
-SHV = Source ( Hijp12D , Hijm12U ) [2];
+Vh SU = Source ( Hip12jL , Him12jR ) [0];
+Vh SHU = Source ( Hip12jL , Him12jR ) [1];
+Vh SHV = Source ( Hijp12D , Hijm12U ) [2];
 
 macro F(h,u,v) [h*u, h*u^2+.5*gravity*h^2, h*u*v] //
 macro G(h,u,v) [h*v, h*u*v, h*v^2+.5*gravity*h^2] //
@@ -123,7 +129,7 @@ macro HLLH (hL, uL, vL, hR, uR, vR, s)
 	HFR=F(hR ,uR, vR)[0]; HUFR=F(hR ,uR ,vR)[1]; HVFR=F(hR ,uR ,vR)[2];
 
 	if (sL>0){
-		FH#s#12 HFL;
+		FH#s#12=HFL;
 		FHU#s#12=HUFL;
 		FHV#s#12=HVFL;
 	} else if (sR<0){
@@ -134,10 +140,10 @@ macro HLLH (hL, uL, vL, hR, uR, vR, s)
 		FH#s#12=(sR*HFL-sL*HFR+sL*sR*(hR-hL))/(sR-sL);
 		FHU#s#12=(sR*HUFL-sL*HUFR+sL*sR*(hR*uR-hL*uL))/(sR-sL);
 		FHV#s#12=(sR*HVFL-sL*HVFR+sL*sR*(hR*vR-hL*vL))/(sR-sL);
-	}
+	}//
 
-HLLH ( Hip12jL , Uip12jL , Vip12jL , Hip12jR , Uip12jR , Vip12jR , p ) ;
-HLLH ( Him12jL , Uim12jL , Vim12jL , Him12jR , Uim12jR , Vim12jR , m ) ;
+HLLH ( Hip12jL , Uip12jL , Vip12jL , Hip12jR , Uip12jR , Vip12jR ,p) ;
+HLLH ( Him12jL , Uim12jL , Vim12jL , Him12jR , Uim12jR , Vim12jR ,m) ;
 
 //------ G -----//
 
@@ -171,7 +177,8 @@ macro HLLG (hL, uL, vL, hR, uR, vR, s)
 
 	HGD=G(hL, uL, vL)[0]; HUGD=G(hL, uL, vL)[1]; HVGD=G(hL ,uL, vL)[2];
 	HGU=G(hR, uR, vR)[0]; HUGU=G(hR, uR, vR)[1]; HVGU=G(hR ,uR, vR)[2];
-	if (sD>0) {
+
+	if (sD>0){
 		GH#s#12=HGD;
 		GHU#s#12=HUGD;
 		GHV#s#12=HVGD;
@@ -180,12 +187,11 @@ macro HLLG (hL, uL, vL, hR, uR, vR, s)
 		GHU#s#12=HUGU;
 		GHV#s#12=HVGU;
 	} else if (sD<=0 & sU>=0){
-		GH#s#12=(sU*HG -sD*HGU +sD*sU*(hR-hL))/(sU-sD);
+		GH#s#12=(sU*HGD-sD*HGU +sD*sU*(hR-hL))/(sU-sD);
 		GHU#s#12=(sU*HUGD-sD*HUGU+sD*sU*(hR*uR-hL*uL))/(sU-sD);
 		GHV#s#12=(sU*HVGD-sD*HVGU+sD*sU*(hR*vR-hL*vL))/(sU-sD);
-	}
+	}//
 
-HLLG ( Hijp12D , Uijp12D , Vijp12D , Hijp12U , Uijp12U , Vijp12U , p ) ;
-HLLG ( Hijm12D , Uijm12D , Vijm12D , Hijm12U , Uijm12U , Vijm12U , m ) ;
-
+HLLG(Hijp12D,Uijp12D,Vijp12D,Hijp12U,Uijp12U,Vijp12U,p) ;
+HLLG(Hijm12D,Uijm12D,Vijm12D,Hijm12U,Uijm12U,Vijm12U,m) ;
 

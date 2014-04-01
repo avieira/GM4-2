@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="model.EspeceAnimal"/>
 <fullyQualifiedTypeName name="ws.EspeceAnimalManager"/>
 <fullyQualifiedTypeName name="javax.jws.soap.SOAPBinding"/>
 <fullyQualifiedTypeName name="javax.jws.soap.SOAPBinding.Style"/>
@@ -9,4 +8,5 @@
 <fullyQualifiedTypeName name="ws.ConvertisseurInterface"/>
 <fullyQualifiedTypeName name="javax.jws.WebService"/>
 <fullyQualifiedTypeName name="javax.xml.ws.Endpoint"/>
+<fullyQualifiedTypeName name="model.EspeceAnimal"/>
 </qualifiedTypeNameHistroy>
