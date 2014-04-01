@@ -11,20 +11,17 @@ mesh Th=square(n,m,[1*x,1*y]);
 fespace Vh(Th,P1);
 
 //Fonction source
-func f=x^5*y^3+y+x^3;
 
-Vh uh,vh, uhp1;
+Vh uh,vh, uhp1, f;
 
+f=x^5*y^3+y+x^3;
 uh=0;
 
-for(real t=0.;t<=TF;t+=dt){
-	solve P(uhp1,vh)=int2d(Th)(uhp1/dt + dx(uhp1)*dx(vh)+dy(uhp1)*dy(vh))
-		      - int2d(Th)(f*vh+uh/dt)
-		      + on(1,2,3,4,uhp1=0);
 
-	uh=uhp1;
+solve P(uhp1,vh)=int2d(Th)(dx(uhp1)*dx(vh)+dy(uhp1)*dy(vh))
+	      - int2d(Th)(f*vh)
+	      + on(1,2,3,4,uhp1=0);
 
-	plot(uh, fill=true, dim=3, value=true, wait=0., cmm="t="+t);
-}
+plot(uh, fill=true, dim=3, value=true);
 
 //P.254 : Evolution problem dans le manuel de FreeFem++
