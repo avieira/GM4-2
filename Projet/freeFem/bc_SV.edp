@@ -1,11 +1,12 @@
-int bc =0 , da =0; // counter
+int bc, da; // counter
+bc=0; da=0;
 
-for (int i=0; i<Vh.ndof ; i=+1) {
+for(int i=0; i<Vh.ndof ; i++) {
 	// =============
 	// for border AB
 	// =============
 	if (i<=M){
-		H[](i)=0;
+		H[](i)=1;
 	}
 
 	// =============
@@ -13,21 +14,21 @@ for (int i=0; i<Vh.ndof ; i=+1) {
 	// =============
 	if (i==bc*(M+1)+M){
 		H[](i)=1;
-		bc+=1;
+		bc++;
 	}
 
 	// =============
 	// for border CD
 	// =============
 	if (i>= Vh.ndof-M-1)
-		H[](i)=0;
+		H[](i)=1;
 
 	// =============
 	// for border DA
 	// =============
 	if (i==da*(M+1)){
 	//	H [](i)=1;
-		da +=1;
+		da++;
 	}
 }
 

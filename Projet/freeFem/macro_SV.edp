@@ -66,25 +66,25 @@ Vh Vim12jL = Vim1j, Vijm12D = Vijm1, Vip12jR = Vip1j, Vijp12U = Vijp1;
 //-----------------------------------------
 //	Hydrostatic reconstruction
 //-----------------------------------------
-Vh Hip12jL = H + zb - max ( zb , zbip1j ) ; Hip12jL = max ( Hip12jL ,0) ;
-Vh Hijp12D = H + zb - max ( zb , zbijp1 ) ; Hijp12D = max ( Hijp12D ,0) ;
-Vh Hip12jR = Hip1j + zbip1j - max ( zb , zbip1j ) ; Hip12jR = max ( Hip12jR ,0) ;
-Vh Hijp12U = Hijp1 + zbijp1 - max ( zb , zbijp1 ) ; Hijp12U = max ( Hijp12U ,0) ;
-Vh Him12jL = Him1j + zbim1j - max ( zbim1j , zb ) ; Him12jL = max ( Him12jL ,0) ;
-Vh Hijm12D = Hijm1 + zbijm1 - max ( zbijm1 , zb ) ; Hijm12D = max ( Hijm12D ,0) ;
-Vh Him12jR = H + zb - max ( zbim1j , zb ) ; Him12jR = max ( Him12jR ,0) ;
-Vh Hijm12U = H + zb - max ( zbijm1 , zb ) ; Hijm12U = max ( Hijm12U ,0) ;
+Vh Hip12jL=H+zb-max(zb,zbip1j); Hip12jL=max(Hip12jL,0);
+Vh Hijp12D=H+zb-max(zb,zbijp1); Hijp12D=max(Hijp12D,0);
+Vh Hip12jR=Hip1j+zbip1j-max(zb,zbip1j); Hip12jR=max(Hip12jR,0);
+Vh Hijp12U=Hijp1+zbijp1-max(zb,zbijp1); Hijp12U=max(Hijp12U,0);
+Vh Him12jL=Him1j+zbim1j-max(zbim1j,zb); Him12jL=max(Him12jL,0) ;
+Vh Hijm12D=Hijm1+zbijm1-max(zbijm1,zb); Hijm12D=max(Hijm12D,0) ;
+Vh Him12jR=H+zb-max(zbim1j,zb); Him12jR=max(Him12jR,0);
+Vh Hijm12U=H+zb-max(zbijm1,zb); Hijm12U=max(Hijm12U,0);
 
 
 //-----------------------------------------
 // Fonctions de flux et source
 //-----------------------------------------
 
-macro Source (hp,hm) [0.,.5*gravity*(hp^2-hm ^2),.5*gravity*(hp^2-hm^2)] //
+macro Source (hp,hm) [0.,.5*gravity*(hp^2-hm^2),.5*gravity*(hp^2-hm^2)] //
 
-Vh SU = Source ( Hip12jL , Him12jR ) [0];
-Vh SHU = Source ( Hip12jL , Him12jR ) [1];
-Vh SHV = Source ( Hijp12D , Hijm12U ) [2];
+Vh SU=Source(Hip12jL,Him12jR)[0];
+Vh SHU=Source(Hip12jL,Him12jR)[1];
+Vh SHV=Source(Hijp12D,Hijm12U)[2];
 
 macro F(h,u,v) [h*u, h*u^2+.5*gravity*h^2, h*u*v] //
 macro G(h,u,v) [h*v, h*u*v, h*v^2+.5*gravity*h^2] //

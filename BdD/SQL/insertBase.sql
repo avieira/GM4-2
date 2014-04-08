@@ -26,7 +26,6 @@ INSERT INTO Sous-Section VALUES ("Informations", "Annonces globales", "Seuls les
 		INSERT INTO Post VALUES (6, NULL, 28-02-2014, " Morbi rhoncus sem massa, ut malesuada mauris viverra quis. Nulla sem libero, malesuada a posuere nec, aliquet eget lectus. Pellentesque ut consectetur nibh. Aliquam vel augue non nisl fermentum tempus. Suspendisse potenti. Vivamus eu velit nunc. Pellentesque volutpat rhoncus nibh eget feugiat.
 
 Integer eros orci, iaculis viverra ornare quis, aliquet at velit. Cras condimentum augue eu odio adipiscing aliquet non vel lectus. Ut aliquam tempor rhoncus. In vitae tincidunt eros. Vestibulum leo lorem, lacinia eu ullamcorper ac, malesuada eget lorem. Donec consequat leo sed eleifend vulputate. Cras a nisl viverra purus ultricies rutrum. Mauris fringilla velit sed nulla laoreet varius. Nullam lobortis, velit molestie egestas vestibulum, purus nisl dictum nisi, at mollis massa tortor in velit.
-
 Etiam rutrum risus ultricies, cursus nunc eget, eleifend quam. Sed ut nisl lorem. Mauris non vulputate ipsum. Aliquam auctor, urna ac vehicula rutrum, justo neque luctus diam, at eleifend ante nulla id felis. Donec semper velit nisl, id imperdiet diam viverra et. Sed quis iaculis ligula. Proin condimentum faucibus dapibus. Aenean mattis ac ligula id pharetra. Integer non adipiscing erat. Praesent et augue vitae ligula consequat tincidunt. Pellentesque malesuada, tortor a faucibus scelerisque, arcu diam semper turpis, eu fermentum velit ligula sed massa. Maecenas quis malesuada magna. Nunc nec faucibus sapien. Nunc et nisi dolor. Donec in orci eget tellus venenatis posuere eu eget orci. ", "Moderateur1");
 		INSERT INTO Post VALUES (6, NULL, 01-03-2014, "Suspendisse rhoncus lectus nec tortor porta, ut viverra nisl malesuada. Suspendisse eget euismod dui. Duis id enim id nibh euismod lobortis amet.", "Moderateur2");
 
@@ -104,3 +103,76 @@ INSERT INTO Sous-Section VALUES ("Discussion", "Blabla et boîte à flood", "Si 
 INSERT INTO Sous-Section VALUES ("Administration", "Page d'admin", "Page reservée aux administrateurs.");
 	INSERT INTO Sujet VALUES (17, "Alertes sur le forum");
 		INSERT INTO Post VALUES (16, NULL, 27-03-2014, "... Bon, on n'est pas obligés de toujours être sérieux non plus ;)", "Admin");
+
+
+-- Création des personnes et des groupes, et l'appartenance entre les deux
+INSERT INTO Personne VALUES ("Pseudo1", NULL, 8-04-1997, 15-05-2014, 8-04-2014);
+INSERT INTO Personne VALUES ("Pseudo2", NULL, 8-04-1997, 15-05-2014, 8-04-2014);
+INSERT INTO Personne VALUES ("Pseudo3", NULL, 8-04-1997, 15-05-2014, 8-04-2014);
+INSERT INTO Personne VALUES ("Pseudo4", NULL, 8-04-1997, 15-05-2014, 8-04-2014);
+INSERT INTO Personne VALUES ("Pseudo5", NULL, 8-04-1997, 15-05-2014, 8-04-2014);
+INSERT INTO Personne VALUES ("Pseudo6", NULL, 8-04-1997, 15-05-2014, 8-04-2014);
+INSERT INTO Personne VALUES ("Pseudo7", NULL, 8-04-1997, 15-05-2014, 8-04-2014);
+INSERT INTO Personne VALUES ("Pseudo8", NULL, 8-04-1997, 15-05-2014, 8-04-2014);
+INSERT INTO Personne VALUES ("Pseudo9", NULL, 8-04-1997, 15-05-2014, 8-04-2014);
+INSERT INTO Personne VALUES ("Pseudo10", NULL, 8-04-1997, 15-05-2014, 8-04-2014);
+INSERT INTO Personne VALUES ("Moderateur1", NULL, 8-04-1997, 15-05-2014, 8-04-2014);
+INSERT INTO Personne VALUES ("Moderateur2", NULL, 8-04-1997, 15-05-2014, 8-04-2014);
+INSERT INTO Personne VALUES ("Moderateur3", NULL, 8-04-1997, 15-05-2014, 8-04-2014);
+INSERT INTO Personne VALUES ("Moderateur4", NULL, 8-04-1997, 15-05-2014, 8-04-2014);
+INSERT INTO Personne VALUES ("Admin", NULL, 8-04-1997, 15-05-2014, 8-04-2014);
+
+INSERT INTO Appartient VALUES ("Admin", Administrateur, logoAdmin.jpg);
+INSERT INTO Appartient VALUES ("Admin", Moderateur, logoModerateur.jpg);
+INSERT INTO Appartient VALUES ("Moderateur1", Moderateur, logoModerateur.jpg);
+INSERT INTO Appartient VALUES ("Moderateur2", Moderateur, logoModerateur.jpg);
+INSERT INTO Appartient VALUES ("Moderateur3", Moderateur, logoModerateur.jpg);
+INSERT INTO Appartient VALUES ("Moderateur3", Newseur, logoNewseur.jpg);
+INSERT INTO Appartient VALUES ("Moderateur4", Moderateur, logoModerateur.jpg);
+INSERT INTO Personne VALUES ("Pseudo7", Newseur, logoNewseur.jpg);
+
+-- Création messages privés
+INSERT INTO SujetMP VALUES (1, "Salut toi :)", 22-08-2014);
+	INSERT INTO RecoitMP VALUES (1, "Pseudo1");
+	INSERT INTO RecoitMP VALUES (1, "Pseudo5");
+
+	INSERT INTO MP VALUES (1, NULL, "Salut ! Dis moi, je pourrais avoir ton pseudo Skype ? Ce serait sympa de discuter de temps en temps =D" ,"Pseudo1");
+	INSERT INTO MP VALUES (1, NULL, "Désolé, je n'utilise pas Skype" ,"Pseudo5");
+
+INSERT INTO SujetMP VALUES (2, "Petite info", 28-08-2014);
+	INSERT INTO RecoitMP VALUES (2, "Pseudo3");
+	INSERT INTO RecoitMP VALUES (2, "Pseudo5");
+	INSERT INTO RecoitMP VALUES (2, "Moderateur3");
+	INSERT INTO RecoitMP VALUES (2, "Admin");
+
+	INSERT INTO MP VALUES (2, NULL, "Vivamus vehicula dolor vitae vulputate rutrum. Maecenas convallis velit sit amet lacinia imperdiet. Donec sodales eget diam ut eleifend. Suspendisse quam tellus, aliquet et mattis in, interdum sed leo." ,"Pseudo3");
+	INSERT INTO MP VALUES (2, NULL, "... Pardon ?" ,"Admin");
+
+-- Création News, sources et commentaires
+INSERT INTO News VALUES (1, " Pellentesque aliquam ipsum a mauris volutpat egestas. Morbi feugiat, nulla vitae rhoncus facilisis, purus nisi laoreet eros, eget tincidunt sem lorem quis ante. Maecenas imperdiet nibh quis fermentum egestas. Duis posuere mi vel sapien aliquam, ut ultricies dolor dignissim. Vivamus justo velit, suscipit et elementum vitae, euismod vel nisl. Praesent eu turpis in est scelerisque molestie sit amet nec sem. Nunc varius hendrerit massa. Vivamus vehicula dolor vitae vulputate rutrum. Maecenas convallis velit sit amet lacinia imperdiet. Donec sodales eget diam ut eleifend. Suspendisse quam tellus, aliquet et mattis in, interdum sed leo. Vivamus ullamcorper a risus quis vestibulum. Ut ut felis nec enim ultricies facilisis. Praesent malesuada, enim vitae semper elementum, orci erat consectetur lacus, non lobortis purus urna sit amet dui.", "Lorem Ipsum");
+	INSERT INTO Concoit VALUES (1, "Pseudo7", "Le Lorem Ipsum", 20-03-2014, "http://fr.lipsum.com/");
+	
+	INSERT INTO Commentaire VALUES (1, NULL, "Pseudo4", "Vivamus ullamcorper a risus quis vestibulum. Ut ut felis nec enim ultricies facilisis", 20-03-2014);
+	INSERT INTO Commentaire VALUES (1, NULL, "Pseudo7", "ut ultricies dolor dignissim. Vivamus justo velit", 20-03-2014);
+	INSERT INTO Commentaire VALUES (1, NULL, "Pseudo5", "purus nisi laoreet eros, eget tincidunt sem lorem quis ante", 20-03-2014);
+
+INSERT INTO News VALUES (2, " Pellentesque aliquam ipsum a mauris volutpat egestas. Morbi feugiat, nulla vitae rhoncus facilisis, purus nisi laoreet eros, eget tincidunt sem lorem quis ante. Maecenas imperdiet nibh quis fermentum egestas. Duis posuere mi vel sapien aliquam, ut ultricies dolor dignissim. Vivamus justo velit, suscipit et elementum vitae, euismod vel nisl. Praesent eu turpis in est scelerisque molestie sit amet nec sem. Nunc varius hendrerit massa. Vivamus vehicula dolor vitae vulputate rutrum. Maecenas convallis velit sit amet lacinia imperdiet. Donec sodales eget diam ut eleifend. Suspendisse quam tellus, aliquet et mattis in, interdum sed leo. Vivamus ullamcorper a risus quis vestibulum. Ut ut felis nec enim ultricies facilisis. Praesent malesuada, enim vitae semper elementum, orci erat consectetur lacus, non lobortis purus urna sit amet dui.", "Lorem Ipsum -- le retour");
+	INSERT INTO Concoit VALUES (2, "Pseudo7", "Le Lorem Ipsum", 28-03-2014, "http://fr.lipsum.com/");
+	
+	INSERT INTO Commentaire VALUES (2, NULL, "Pseudo9", "Vivamus ullamcorper a risus quis vestibulum. Ut ut felis nec enim ultricies facilisis", 28-03-2014);
+	INSERT INTO Commentaire VALUES (2, NULL, "Pseudo10", "ut ultricies dolor dignissim. Vivamus justo velit", 28-03-2014);
+	INSERT INTO Commentaire VALUES (2, NULL, "Pseudo4", "purus nisi laoreet eros, eget tincidunt sem lorem quis ante", 29-03-2014);
+
+INSERT INTO News VALUES (3, " Pellentesque aliquam ipsum a mauris volutpat egestas. Morbi feugiat, nulla vitae rhoncus facilisis, purus nisi laoreet eros, eget tincidunt sem lorem quis ante. Maecenas imperdiet nibh quis fermentum egestas. Duis posuere mi vel sapien aliquam, ut ultricies dolor dignissim. Vivamus justo velit, suscipit et elementum vitae, euismod vel nisl. Praesent eu turpis in est scelerisque molestie sit amet nec sem. Nunc varius hendrerit massa. Vivamus vehicula dolor vitae vulputate rutrum. Maecenas convallis velit sit amet lacinia imperdiet. Donec sodales eget diam ut eleifend. Suspendisse quam tellus, aliquet et mattis in, interdum sed leo. Vivamus ullamcorper a risus quis vestibulum. Ut ut felis nec enim ultricies facilisis. Praesent malesuada, enim vitae semper elementum, orci erat consectetur lacus, non lobortis purus urna sit amet dui.", "Lorem Ipsum -- encore et toujours");
+	INSERT INTO Concoit VALUES (3, "Moderateur3", "Vivamus justo", 6-04-2014, "http://fr.lipsum.com/");
+
+	INSERT INTO Commentaire VALUES (3, NULL, "Pseudo1", "Vivamus ullamcorper a risus quis vestibulum. Ut ut felis nec enim ultricies facilisis", 6-04-2014);
+	INSERT INTO Commentaire VALUES (3, NULL, "Pseudo1", "ut ultricies dolor dignissim. Vivamus justo velit", 6-04-2014);
+	INSERT INTO Commentaire VALUES (3, NULL, "Pseudo1", "purus nisi laoreet eros, eget tincidunt sem lorem quis ante", 7-04-2014);
+
+INSERT INTO News VALUES (4, " Pellentesque aliquam ipsum a mauris volutpat egestas. Morbi feugiat, nulla vitae rhoncus facilisis, purus nisi laoreet eros, eget tincidunt sem lorem quis ante. Maecenas imperdiet nibh quis fermentum egestas. Duis posuere mi vel sapien aliquam, ut ultricies dolor dignissim. Vivamus justo velit, suscipit et elementum vitae, euismod vel nisl. Praesent eu turpis in est scelerisque molestie sit amet nec sem. Nunc varius hendrerit massa. Vivamus vehicula dolor vitae vulputate rutrum. Maecenas convallis velit sit amet lacinia imperdiet. Donec sodales eget diam ut eleifend. Suspendisse quam tellus, aliquet et mattis in, interdum sed leo. Vivamus ullamcorper a risus quis vestibulum. Ut ut felis nec enim ultricies facilisis. Praesent malesuada, enim vitae semper elementum, orci erat consectetur lacus, non lobortis purus urna sit amet dui.", "Lorem Ipsum -- il est toujours là !");
+	INSERT INTO Concoit VALUES (4, "Pseudo7", "Vivamus justo", 12-04-2014, "http://fr.lipsum.com/");
+
+	INSERT INTO Commentaire VALUES (3, NULL, "Pseudo3", "Vivamus ullamcorper a risus quis vestibulum. Ut ut felis nec enim ultricies facilisis", 12-04-2014);
+	INSERT INTO Commentaire VALUES (3, NULL, "Admin", "ut ultricies dolor dignissim. Vivamus justo velit", 12-04-2014);
+	INSERT INTO Commentaire VALUES (3, NULL, "Pseudo3", "purus nisi laoreet eros, eget tincidunt sem lorem quis ante", 12-04-2014);

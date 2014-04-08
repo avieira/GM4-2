@@ -1,12 +1,13 @@
-for (real t=0.;t<=TF;t+=dt) {
-	plot(H,HU,HV,dim=3,cmm="t="+t,wait=0.,value=true,fill=true);
+cout<<dt<<endl;
+for (real t=0.;t<=TF;t=t+dt) {
+	plot(H,dim=3,cmm="t="+t,wait=0.,value=true,fill=true);
 	
-	solve PH(u, v,init=op) = int2d(Th)(u*v)-int2d(Th)((H-(FHp12-FHm12)*dt/DX-(GHp12-GHm12)*dt/DY+SU*dt)*v);
+	solve PH(u,v,init=op) = int2d(Th)(u*v)-int2d(Th)((H-(FHp12-FHm12)*dt/Dx-(GHp12-GHm12)*dt/Dy+SU*dt)*v);
 	H=u;
-	solve PHU(u, v, init=op)=int2d(Th)(u*v)-int2d(Th)((HU-(FHUp12-FHUm12)*dt/DX-(GHUp12-GHUm12)*dt/DY+SHU*dt/DX)*v);
+	/*solve PHU(u,v,init=op)=int2d(Th)(u*v)-int2d(Th)((HU-(FHUp12-FHUm12)*dt/Dx-(GHUp12-GHUm12)*dt/Dy+SHU*dt/Dx)*v);
 	HU=u;
-	solve PHV(u, v, init=op)=int2d(Th)(u*v)-int2d(Th)((HV-(FHVp12-FHVm12)*dt/DX-(GHVp12-GHVm12)*dt/DY+SHV*dt/DY)*v);
-	HV=u;
+	solve PHV(u,v,init=op)=int2d(Th)(u*v)-int2d(Th)((HV-(FHVp12-FHVm12)*dt/Dx-(GHVp12-GHVm12)*dt/Dy+SHV*dt/Dy)*v);
+	HV=u;*/
 
-	op=1;
+	op=0;
 }
