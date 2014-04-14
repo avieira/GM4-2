@@ -2,7 +2,7 @@ QT += widgets
 
 SOURCES += \
     main.cpp \
-    maFenetre.cpp
+    MaFenetre.cpp
 
 HEADERS += \
-    maFenetre.h
+    MaFenetre.h
