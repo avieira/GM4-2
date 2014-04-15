@@ -1,0 +1,8 @@
+- Maillage cabine : Très fin en dessous du camion, mais très large à l'avant et à l'arrière. Pose des problèmes : normalement plus de perturbations à l'avant et à l'arrière du camion. Résultats seront donc moins précis. Volumétrie : 10^-3 à 1.5. Non structuré : triangles sur le capot. Sol et plafond à gauche : bizarre les frontières là quand même.
+- Camion_remorque_1 : Il est cool dans l'ensemble. fin dans les endroits utiles (au contact du camion, avant et arrièrei, en dessous). Problème en dessous par rapport aux roues, mais non règlable sans 3D. Volumétrie : 3*10^-7 à 1.5. Tout structuré en quadrilatères
+- Camion_remorque_2 : Plusieurs blocs, mais un peu bizarre : pourquoi aussi resserré à l'avant, et pas autant à l'arrière ? Sinon, très fin au niveau des parois, donc cool ! Volumétrie : 10^-7 à 1.6
+- Camion_remorque_3 : Cool, bien fin dans les endroits où on peut prévoir de fortes perturbations (près de la cabine, dans les angles, etc et à l'arrière). Mais maillage très fin loin à l'arrière : pas forcément utile. Plus simple pour le maillage (on ne déforme pas les lignes, elles sont toujours orthogonales), mais les calculs seront d'autant plus longs. Possibilités de faire des blocs pour alléger le calcul. Volumétrie : 10^-7 à 1.5
+
+Nb Reynolds : 3*10^6 à 60km => Non laminaire (>500 000)
+Idem pour 110
+RNG car obstacle
