@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="20" version="2.0">
+<workbench progressCount="22" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="65" y="24">
 <fastViewData fastViewLocation="1024"/>
@@ -15,7 +15,7 @@
 <coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="76" y="31"/>
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="76" y="31"/>
 <coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="124" y="31"/>
-<coolItem id="org.topcased.modeler.uml.editor.UMLEditor" itemType="typeToolBarContribution" x="831" y="31"/>
+<coolItem id="org.topcased.modeler.uml.editor.UMLEditor" itemType="typePlaceholder" x="831" y="31"/>
 <coolItem id="org.topcased.requirement.core.mainToolbar" itemType="typeToolBarContribution" x="40" y="31"/>
 <coolItem id="org.eclipse.papyrus.readonly.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.papyrus.navigation.toolbars.navigationToolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -27,6 +27,10 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="184" y="31"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.emf.mapping.ecore2xml.presentation.Ecore2XMLEditorID" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.ant.ui.internal.editor.AntEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -41,61 +45,29 @@
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
-<part id="4"/>
-<part id="5"/>
-<part id="6"/>
-<part id="7"/>
-<part id="8"/>
-<part id="9"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.topcased.modeler.uml.editor.UMLEditor" name="activity.umldi" partName="activity.umldi" path="/nfs/usersgm/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/glaf/Models/activity.umldi" title="activity.umldi" tooltip="glaf/Models/activity.umldi" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/glaf/Models/activity.umldi"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EspeceAnimalManagerInterface.java" partName="EspeceAnimalManagerInterface.java" path="/nfs/usersgm/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/cheptelVif/src/ws/EspeceAnimalManagerInterface.java" title="EspeceAnimalManagerInterface.java" tooltip="cheptelVif/src/ws/EspeceAnimalManagerInterface.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cheptelVif/src/ws/EspeceAnimalManagerInterface.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="7" selectionOffset="377" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EspeceAnimalManager.java" partName="EspeceAnimalManager.java" path="/nfs/usersgm/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/cheptelVif/src/ws/EspeceAnimalManager.java" title="EspeceAnimalManager.java" tooltip="cheptelVif/src/ws/EspeceAnimalManager.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cheptelVif/src/ws/EspeceAnimalManager.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="437" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1891" selectionTopPixel="534"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EspeceAnimalManagerInterface.java" partName="EspeceAnimalManagerInterface.java" path="/nfs/usersgm/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/cheptelVif/src/ws/EspeceAnimalManagerInterface.java" title="EspeceAnimalManagerInterface.java" tooltip="cheptelVif/src/ws/EspeceAnimalManagerInterface.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cheptelVif/src/ws/EspeceAnimalManagerInterface.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="341" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Nufnuf.java" partName="Nufnuf.java" path="/nfs/usersgm/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/cheptelVif/src/ws/Nufnuf.java" title="Nufnuf.java" tooltip="cheptelVif/src/ws/Nufnuf.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cheptelVif/src/ws/Nufnuf.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="178" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ClientCheptelVif.java" partName="ClientCheptelVif.java" path="/nfs/usersgm/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/cheptelVif/src/ws/ClientCheptelVif.java" title="ClientCheptelVif.java" tooltip="cheptelVif/src/ws/ClientCheptelVif.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cheptelVif/src/ws/ClientCheptelVif.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AllTests.java" partName="AllTests.java" path="/nfs/usersgm/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/cheptelVif/src/ws/AllTests.java" title="AllTests.java" tooltip="cheptelVif/src/ws/AllTests.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cheptelVif/src/ws/AllTests.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="240" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EspeceAnimalManagerTest.java" partName="EspeceAnimalManagerTest.java" path="/nfs/usersgm/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/cheptelVif/src/ws/EspeceAnimalManagerTest.java" title="EspeceAnimalManagerTest.java" tooltip="cheptelVif/src/ws/EspeceAnimalManagerTest.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cheptelVif/src/ws/EspeceAnimalManagerTest.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="322" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NufnufTest.java" partName="NufnufTest.java" path="/nfs/usersgm/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/cheptelVif/src/ws/NufnufTest.java" title="NufnufTest.java" tooltip="cheptelVif/src/ws/NufnufTest.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cheptelVif/src/ws/NufnufTest.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="341" selectionTopPixel="0"/>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Test.java" partName="Test.java" path="/nfs/usersgm/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/cheptelVif/src/Test/Test.java" title="Test.java" tooltip="cheptelVif/src/Test/Test.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cheptelVif/src/Test/Test.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="606" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EspeceAnimal.java" partName="EspeceAnimal.java" path="/nfs/usersgm/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/cheptelVif/src/model/EspeceAnimal.java" title="EspeceAnimal.java" tooltip="cheptelVif/src/model/EspeceAnimal.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cheptelVif/src/model/EspeceAnimal.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="793" selectionTopPixel="173"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Test.java" partName="Test.java" path="/nfs/usersgm/GM25/avieira/Documents/Cours/GM4-2/GLAF/eclipse/cheptelVif/src/Test/Test.java" title="Test.java" tooltip="cheptelVif/src/Test/Test.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/cheptelVif/src/Test/Test.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="533" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="860" selectionTopPixel="284"/>
 </editor>
 </editors>
 <views>
 <view id="org.topcased.requirement.core.currentView" partName="Current Requirement"/>
-<view id="org.eclipse.jdt.junit.ResultView" partName="JUnit">
-<viewState failuresOnly="false" layout="1" orientation="2" ratio="500" scroll="false" time="true"/>
-</view>
 <view id="org.topcased.requirement.core.upstreamView" partName="Upstream Requirement"/>
 <view id="org.topcased.ui.navigator.view" partName="Topcased Navigator">
 <viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
@@ -112,7 +84,12 @@
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="677" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
+<expanded>
+<category IMemento.internal.id="Warnings (6 items)"/>
+<category IMemento.internal.id="Warnings"/>
+<category IMemento.internal.id="Errors"/>
+</expanded>
+<columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="680" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="347"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
@@ -125,7 +102,9 @@
 </view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
 <viewState group_libraries="1" layout="2" linkWithEditor="0" rootMode="1" workingSetName="Aggregate for window 1394786986447">
-<customFilters userDefinedPatternsEnabled="false">&#x0A;<xmlDefinedFilters>&#x0A;<child filterId="org.eclipse.jdt.ui.PackageExplorer.LibraryFilter" isEnabled="false"/>
+<customFilters userDefinedPatternsEnabled="false">
+<xmlDefinedFilters>
+<child filterId="org.eclipse.jdt.ui.PackageExplorer.LibraryFilter" isEnabled="false"/>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer.LocalTypesFilter" isEnabled="false"/>
 <child filterId="org.eclipse.jdt.ui.PackageExplorer.StaticsFilter" isEnabled="false"/>
 <child filterId="org.eclipse.pde.ui.ExternalPluginLibrariesFilter1" isEnabled="true"/>
@@ -326,6 +305,7 @@
 <alwaysOnActionSet id="org.eclipse.jdt.debug.ui.JDTDebugActionSet"/>
 <alwaysOnActionSet id="org.eclipse.jdt.junit.JUnitActionSet"/>
 <alwaysOnActionSet id="org.eclipse.m2m.qvt.oml.runtime.actions"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.debugActionSet"/>
 <show_view_action id="org.eclipse.jdt.ui.PackageExplorer"/>
 <show_view_action id="org.eclipse.jdt.ui.TypeHierarchy"/>
 <show_view_action id="org.eclipse.jdt.ui.SourceView"/>
@@ -341,6 +321,8 @@
 <show_view_action id="org.eclipse.ui.texteditor.TemplatesView"/>
 <show_view_action id="org.eclipse.pde.runtime.LogView"/>
 <show_view_action id="org.eclipse.ant.ui.views.AntView"/>
+<show_in_time id="org.eclipse.ui.navigator.ProjectExplorer" time="1397737822722"/>
+<show_in_time id="org.eclipse.ui.views.ResourceNavigator" time="1397737270380"/>
 <new_wizard_action id="org.eclipse.jdt.ui.wizards.JavaProjectWizard"/>
 <new_wizard_action id="org.eclipse.jdt.ui.wizards.NewPackageCreationWizard"/>
 <new_wizard_action id="org.eclipse.jdt.ui.wizards.NewClassCreationWizard"/>
@@ -360,25 +342,24 @@
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <view id="org.eclipse.jdt.ui.PackageExplorer"/>
-<view id="org.eclipse.jdt.junit.ResultView"/>
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="org.eclipse.jdt.ui.JavadocView"/>
 <view id="org.eclipse.jdt.ui.SourceView"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.ui.views.PropertySheet"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <fastViewBars/>
 <layout>
 <mainWindow>
 <info folder="true" part="left">
-<folder activePageID="org.eclipse.jdt.junit.ResultView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.jdt.ui.PackageExplorer" appearance="2" expanded="2">
 <page content="org.eclipse.jdt.ui.PackageExplorer" label="Package Explorer"/>
-<page content="org.eclipse.jdt.junit.ResultView" label="JUnit"/>
+<page content="org.eclipse.jdt.junit.ResultView" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.ui.TypeHierarchy" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
 <page content="org.eclipse.ui.navigator.ProjectExplorer" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
 </presentation>
 </folder>
 </info>
@@ -390,20 +371,23 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.24959394" ratioLeft="461" ratioRight="1386" relationship="2" relative="left"/>
-<info folder="true" part="bottom" ratio="0.7492163" ratioLeft="717" ratioRight="240" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.7389937" ratioLeft="705" ratioRight="249" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
 <page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
 <page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
+<page content="org.eclipse.debug.ui.DebugView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
@@ -424,165 +408,162 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/ws/EspeceAnimalManagerTest.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/ws/AllTests.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.topcased.modeler.uml.editor.UMLEditor" path="/glaf/Models/activity.umldi"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/ws/EspeceAnimalManager.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/ws/EspeceAnimalManagerInterface.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/ws/EspeceAnimalManager.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/Test/Test.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/ws/Nufnuf.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/model/EspeceAnimal.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/ws/ClientCheptelVif.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/ws/EspeceAnimalManagerTest.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/ws/NufnufTest.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/cheptelVif/src/model/EspeceAnimal.java"/>
 </editors>
-<item historyLabel="EspeceAnimalManagerTest.java" index="0">
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="9407" y="0"/>
+</item>
+<item historyLabel="Test.java" index="2">
+<position/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="9407" y="0"/>
+</item>
+<item historyLabel="Test.java" index="2">
+<position/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="9554" y="0"/>
+</item>
+<item historyLabel="EspeceAnimal.java" index="3">
+<position info="not_deleted" x="1126" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="9308" y="83"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="9490" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="8108" y="7"/>
+</item>
+<item historyLabel="EspeceAnimalManagerInterface.java" index="0">
+<position info="not_deleted" x="377" y="7"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="8108" y="7"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="8161" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="9308" y="83"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="9537" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="9363" y="0"/>
+</item>
+<item historyLabel="Test.java" index="2">
+<position info="not_deleted" x="398" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="9281" y="0"/>
+</item>
+<item historyLabel="Test.java" index="2">
+<position info="not_deleted" x="434" y="9"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="4346" y="4"/>
+</item>
+<item historyLabel="EspeceAnimal.java" index="3">
+<position info="not_deleted" x="88" y="10"/>
+</item>
+<item historyLabel="Test.java" index="2">
+<position info="not_deleted" x="489" y="0"/>
+</item>
+<item historyLabel="EspeceAnimal.java" index="3">
+<position info="not_deleted" x="88" y="10"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="4346" y="4"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="4570" y="0"/>
+</item>
+<item historyLabel="EspeceAnimal.java" index="3">
+<position info="not_deleted" x="134" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="4570" y="0"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="8116" y="7"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="8136" y="1419"/>
+</item>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="2096" y="0"/>
+</item>
+<item historyLabel="EspeceAnimal.java" index="3">
+<position info="not_deleted" x="134" y="0"/>
+</item>
+<item historyLabel="EspeceAnimal.java" index="3">
+<position info="not_deleted" x="745" y="12"/>
+</item>
+<item historyLabel="EspeceAnimal.java" index="3">
+<position info="not_deleted" x="136" y="0"/>
+</item>
+<item historyLabel="EspeceAnimal.java" index="3">
+<position info="not_deleted" x="992" y="0"/>
+</item>
+<item historyLabel="Test.java" index="2">
+<position info="not_deleted" x="568" y="0"/>
+</item>
+<item historyLabel="EspeceAnimal.java" index="3">
+<position info="not_deleted" x="992" y="0"/>
+</item>
+<item historyLabel="Test.java" index="2">
+<position info="not_deleted" x="602" y="0"/>
+</item>
+<item historyLabel="EspeceAnimal.java" index="3">
+<position info="not_deleted" x="992" y="0"/>
+</item>
+<item historyLabel="Test.java" index="2">
+<position info="not_deleted" x="602" y="0"/>
+</item>
+<item historyLabel="EspeceAnimal.java" index="3">
+<position info="not_deleted" x="860" y="0"/>
+</item>
+<item historyLabel="Test.java" index="2">
+<position info="not_deleted" x="530" y="0"/>
+</item>
+<item historyLabel="ClientCheptelVif.java" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="0">
-<position info="not_deleted" x="429" y="0"/>
+<item historyLabel="ClientCheptelVif.java" index="4">
+<position info="not_deleted" x="1617" y="0"/>
 </item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="0">
-<position info="not_deleted" x="385" y="0"/>
+<item historyLabel="Test.java" index="2">
+<position info="not_deleted" x="530" y="0"/>
 </item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="0">
-<position info="not_deleted" x="386" y="0"/>
+<item historyLabel="EspeceAnimalManagerTest.java" index="5">
+<position info="not_deleted" x="366" y="0"/>
 </item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="0">
-<position info="not_deleted" x="426" y="0"/>
+<item historyLabel="Test.java" index="2">
+<position info="not_deleted" x="530" y="0"/>
 </item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="0">
-<position info="not_deleted" x="275" y="0"/>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="2096" y="0"/>
 </item>
-<item historyLabel="AllTests.java" index="1">
-<position info="not_deleted" x="219" y="0"/>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="1748" y="174"/>
 </item>
-<item historyLabel="activity.umldi" index="2"/>
-<item historyLabel="EspeceAnimalManager.java" index="3">
-<position info="not_deleted" x="437" y="0"/>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="1695" y="0"/>
 </item>
-<item historyLabel="EspeceAnimalManagerInterface.java" index="4">
-<position info="not_deleted" x="341" y="0"/>
+<item historyLabel="EspeceAnimalManager.java" index="1">
+<position info="not_deleted" x="1891" y="0"/>
 </item>
-<item historyLabel="Test.java" index="5">
-<position info="not_deleted" x="419" y="14"/>
-</item>
-<item historyLabel="Nufnuf.java" index="6">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Nufnuf.java" index="6">
-<position info="not_deleted" x="325" y="0"/>
-</item>
-<item historyLabel="Test.java" index="5">
-<position info="not_deleted" x="419" y="14"/>
-</item>
-<item historyLabel="Nufnuf.java" index="6">
-<position info="not_deleted" x="325" y="0"/>
-</item>
-<item historyLabel="ClientCheptelVif.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="AllTests.java" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Nufnuf.java" index="6">
-<position info="not_deleted" x="325" y="0"/>
-</item>
-<item historyLabel="Nufnuf.java" index="6">
-<position info="not_deleted" x="253" y="0"/>
-</item>
-<item historyLabel="Nufnuf.java" index="6">
-<position info="not_deleted" x="74" y="0"/>
-</item>
-<item historyLabel="Nufnuf.java" index="6">
-<position info="not_deleted" x="179" y="0"/>
-</item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="8">
-<position info="not_deleted" x="869" y="0"/>
-</item>
-<item historyLabel="NufnufTest.java" index="9">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="8">
-<position info="not_deleted" x="869" y="0"/>
-</item>
-<item historyLabel="NufnufTest.java" index="9">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="NufnufTest.java" index="9">
-<position info="not_deleted" x="341" y="0"/>
-</item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="8">
-<position info="not_deleted" x="208" y="0"/>
-</item>
-<item historyLabel="EspeceAnimal.java" index="10">
-<position info="not_deleted" x="793" y="0"/>
-</item>
-<item historyLabel="NufnufTest.java" index="9">
-<position info="not_deleted" x="341" y="0"/>
-</item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="8">
-<position info="not_deleted" x="208" y="0"/>
-</item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="8">
-<position info="not_deleted" x="289" y="0"/>
-</item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="8">
-<position info="not_deleted" x="712" y="0"/>
-</item>
-<item historyLabel="NufnufTest.java" index="9">
-<position info="not_deleted" x="341" y="0"/>
-</item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="8">
-<position info="not_deleted" x="712" y="0"/>
-</item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="8">
-<position info="not_deleted" x="623" y="0"/>
-</item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="8">
-<position info="not_deleted" x="631" y="0"/>
-</item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="8">
-<position info="not_deleted" x="712" y="0"/>
-</item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="8">
-<position info="not_deleted" x="658" y="0"/>
-</item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="8">
-<position info="not_deleted" x="322" y="0"/>
-</item>
-<item historyLabel="NufnufTest.java" index="9">
-<position info="not_deleted" x="216" y="0"/>
-</item>
-<item historyLabel="Nufnuf.java" index="6">
-<position info="not_deleted" x="215" y="0"/>
-</item>
-<item historyLabel="NufnufTest.java" index="9">
-<position info="not_deleted" x="341" y="0"/>
-</item>
-<item historyLabel="AllTests.java" index="1">
-<position info="not_deleted" x="207" y="0"/>
-</item>
-<item historyLabel="Nufnuf.java" index="6">
-<position info="not_deleted" x="178" y="0"/>
-</item>
-<item historyLabel="EspeceAnimal.java" index="10">
-<position info="not_deleted" x="793" y="0"/>
-</item>
-<item historyLabel="AllTests.java" index="1">
-<position info="not_deleted" x="240" y="0"/>
-</item>
-<item historyLabel="EspeceAnimalManagerTest.java" index="8">
-<position info="not_deleted" x="322" y="0"/>
-</item>
-<item historyLabel="AllTests.java" index="1">
-<position info="not_deleted" x="240" y="0"/>
-</item>
-<item historyLabel="Test.java" index="5">
-<position info="not_deleted" x="533" y="0"/>
-</item>
-<item active="true" historyLabel="AllTests.java" index="1">
-<position info="not_deleted" x="240" y="0"/>
+<item active="true" historyLabel="Test.java" index="2">
+<position info="not_deleted" x="530" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -590,6 +571,13 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="left"/>
+</trimArea>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="bottom"/>
+<trimItem IMemento.internal.id="right"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -601,50 +589,50 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Test.java" tooltip="cheptelVif/src/Test/Test.java">
-<persistable path="/cheptelVif/src/Test/Test.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EspeceAnimal.java" tooltip="cheptelVif/src/model/EspeceAnimal.java">
-<persistable path="/cheptelVif/src/model/EspeceAnimal.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NufnufTest.java" tooltip="cheptelVif/src/ws/NufnufTest.java">
-<persistable path="/cheptelVif/src/ws/NufnufTest.java"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EspeceAnimalManagerTest.java" tooltip="cheptelVif/src/ws/EspeceAnimalManagerTest.java">
 <persistable path="/cheptelVif/src/ws/EspeceAnimalManagerTest.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AllTests.java" tooltip="cheptelVif/src/ws/AllTests.java">
-<persistable path="/cheptelVif/src/ws/AllTests.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ClientCheptelVif.java" tooltip="cheptelVif/src/ws/ClientCheptelVif.java">
 <persistable path="/cheptelVif/src/ws/ClientCheptelVif.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Nufnuf.java" tooltip="cheptelVif/src/ws/Nufnuf.java">
-<persistable path="/cheptelVif/src/ws/Nufnuf.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EspeceAnimal.java" tooltip="cheptelVif/src/model/EspeceAnimal.java">
+<persistable path="/cheptelVif/src/model/EspeceAnimal.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EspeceAnimalManagerInterface.java" tooltip="cheptelVif/src/ws/EspeceAnimalManagerInterface.java">
-<persistable path="/cheptelVif/src/ws/EspeceAnimalManagerInterface.java"/>
+<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="ServerMgr.class" tooltip="com.sun.xml.internal.ws.transport.http.server.ServerMgr">
+<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=FeuTricolore/\/usr\/lib\/jvm\/java-7-oracle\/jre\/lib\/rt.jar&lt;com.sun.xml.internal.ws.transport.http.server(ServerMgr.class"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ConvertisseurInterface.java" tooltip="cheptelVif/src/ws/ConvertisseurInterface.java">
-<persistable path="/cheptelVif/src/ws/ConvertisseurInterface.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Test.java" tooltip="cheptelVif/src/Test/Test.java">
+<persistable path="/cheptelVif/src/Test/Test.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="consulterall.java" tooltip="cheptelVif/src/ws/consulterall.java">
+<persistable path="/cheptelVif/src/ws/consulterall.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EspeceAnimalManager.java" tooltip="cheptelVif/src/ws/EspeceAnimalManager.java">
 <persistable path="/cheptelVif/src/ws/EspeceAnimalManager.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Convertisseur.java" tooltip="cheptelVif/src/ws/Convertisseur.java">
-<persistable path="/cheptelVif/src/ws/Convertisseur.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GetPwd.java" tooltip="cheptelVif/src/ws/GetPwd.java">
+<persistable path="/cheptelVif/src/ws/GetPwd.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Client.java" tooltip="cheptelVif/src/ws/Client.java">
-<persistable path="/cheptelVif/src/ws/Client.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EspeceAnimalManagerInterface.java" tooltip="cheptelVif/src/ws/EspeceAnimalManagerInterface.java">
+<persistable path="/cheptelVif/src/ws/EspeceAnimalManagerInterface.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="test.java" tooltip="cheptelVif/src/test.java">
-<persistable path="/cheptelVif/src/test.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Journal.java" tooltip="cheptelVif/src/ws/Journal.java">
+<persistable path="/cheptelVif/src/ws/Journal.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="Cycle en V.png" tooltip="glaf/Models/Cycle en V.png">
-<persistable path="/glaf/Models/Cycle en V.png"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DriverLoader.java" tooltip="cheptelVif/src/ws/DriverLoader.java">
+<persistable path="/cheptelVif/src/ws/DriverLoader.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="activity.png" tooltip="glaf/activity.png">
-<persistable path="/glaf/activity.png"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="mysql-connector-java-5.0.6-bin.jar" tooltip="cheptelVif/lib/mysql-connector-java-5.0.6-bin.jar">
+<persistable path="/cheptelVif/lib/mysql-connector-java-5.0.6-bin.jar"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AllTests.java" tooltip="cheptelVif/src/ws/AllTests.java">
+<persistable path="/cheptelVif/src/ws/AllTests.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ant.ui.internal.editor.AntEditor" name="build.xml" tooltip="cheptelVif/build.xml">
+<persistable path="/cheptelVif/build.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ant.ui.internal.editor.AntEditor" name="build.xml" tooltip="FeuTricolore/build.xml">
+<persistable path="/FeuTricolore/build.xml"/>
 </file>
 </mruList>
 </workbench>

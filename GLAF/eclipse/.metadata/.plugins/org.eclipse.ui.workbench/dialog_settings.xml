@@ -12,12 +12,17 @@
 		<list key="textEntries">
 		</list>
 	</section>
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item value="-78" key="DIALOG_Y_ORIGIN"/>
+		<item value="-32" key="DIALOG_X_ORIGIN"/>
+	</section>
 	<section name="NewWizardAction">
-		<item value="org.eclipse.jdt.junit.wizards.NewTestSuiteCreationWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<item value="org.eclipse.emf.mapping.ecore2xml.presentation.Ecore2XMLModelWizardID" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="org.eclipse.jdt.ui.java"/>
-			<item value="org.eclipse.jdt.ui.java/org.eclipse.jdt.junit"/>
-			<item value="org.topcased.facilities.newWizards"/>
+			<item value="org.eclipse.emf.codegen.ecore.ui.wizardCategory"/>
+			<item value="org.eclipse.emf.codegen.ecore.ui.wizardCategory/org.eclipse.emf.codegen.ecore.ui.mappingWizardCategory"/>
 		</list>
+	</section>
+	<section name="ImportExportAction">
 	</section>
 </section>

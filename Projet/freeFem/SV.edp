@@ -1,37 +1,38 @@
 verbosity=1;
 int M=150,N=75,L=4, op=0;
 
-mesh Th=square(M,N,[10*x,5*y]);
+mesh Th=square(M,N,[x,y]);
+Th=movemesh(Th, [20*x-10,10*y-5]);
+//mesh Th=square(M,N,[x,y]);
 fespace Vh(Th,P1);
 
 real Dx=Th(1).x-Th(0).x, Dy=Th(M+1).y-Th(0).y;
-real a=1., b=1., TF=3., CFL=.5, gravity=9.8, FT=3;
+real TF=10., CFL=.5, gravity=9.8;
 
-Vh u, v, U, V, zb;
+Vh U, V, zb;
 Vh H, HU, HV;
 
-include "bc_SV.edp"
 HU=0; HV=0;
-//zb=-(16/5)*exp((x-5)^2/8-5*y^2/8)+4*exp((x-5)^2/2-y^2/4);
+//zb=-(16/5)*exp(-((x-5)^2)/8-(5*y^2)/8)+4*exp(-(x-5)^2/2-y^2/4)-1;
 zb=0;
-//plot(zb,dim=3,fill=1,wait=1);
-H=4/cosh(9*(x+2)^2);
+//plot(zb,dim=3,fill=1,value=true,wait=1);
+H=4/(cosh(3*(x+2))^2);
+include "bc_SV.edp";
 
 include "macro_SV.edp";
 
-Vh cflL , cflR , cflD , cflU ;
-cflL = abs(Uip12jL)+sqrt(gravity*Hip12jL);
-cflR = abs(Uip12jR)+sqrt(gravity*Hip12jR);
-cflD = abs(Vijp12D)+sqrt(gravity*Hijp12D);
-cflU = abs(Vijp12U)+sqrt(gravity*Hijp12U);
+Vh cflL, cflR, cflD, cflU;
+cflL=abs(Uip12jL)+sqrt(gravity*Hip12jL);
+cflR=abs(Uip12jR)+sqrt(gravity*Hip12jR);
+cflD=abs(Vijp12D)+sqrt(gravity*Hijp12D);
+cflU=abs(Vijp12U)+sqrt(gravity*Hijp12U);
 
-Vh maxLR , maxDU ;
-maxLR = max(cflL,cflR) ;
-maxDU = max(cflD,cflU) ;
-real c = max(maxLR[].max,maxDU[].max) ;
-cout<<c<<endl;
-//real dt = CFL*min(Dx,Dy)/c;
-real dt=0.1;
+Vh maxLR, maxDU;
+maxLR=max(cflL,cflR);
+maxDU=max(cflD,cflU);
+real c=max(maxLR[].max,maxDU[].max);
+real dt=CFL*min(Dx,Dy)/c;
+//real dt=0.01;
 
 // Définir le solve
 include "solve_SV.edp";

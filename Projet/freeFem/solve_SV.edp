@@ -1,13 +1,50 @@
 cout<<dt<<endl;
 for (real t=0.;t<=TF;t=t+dt) {
-	plot(H,dim=3,cmm="t="+t,wait=0.,value=true,fill=true);
+	Vh u, v;
+	plot(Him12jL,dim=3,cmm="t="+t,wait=0.,value=true,fill=true);
 	
-	solve PH(u,v,init=op) = int2d(Th)(u*v)-int2d(Th)((H-(FHp12-FHm12)*dt/Dx-(GHp12-GHm12)*dt/Dy+SU*dt)*v);
+	solve PH(u,v,init=op)=int2d(Th)(u*v)-int2d(Th)((H-((FHp12-FHm12)*dt)/Dx-((GHp12-GHm12)*dt)/Dy+SU*dt)*v);
 	H=u;
-	/*solve PHU(u,v,init=op)=int2d(Th)(u*v)-int2d(Th)((HU-(FHUp12-FHUm12)*dt/Dx-(GHUp12-GHUm12)*dt/Dy+SHU*dt/Dx)*v);
+	solve PU(u,v,init=op)=int2d(Th)(u*v)-int2d(Th)((HU-(FHUp12-FHUm12)*dt/Dx-(GHUp12-GHUm12)*dt/Dy+SHU*dt/Dx)*v);
 	HU=u;
 	solve PHV(u,v,init=op)=int2d(Th)(u*v)-int2d(Th)((HV-(FHVp12-FHVm12)*dt/Dx-(GHVp12-GHVm12)*dt/Dy+SHV*dt/Dy)*v);
-	HV=u;*/
+	HV=u;
 
 	op=0;
+
+	XIP1J(zb); XIP1J(H); XIP1J(U); XIP1J(V);
+	XIM1J(zb); XIM1J(H); XIM1J(U); XIM1J(V);
+	XIJP1(zb); XIJP1(H); XIJP1(U); XIJP1(V)
+	XIJM1(zb); XIJM1(H); XIJM1(U); XIJM1(V)
+
+	Uip12jL=U; Uijp12D=U; Uim12jR=U; Uijm12U=U;
+	Vip12jL=V; Vijp12D=V; Vim12jR=V; Vijm12U=V;                  
+	Uim12jL=Uim1j; Uijm12D=Uijm1; Uip12jR=Uip1j; Uijp12U=Uijp1;
+	Vim12jL=Vim1j; Vijm12D=Vijm1; Vip12jR=Vip1j; Vijp12U=Vijp1;
+
+	//-----------------------------------------
+	//	Hydrostatic reconstruction
+	//-----------------------------------------
+	Hip12jL=H+zb-max(zb,zbip1j); Hip12jL=max(Hip12jL,0);
+	Hijp12D=H+zb-max(zb,zbijp1); Hijp12D=max(Hijp12D,0);
+
+	Hip12jR=Hip1j+zbip1j-max(zb,zbip1j); Hip12jR=max(Hip12jR,0);
+	Hijp12U=Hijp1+zbijp1-max(zb,zbijp1); Hijp12U=max(Hijp12U,0);
+
+	Him12jL=Him1j+zbim1j-max(zbim1j,zb); Him12jL=max(Him12jL,0) ;
+	Hijm12D=Hijm1+zbijm1-max(zbijm1,zb); Hijm12D=max(Hijm12D,0) ;
+
+	Him12jR=H+zb-max(zbim1j,zb); Him12jR=max(Him12jR,0);
+	Hijm12U=H+zb-max(zbijm1,zb); Hijm12U=max(Hijm12U,0);
+
+	SU=Source(Hip12jL,Him12jR)[0];
+	SHU=Source(Hip12jL,Him12jR)[1];
+        SHV=Source(Hijp12D,Hijm12U)[2];
+
+	HLLH(Hip12jL,Uip12jL,Vip12jL,Hip12jR,Uip12jR,Vip12jR,p) ;
+	HLLH(Him12jL,Uim12jL,Vim12jL,Him12jR,Uim12jR,Vim12jR,m) ;
+
+	HLLG(Hijp12D,Uijp12D,Vijp12D,Hijp12U,Uijp12U,Vijp12U,p) ;
+	HLLG(Hijm12D,Uijm12D,Vijm12D,Hijm12U,Uijm12U,Vijm12U,m) ;
+
 }
