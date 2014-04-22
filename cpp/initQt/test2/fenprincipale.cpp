@@ -1,4 +1,4 @@
-#include "FenPrincipale.h"
+#include "fenprincipale.h"
 #include<QMenuBar>
 #include<QToolBar>
 

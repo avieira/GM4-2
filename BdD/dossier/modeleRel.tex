@@ -50,8 +50,8 @@ Les clés sont pour la plupart issues directement du modèle E/A. On doit tout d
 Après dénormalisation, notre modèle relationnel devient le suivant :
 \begin{description}
 	\item[Sous-Section] (\underline{nomSection}, \underline{nomSsSection}, description)
-	\item[Sujet] (\underline{NomSsSec}, \underline{nomSujet})
-	\item[Post] (\underline{nomSujet}, \underline{n\degree Post}, date, texte, pseudo)
+	\item[Sujet] (\underline{idSuj}, nomSection, nomSsSection, nomSujet)
+	\item[Post] (\underline{idSuj}, \underline{n\degree Post}, date, texte, pseudo)
 	\item[Personne] (\underline{pseudo}, avatar, anniversaire, dateInscript, dateDerConnex)
 	\item[SujetMP] (\underline{n\degree SujetMP}, nomSujet, date, titre)
 	\item[MP] (\underline{n\degree SujetMP}, \underline{n\degree MP}, texte, pseudo)

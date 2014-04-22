@@ -1,5 +1,5 @@
 #include <QApplication>
-#include "FenPrincipale.h"
+#include "fenprincipale.h"
 
 int main(int argc, char *argv[])
 {

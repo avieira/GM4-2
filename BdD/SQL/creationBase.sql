@@ -8,6 +8,8 @@ PRIMARY KEY nomSection, nomSsSection);
 
 CREATE TABLE Sujet(
 idSuj UNSIGNED SMALLINT AUTO_INCREMENT,
+nomSection VARCHAR(50),
+nomSsSection VARCHAR(100),
 nomSujet VARCHAR(200),
 PRIMARY KEY idSuj);
 
@@ -46,6 +48,7 @@ CREATE TABLE News(
 noNews UNSIGNED SMALLINT AUTO_INCREMENT,
 texteNews LONGTEXT,
 titre VARCHAR(255),
+jour DATE,
 PRIMARY KEY noNews);
 
 CREATE TABLE Commentaire(
@@ -75,7 +78,6 @@ CREATE TABLE Concoit(
 noNews UNSIGNED SMALLINT,
 pseudo VARCHAR(50),
 nomSource VARCHAR(150),
-date DATE,
 ref TINYTEXT,
 PRIMARY KEY noNews,
 FOREIGN KEY noNews REFERENCES News);
