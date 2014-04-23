@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.2.15)  22 APR 2014 18:50
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.2.15)  22 APR 2014 22:08
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -975,49 +975,109 @@ Package csquotes Info: Option 'babel' depreciated.
 (csquotes)             Using 'autostyle'.
 Package csquotes Info: Enabling multilingual quotes.
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 33.
+(/usr/share/texlive/texmf-dist/tex/latex/minted/minted.sty
+Package: minted 2011/09/17 v1.7 Yet another Pygments shim for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count160
+\FV@InFile=\read3
+\FV@TabBox=\box63
+\c@FancyVerbLine=\count161
+\FV@StepNumber=\count162
+\FV@OutFile=\write4
+) (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count163
+\float@exts=\toks48
+\float@box=\box64
+\@float@everytoks=\toks49
+\@floatcapt=\box65
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count164
+\calc@Bcount=\count165
+\calc@Adimen=\dimen185
+\calc@Bdimen=\dimen186
+\calc@Askip=\skip59
+\calc@Bskip=\skip60
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count166
+\calc@Cskip=\skip61
+)
+(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+Package: ifplatform 2010/10/22 v0.4 Testing for the operating system
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
+Package: catchfile 2011/03/01 v1.6 Catch the contents of a file (HO)
+)
+runsystem(uname -s > "Rapport.w18")...executed.
+
+
+(./Rapport.w18)
+runsystem(rm -- "Rapport.w18")...executed.
+
+)
+\minted@bgbox=\box66
+\minted@code=\write5
+\@float@every@listing=\toks50
+\c@listing=\count167
+)
+runsystem(which pygmentize && touch Rapport.aex)...executed.
+
+runsystem(rm Rapport.aex)...executed.
+
+Package hyperref Info: Option `colorlinks' set `true' on input line 34.
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
-
-(tmp/Rapport.aux (tmp/en-tete.aux) (tmp/modeleEA.aux) (tmp/modeleRel.aux))
+ (tmp/Rapport.aux (tmp/en-tete.aux) (tmp/modeleEA.aux)
+(tmp/modeleRel.aux) (tmp/codageSQL.aux))
 \openout1 = `Rapport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Try loading font information for T1+bch on input line 40.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Try loading font information for T1+bch on input line 41.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1bch.fd
 File: t1bch.fd 2004/10/18 font definitions for T1/bch.
 )
-LaTeX Info: Redefining \degres on input line 40.
-LaTeX Info: Redefining \dots on input line 40.
-LaTeX Info: Redefining \up on input line 40.
+LaTeX Info: Redefining \degres on input line 41.
+LaTeX Info: Redefining \dots on input line 41.
+LaTeX Info: Redefining \up on input line 41.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count160
-\scratchdimen=\dimen185
-\scratchbox=\box63
-\nofMPsegments=\count161
-\nofMParguments=\count162
-\everyMPshowfont=\toks48
-\MPscratchCnt=\count163
-\MPscratchDim=\dimen186
-\MPnumerator=\count164
-\makeMPintoPDFobject=\count165
-\everyMPtoPDFconversion=\toks49
+\scratchcounter=\count168
+\scratchdimen=\dimen187
+\scratchbox=\box67
+\nofMPsegments=\count169
+\nofMParguments=\count170
+\everyMPshowfont=\toks51
+\MPscratchCnt=\count171
+\MPscratchDim=\dimen188
+\MPnumerator=\count172
+\makeMPintoPDFobject=\count173
+\everyMPtoPDFconversion=\toks52
 )
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1053,7 +1113,7 @@ LaTeX Info: Redefining \up on input line 40.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count166
+\c@lstlisting=\count174
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -1069,8 +1129,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box64
-Package hyperref Info: Link coloring ON on input line 40.
+\AtBeginShipoutBox=\box68
+Package hyperref Info: Link coloring ON on input line 41.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1078,69 +1138,79 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count167
+\c@section@level=\count175
 )
-LaTeX Info: Redefining \ref on input line 40.
-LaTeX Info: Redefining \pageref on input line 40.
-LaTeX Info: Redefining \nameref on input line 40.
+LaTeX Info: Redefining \ref on input line 41.
+LaTeX Info: Redefining \pageref on input line 41.
+LaTeX Info: Redefining \nameref on input line 41.
 
 (tmp/Rapport.out) (tmp/Rapport.out)
-\@outlinefile=\write4
-\openout4 = `Rapport.out'.
+\@outlinefile=\write6
+\openout6 = `Rapport.out'.
 
  ABD: EveryShipout initializing macros
-LaTeX Info: Redefining \celsius on input line 40.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 40.
+LaTeX Info: Redefining \celsius on input line 41.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 41.
 
 
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 40.
-Package gensymb Info: Using \Omega for \ohm on input line 40.
+LaTeX Info: Redefining \ohm on input line 41.
+Package gensymb Info: Using \Omega for \ohm on input line 41.
 
 Package gensymb Warning: Not defining \micro.
 
-\openout2 = `en-tete.aux'.
+runsystem(pygmentize -S default -f latex > Rapport.pyg)...executed.
 
-(./en-tete.tex [1
-
+(tmp/Rapport.pyg) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-(tmp/Rapport.toc
-LaTeX Font Info:    Try loading font information for U+msa on input line 4.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 4.
+\openout2 = `en-tete.aux'.
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 4.
 
-(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
-File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-)
-LaTeX Font Info:    Try loading font information for U+wasy on input line 4.
+(./en-tete.texpdfTeX warning (ext4): destination with the same identifier (name
+{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.18   \end{titlepage}
+                       [1
 
-(/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
-File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
-))
-\tf@toc=\write5
-\openout5 = `Rapport.toc'.
+] (tmp/Rapport.toc)
+\tf@toc=\write7
+\openout7 = `Rapport.toc'.
 
 )pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.41 \include{en-tete}
+l.42 \include{en-tete}
                        [1] (./intro.tex) [2
 
 ]
 \openout2 = `modeleEA.aux'.
 
  (./modeleEA.tex (./schemaEA.tex
+LaTeX Font Info:    Try loading font information for U+msa on input line 9.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 9.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 9.
+
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+LaTeX Font Info:    Try loading font information for U+wasy on input line 9.
+
+(/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
+File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
+)
 Overfull \hbox (19.72012pt too wide) in paragraph at lines 84--85
  [][] 
  []
@@ -1150,7 +1220,13 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 ) [3
 
-] [4]) [5
+] [4pdfTeX warning (ext4): destination with the same identifier (name{figure.1}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.24 \clearpage
+               ]) [5
 
 ]
 \openout2 = `modeleRel.aux'.
@@ -1159,32 +1235,33 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 ]) [7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 47.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 47.
- (tmp/Rapport.aux (tmp/en-tete.aux)
-(tmp/modeleEA.aux) (tmp/modeleRel.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 47.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 47.
-Package rerunfilecheck Info: File `Rapport.out' has not changed.
-(rerunfilecheck)             Checksum: 1D5F2921CC7C88B8FA5809A3EECDFB71;536.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 47.
- ) 
-Here is how much of TeX's memory you used:
- 20895 strings out of 493307
- 368484 string characters out of 6139905
- 507876 words of memory out of 5000000
- 23867 multiletter control sequences out of 15000+600000
- 41593 words of font info for 58 fonts, out of 8000000 for 9000
- 957 hyphenation exceptions out of 8191
- 56i,14n,56p,912b,707s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/bitstrea/charter/bchb8a.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on tmp/Rapport.pdf (8 pages, 58965 bytes).
-PDF statistics:
- 110 PDF objects out of 1000 (max. 8388607)
- 96 compressed objects within 1 object stream
- 22 named destinations out of 1000 (max. 500000)
- 77 words of extra memory for PDF output out of 10000 (max. 10000000)
+\openout2 = `codageSQL.aux'.
 
+ (./codageSQL.tex
+
+LaTeX Warning: Reference `creationSQL' on page 8 undefined on input line 6.
+
+runsystem(pygmentize -l sql -f latex -F tokenmerge             -P "verboptions=
+ ,frame=leftline,lastline=37" -o Rapport.out.pyg ../SQL/creationBase.sql)...exe
+cuted.
+
+(./Rapport.out.pyg
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 1.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+! Undefined control sequence.
+<argument> \PY 
+               {k}{CREATE} \PY {k}{DATABASE} \PY {n}{IF} \PY {k}{NOT} \PY {k...
+l.2 ...} \PY{k}{EXISTS} \PY{n}{forumSite}\PY{p}{;}
+                                                   
+Here is how much of TeX's memory you used:
+ 21633 strings out of 493307
+ 380584 string characters out of 6139905
+ 522753 words of memory out of 5000000
+ 24567 multiletter control sequences out of 15000+600000
+ 41907 words of font info for 59 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 56i,14n,56p,931b,716s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+!  ==> Fatal error occurred, no output PDF file produced!

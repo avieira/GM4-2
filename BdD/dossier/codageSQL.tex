@@ -1,0 +1,139 @@
+\section{Codage SQL de la base de données}
+Maintenant que la base de données est bien définie, nous allons enregistrer des données sur le disque dur. Pour cela, nous utiliserons le langage SQL, et plus spécifiquement le système de gestion de base de données MySQL.\\
+Après avoir créé la base de données et l'avoir remplie avec certaines informations, nous exécuterons certaines requêtes sur celle-ci, qui seront traduite (dans la mesure du possible) en algèbre relationnelle, puis en requête SQL.
+
+\subsection{Création et remplissable de la base}
+Nous commençons par créer la base de données, et créer les différentes tables qui ont été définies dans le modèle relationnel. Le codage SQL est montré en partie ici, le reste est présenté en annexe \ref{creationSQL}
+\inputminted[frame=leftline, lastline=37]{sql}{../SQL/creationBase.sql}
+
+De même, on crée des entrées dans la base de données (pour la plupart quelconques). Une prtie du code est présenté ici, le reste est accessible en annexe \ref{insertionSQL}
+%\input{codes/creation}
+
+\subsection{Requêtes sur la base}
+Nous nous intéressons à présent aux requêtes sur la base de données. Il y en a en tout une quinzaine, ne recouvrant qu'une partie de ce que peut offrir un langage comme SQL. A chaque fois, la question sera traduite (si possible) en algèbre relationnelle puis sous forme de requête SQL. Nous présenterons ensuite les résultats sur la base de données.
+
+\bigskip
+\begin{itemize} 
+	\item Quel est le nombre de posts dans chaque sujet de la base de données ?
+		\[\prod_{\text{idSuj, count(noPost)}} \text{(Post)}\]
+	\begin{minted}{sql}
+SELECT idSuj, COUNT(noPost) FROM Post
+GROUP BY idSuj;
+	\end{minted}
+
+	\item Création d'une vue donnant les personnes ayant déjà écrit une news
+		\begin{minted}{sql}
+CREATE VIEW redacteurEffectifNews (pseudo)
+AS	SELECT pseudo FROM Concoit;
+		\end{minted}
+
+	\item Une liste des newseurs n'ayant jamais posté de News.
+	\[\prod_{\text{pseudo}}\left( \sigma_{\text{nomGroupe="Newseur"}}(\text{Appartient})\right)-\prod_{\text{pseudo}}(\text{Concoit})\]
+		\begin{minted}{sql}
+SELECT pseudo FROM Appartient
+WHERE nomGroupe="Newseur"
+AND pseudo NOT IN redacteurEffectifNews;
+		\end{minted}
+
+	\item Liste des noms des sous-sections dont le nom est utlisé deux fois mais dans 2 sections différentes ?
+	\[\prod_{\text{nomSsSection}} \left( \text{Sous-section} \underset{\begin{array}{c c c}\text{s1.nomSousSection}&=&\text{s2.nomSousSection} \\ \text{s1.nomSection}&\neq&\text{s2.nomSection} \end{array}}{\infty} \text{Sous-section}\right)\]
+		\begin{minted}{sql}
+SELECT nomSsSection FROM Sous-section Ss1
+WHERE EXISTS(SELECT *
+		FROM Sous-section Ss2
+		WHERE Ss1.nomSsSection=Ss2.nomSsSection
+		AND Ss1.nomSection<>Ss2.nomSection);
+		\end{minted}
+
+	\item Liste des sujets de MP où 2 personnes (pseudo1 et pseudo2) apparaissent obligatoirement ?
+	\[\sigma_{\text{pseudo=pseudo1}}(\text{RecoitMP})\underset{\text{noSujetMP}}{\infty} \sigma_{\text{pseudo=pseudo2}}(\text{RecoitMP})\]
+		\begin{minted}{sql}
+SELECT noSujetMP FROM RecoitMP r1
+WHERE EXISTS(SELECT pseudo 
+		FROM recoitMP r2
+		WHERE r1.pseudo="Pseudo1"
+		AND r2.pseudo="Pseudo2");
+		\end{minted}
+
+	\item Création d'une vue donnant les news conçues par deux personnes différentes mais utilisant une même source.
+		\begin{minted}{sql}
+CREATE VIEW news2Personnes1Source (noNews, pseudo, nomSource, ref)
+AS	SELECT * FROM Concoit c1
+	WHERE EXISTS (SELECT * FROM Concoit c2
+			WHERE c1.nomSource=c2.nomSource
+			AND c1.pseudo<>c2.pseudo);
+		\end{minted}
+
+	\item Liste des news où une même source a été utilisée par deux personnes différentes.
+	\[\text{News}\underset{\text{noNews}}{\infty} \sigma_{\text{noNews}}\left(\text{Concoit} \underset{\begin{array}{c c c}\text{c1.nomSource}&=&\text{c2.nomSource}\\ \text{c1.pseudo}&\neq&\text{c2.pseudo}\end{array}}{\infty}\text{Concoit} \right)\]
+	\begin{minted}{sql}
+SELECT * FROM News
+WHERE noNews IN (SELECT noNews FROM news2Personnes1Source);
+	\end{minted}
+
+	\item Quelle news ont été postées à une date donnée ? Et qui les a posté ?
+	\[\prod_{\begin{array}{c}\text{noNews}\\ \text{titre}\\ \text{date}\end{array}}(\text{News})\underset{\text{noNews}}{\infty} \prod_{\begin{array}{c} \text{noNews}\\ \text{pseudo}\end{array}}\left( \sigma_{\text{date=20-03-2014}}(\text{Concoit})\right)\]
+	\begin{minted}{sql}
+SELECT noNews, titre, jour, pseudo FROM News n1, Concoit c1
+WHERE jour=20-03-2014
+AND n1.noNews=c1.noNews;
+	\end{minted}
+
+	\item Quand telle source a-t-elle été utilisée ?
+	\[\prod_{\text{jour}}\left( \sigma_{\text{nomSource="Le lorem Ipsum"}} (\text{Concoit})\right)\]
+	\begin{minted}{sql}
+SELECT jour FROM Concoit
+WHERE nomSource="Le lorem ipsum";
+	\end{minted}
+	
+	\item Combien de commentaires a écrit une personne, toute news confondues ?
+	\[\prod_{\text{COUNT(noCom)}}\left(\sigma_{\text{pseudo="Pseudo3"}}(\text{Commentaire})\right)\]
+	\begin{minted}{sql}
+SELECT COUNT(noCom) FROM Commentaire
+WHERE pseudo="Pseudo3";
+	\end{minted}
+
+	\item Combien de commentaires ont écrit toutes les personnes inscrites, toute news confondues ?
+	\[\prod_{\text{pseudo, COUNT(noCom)}}\left(\text{Commentaire}\right)\]
+	\begin{minted}{sql}
+SELECT pseudo, COUNT(noCom) FROM Commentaire
+GROUP BY pseudo;
+	\end{minted}
+
+	\item Création d'une vue donnant le nombre de posts par personne.
+\begin{minted}{sql}
+CREATE VIEW nbPostParPersonne (pseudo, nb)
+AS	SELECT pseudo, COUNT(noPost) FROM Post
+	GROUP BY pseudo;
+\end{minted}
+
+	\item Quelle est la personne ayant le plus posté sur le forum ? Et combien de posts a-t-il créé ?
+\mint{sql}|SELECT pseudo, MAX(nb) FROM nbPostParPersonne;|
+
+	\item A quel groupe appartiennent les différentes personnes participant à une conversation par message privé ?
+	\[\prod_{\text{pseudo}}\left( \sigma_{\text{noSujetMP=1}}(\text{RecoitMP})\right)\underset{\text{pseudo}}{\infty}\prod_{\begin{array}{c} \text{pseudo}\\\text{nomGroupe}\end{array}}(\text{Appartient})\]
+	\begin{minted}{sql}
+SELECT pseudo, nomGroupe FROM Appartient
+WHERE pseudo IN (SELECT pseudo FROM RecoitMP
+		WHERE noSujetMP=1)
+GROUP BY pseudo;
+	\end{minted}
+
+	\item Parmi les personnes ayant écrit un message dans ce sujet, lesquels sont modérateurs ?
+	\[\prod_{\text{pseudo}}\left(\sigma_{\text{idSuj=2}}(\text{Post})\right)\underset{\text{pseudo}}{\infty} \prod_{\text{pseudo}}\left( \sigma_{\text{nomGroupe="Moderateur"}}(\text{Appartient})\right)\]
+	\begin{minted}{sql}
+SELECT pseudo, nomGroupe FROM Appartient
+WHERE nomGroupe="Moderateur"
+AND pseudo IN (SELECT pseudo FROM Post
+		WHERE idSuj=2)
+GROUP BY pseudo;
+	\end{minted}
+
+	\item Liste des posts inclus dans une sous-section donnée ?
+	\[\text{Post}\underset{\text{idSuj}}{\infty}\prod_{\text{idSuj}}\left(\sigma_{\text{nomSsSection="Petits jeux"}}(\text{Sujet})\right)\]
+	\begin{minted}{sql}
+SELECT * FROM Post
+WHERE idSuj IN (SELECT idSuj FROM Sujet
+		WHERE nomSsSection="Petits jeux");
+	\end{minted}
+\end{itemize}
