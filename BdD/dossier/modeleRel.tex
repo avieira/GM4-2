@@ -3,7 +3,7 @@
 Tout d'abord, nous allons déduire directement du modèle entités/associations le modèle relationnel en utilisant les règles suivantes :
 \begin{itemize}
 	\item Chaque entité devient une relation.
-	\item Une association qui donne une entité faible transforme la relation induite par cette dernière. Dans l'entité faible, on utilise un mécanisme de clé étrangère pour référencer l'identité forte.
+	\item Une association qui donne une entité faible ou un association ayant d'un côté une cardinalité 1,1 transforme la relation induite par cette dernière. Dans l'entité faible, on utilise un mécanisme de clé étrangère pour référencer l'identité forte.
 	\item On crée des relations à partir des autres associations, en reprenant les clés des deux entités liées comme clé de la nouvelle relation, et les propriétés comme attributs. 
 \end{itemize}
 
@@ -13,18 +13,18 @@ On en arrive à la liste de relations suivante :
 \begin{description}
 	\item[Section] (\underline{nomSection})
 	\item[Sous-Section] (\underline{nomSection}, \underline{nomSsSection}, description)
-	\item[Sujet] (\underline{nomSsSec}, \underline{nomSujet})
-	\item[Post] (\underline{nomSujet}, \underline{n\degree Post}, date, texte, pseudo)
+	\item[Sujet] (\underline{idSuj}, nomSection, nomSsSection, nomSujet)
+	\item[Post] (\underline{idSuj}, \underline{n\degree Post}, date, texte, pseudo)
 	\item[Personne] (\underline{pseudo}, avatar, anniversaire, dateInscript, dateDerConnex)
 	\item[Groupe] (\underline{nomGroupe}, logo)
 	\item[SujetMP] (\underline{n\degree SujetMP}, nomSujet, date, titre)
 	\item[MP] (\underline{n\degree SujetMP}, \underline{n\degree MP}, texte, pseudo)
 	\item[Source] (\underline{nomSource}, ref)
-	\item[News] (\underline{n\degree News}, texte, titre)
+	\item[News] (\underline{n\degree News}, texte, titre, date)
 	\item[Commentaire] (\underline{n\degree News}, \underline{n\degree Com}, pseudo, texte, date)
 	\item[reçoitMP] (\underline{n\degree SujetMP}, \underline{pseudo})
 	\item[appartient] (\underline{pseudo}, \underline{nomGroupe})
-	\item[conçoit] (\underline{n\degree News}, pseudo, nomSource, date)
+	\item[conçoit] (\underline{n\degree News}, \underline{pseudo}, \underline{nomSource})
 \end{description}
 
 \medskip
@@ -32,7 +32,7 @@ Les clés sont pour la plupart issues directement du modèle E/A. On doit tout d
 \begin{itemize}
 	\item Dans \textbf{MP}, on aurait aussi bien pu mettre le pseudo en clé, mais les deux numéros (de sujet et du MP) suffisent. En effet il suffit de pouvoir reconnaître la conversation puis le message en lui-même pour pouvoir retrouver un message en particulier. Il en est de même avec \textbf{Commentaire}.
 	\item Dans \textbf{reçoitMP} et \textbf{appartient}, pour reconnaître de manière unique un tuple, il nous faut forcément garder les deux clés des deux associations. Par exemple, pour le premier, si nous prenions que le numéro de sujet, il y aurait plusieurs pseudos associés (au moins 2, pour une conversation). Pour le second, si nous prenions que le pseudo, on aurait la plupart du temps un seul groupe associé. Mais comme précisé plus haut, une personne peut appartenir à plusieurs groupes. On doit donc garder les deux clés.
-	\item Dans \textbf{conçoit}, le numéro de la news suffit à accéder de manière unique à toutes les autres informations. Aucun besoin donc de rajouter d'autres clés.
+	\item Dans \textbf{conçoit}, le numéro de la news suffit à accéder de manière unique au pseudo ayant écrit la news, mais pas aux sources. On ne met donc que deux clés : n\degree News et nomSource.
 \end{itemize}
 
 \subsection{Dénormalisation}
@@ -42,8 +42,8 @@ Les clés sont pour la plupart issues directement du modèle E/A. On doit tout d
 	\begin{center} \textbf{appartient}  (\underline{pseudo}, \underline{nomGroupe}, logo) \end{center}
 	
 	\item On pourrait possiblement faire de même avec \textbf{News} et l'intégrer à chaque fois dans \textbf{conçoit}, mais l'accès à ce dernier sera probablement fréquent et pourrait être l'objet d'une recherche particulière. Avoir une table directement prête à disposition permettrait d'avoir un accès plus rapide à l'information recherchée.
-	\item Cependant, le choix a été fait de supprimer la relation \textbf{Source}, car une recherche particulière sur ce sujet reste tout de même plus rare. On intègre les informations dans la relation \textbf{conçoit}, qui devient :
-	\begin{center} \textbf{conçoit} (\underline{n\degree News}, pseudo, nomSource, date, ref)\end{center}
+	\item Cependant, le choix a été fait de supprimer l'entité \textbf{Source}, car une recherche particulière sur ce sujet reste tout de même plus rare. On intègre les informations dans la relation \textbf{conçoit}, qui devient :
+	\begin{center} \textbf{conçoit} (\underline{n\degree News}, pseudo, \underline{nomSource}, ref)\end{center}
 \end{enumerate}
 
 \subsection{Modèle relationnel final}
@@ -55,10 +55,10 @@ Après dénormalisation, notre modèle relationnel devient le suivant :
 	\item[Personne] (\underline{pseudo}, avatar, anniversaire, dateInscript, dateDerConnex)
 	\item[SujetMP] (\underline{n\degree SujetMP}, nomSujet, date, titre)
 	\item[MP] (\underline{n\degree SujetMP}, \underline{n\degree MP}, texte, pseudo)
-	\item[News] (\underline{n\degree News}, texte, titre)
+	\item[News] (\underline{n\degree News}, texte, titre, date)
 	\item[Commentaire] (\underline{n\degree News}, \underline{n\degree Com}, pseudo, texte, date)
 	\item[reçoitMP] (\underline{n\degree SujetMP}, \underline{pseudo})
 	\item[appartient] (\underline{pseudo}, \underline{nomGroupe}, logo)
-	\item[conçoit] (\underline{n\degree News}, pseudo, nomSource, date, ref)
+	\item[conçoit] (\underline{n\degree News}, pseudo, \underline{nomSource}, ref)
 \end{description}
 

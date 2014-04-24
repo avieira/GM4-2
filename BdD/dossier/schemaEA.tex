@@ -18,7 +18,7 @@
 \node[association, below=1cm of SsSection] (contenir1){contenir};
 
 \node[entité, below=1cm of contenir1] (Sujet){\textbf{Sujet}
-	\nodepart{second} {\shortstack{\underline{idSuj}\\nomSuj}}};
+	\nodepart{second} {\shortstack{\underline{idSuj}\\nomSsSec\\nomSection\\nomSuj}}};
 \draw (Sujet) -- (contenir1) node[midway, right]{1..1};
 \draw (contenir1) -- (SsSection) node[midway, right]{0..n};
 
