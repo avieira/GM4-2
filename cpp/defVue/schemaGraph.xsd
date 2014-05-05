@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<!--                                              -->
+		<!--Orientation ou non dans le graphe-->
+	<!--                                              -->
+	<xs:attribute name="Oriente" type="xs:boolean"/>
+
+
+
+
+
+
+
+	<!--                                                      -->
+		<!-- Définir les types couleur, valeur, forme-->
+	<!--                                                      -->
+		<!--Couleur sous forme RGB hexadécimal-->
+	<xs:element name="Couleur" type="xs:hexBinary"/>
+
+		<!--Valeur : pour l'instant, prend n'importe quelle type de valeur-->
+	<xs:element name="Valeur" type="xs:anyType"/>
+
+		<!--Forme : chaîne de caractères prise dans une certaine liste-->
+	<xs:simpleType name="form">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="box"/>
+			<xs:enumeration value="ellipse"/>
+			<xs:enumeration value="circle"/>
+			<xs:enumeration value="square"/>
+			<xs:enumeration value="star"/>
+			<xs:enumeration value="diamond"/>
+			<xs:enumeration value="pentagon"/> 
+			<xs:enumeration value="septagon"/> 
+		</xs:restriction>
+	</xs:simpleType>
+	
+
+
+
+	<xs:element name="Graphe">
+	<xs:complexType>
+		<xs:sequence>
+		<xs:element name="Sommets">
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+			<xs:element name="Sommet">
+			<xs:complexType>
+				<xs:sequence maxOccurs="1">
+			                <xs:element ref="Couleur" minOccurs="0"/>
+			                <xs:element ref="Valeur" minOccurs="0"/>
+			                <xs:element name="Forme" type="form" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="id" type="xs:ID" use="required"/>
+			</xs:complexType>
+			</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+		</xs:element>
+
+		<xs:element name="Arcs">
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+			<xs:element name="Arc">	
+			<xs:complexType>
+				<xs:sequence maxOccurs="1">
+		            	    <xs:element ref="Couleur" minOccurs="0"/>
+        		    	    <xs:element ref="Valeur" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="Depart" type="xs:IDREF" use="required"/>
+				<xs:attribute name="Arrivee" type="xs:IDREF" use="required"/>
+			</xs:complexType>
+			</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+		</xs:element>
+		</xs:sequence>
+		<xs:attribute ref="Oriente"/>
+	</xs:complexType>	
+	</xs:element>
+
+</xs:schema>
+
+
+
