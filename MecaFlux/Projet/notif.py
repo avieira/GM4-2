@@ -14,10 +14,10 @@ def onSave(event):
 		try:
 			subprocess.check_call(['mkdir', '-p', 'tmp'])
 			#Entre machine INSA et maison : inverser les commentaires du bloc suivant
-			#subprocess.check_call(['latexmk', '-pdf', '-output-directory=tmp', '-shell-escape' ,'-halt-on-error' ,'ficheRev.tex'])
-			#subprocess.check_call(['mv', 'tmp/ficheRev.pdf', '.'])
+			subprocess.check_call(['latexmk', '-pdf', '-output-directory=tmp', '-shell-escape' ,'-halt-on-error' ,'Rapport.tex'])
+			subprocess.check_call(['mv', 'tmp/Rapport.pdf', '.'])
 
-			subprocess.check_call(['latexmk', '-pdf', 'Rapport.tex'])
+			#subprocess.check_call(['latexmk', '-pdf', 'Rapport.tex'])
 			#subprocess.check_call(['mv', '*.aux', '*.toc', 'tmp'])
 
 
