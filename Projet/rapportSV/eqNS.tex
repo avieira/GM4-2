@@ -1,0 +1,288 @@
+\section{Les équations de Navier-Stokes}
+Équations de Navier-Stokes : deux équations :
+\begin{itemize}
+	\item Une équation de continuité (conservation de la masse)
+	\item Équation de quantité de mouvement
+\end{itemize}
+
+\bigskip
+Dans la suite, nous noterons :
+\begin{itemize}
+	\item $\overrightarrow{U}(U,V,W)$ le vecteur vitesse de composantes $U, V$ et $W$
+	\item $\rho$ la densité
+	\item $p$ la pression
+	\item $\Omega$ le volume de contrôle
+\end{itemize}
+
+\bigskip
+On note $M(t)$ la masse de fluide dans le volume $\Omega$ à l'instant $t$. On l'exprime par :
+	\begin{equation} \label{II-2} M(t)=\int_{\Omega} \rho d\Omega \end{equation}
+
+	\subsection{Équation de continuité}
+L'équation de continuité s'écrit :
+	\begin{equation} \label{II-2-1-1} \frac{d M(t)}{dt}=0 \end{equation}
+
+On transforme l'expression de \ref{II-2-1-1} :
+\begin{eqnarray*}
+	\frac{d M(t)}{dt}&=&\frac{\partial}{\partial t} \int_{\Omega} \rho d\Omega + \underbrace{\int_{\partial\Omega} \rho \overrightarrow{U}.\overrightarrow{n} d\sigma}_{\text{Flux net à travers la surface} \partial\Omega}\\
+			&=& \int_{\Omega} \frac{\partial \rho}{\partial t} d\Omega + \int_{\partial \Omega} \rho \overrightarrow{U}.\overrightarrow{n} d\sigma \\
+			&=& \int_{\Omega} \left[ \frac{\partial \rho}{\partial t} + div\left(\rho \overrightarrow{U}\right)\right] d\Omega \text{ (Ostrogradki)}\\
+			&=& 0
+\end{eqnarray*}
+
+Or, on raisonne pour $\Omega$ quelconque, d'où :
+	\begin{equation} \label{II-2-1-2} \frac{\partial \rho}{\partial t} + div\left(\rho \overrightarrow{U}\right)=0 \end{equation}
+
+	\subsection{Equation de quantité de mouvement}
+L'équation de quantité de mouvement s'écrit :
+	\begin{equation} \label{II-2-2-1} \frac{d}{dt} \left( M\overrightarrow{U}\right) =\sum \overrightarrow{F} \end{equation}
+
+On va rééccrire chacun des membres de l'équation de \ref{II-2-2-1}. 
+\begin{eqnarray*}
+	\frac{d}{dt} \left(M\overrightarrow{U}\right) &=& \frac{d}{dt} \int_{\Omega} \rho \overrightarrow{U} d\Omega \\
+							&=& \int_{\Omega} \frac{\partial}{\partial t} \left( \rho \overrightarrow{U} \right) d\Omega + \int_{\partial \Omega} \rho \overrightarrow{U}\left(\overrightarrow{U}.\overrightarrow{n}\right) d\sigma \\
+\end{eqnarray*}
+
+D'où :
+\begin{equation} \frac{d}{dt} \left(M\overrightarrow{U}\right)= \int_{\Omega} \left[ \frac{\partial}{\partial t} \left( \rho \overrightarrow{U} \right) + div\left( \rho \overrightarrow{U}\otimes \overrightarrow{U}\right)\right] d\Omega \label{II-2-2-2} \end{equation}
+
+On s'occupe à présent de l'autre membre : que vaut le bilan des forces ? On prend comme hypothèse que le bilan des forces est égal à la somme d'une force massique $\overrightarrow{F_M}$ et d'une force surfacique $\overrightarrow{F_S}$. Chacune de ces forces s'expriment ainsi :
+\begin{equation} \label{II-2-2-3} \overrightarrow{F_M}=\int_{\Omega} \rho\underbrace{\left( g-2\overrightarrow{\Omega}\wedge \overrightarrow{U}\right)}_{=f} d\Omega \end{equation}
+avec :
+\begin{itemize}
+	\item $\rho$ la densité
+	\item $g$ la force de pesanteur
+	\item $\overrightarrow{\Omega}$ vecteur de rotation terrestre
+	\item $f$ la résultante des forces massiques
+\end{itemize}
+
+\begin{equation} \label{II-2-2-4} \overrightarrow{F_S}=\int_{\Omega} div\left( -pI+\underbrace{2\rho\nu D}_{=\tau}\right) d\Omega \end{equation}
+avec :
+\begin{itemize}
+	\item $p$ la pression
+	\item $I$ la matrice identité
+	\item $\rho$ la densité
+	\item $\nu$ coefficient de viscosité cinématique
+	\item $D$ le tenseur des taux de déformation
+	\item $\tau$ le tenseur des contraintes visqueuses
+\end{itemize}
+
+\bigskip
+On tire donc de \ref{II-2-2-3} et \ref{II-2-2-4} :
+\begin{equation}\label{II-2-2-5} \sum \overrightarrow{F}= \int_{\Omega} \left( \rho f + div\left( -pI+\tau\right) \right)d\Omega\end{equation}
+
+Or, on a égalité pour tout $\Omega$ entre \ref{II-2-2-2} et \ref{II-2-2-5}, d'où :
+\begin{equation} \label{II-2-2-6} \frac{\partial}{\partial t} \left( \rho \overrightarrow{U} \right) + div\left( \rho \overrightarrow{U} \otimes \overrightarrow{U}\right) = \rho f -\nabla p + div(\tau) \end{equation}
+
+	\subsection{Système d'équations}
+Les équations de Navier-Stokes se résument donc par :
+\[\left\{ \begin{array}{c c c}
+	\frac{\partial \rho}{\partial t} + div\left(\rho \overrightarrow{U}\right)&=&0\\
+	\frac{\partial}{\partial t} \left( \rho \overrightarrow{U} \right) + div\left( \rho \overrightarrow{U} \otimes \overrightarrow{U}\right) &=& \rho f -\nabla p + div(\tau)
+\end{array}\right.\]
+
+En introduisant le vecteur vitesse dans le repère cartésien $\overrightarrow{U}=\begin{pmatrix} U \\ V \\ W \end{pmatrix}$ et $f=(fV,-fU,f_z)^T$, on arrive au système d'équations suivant :
+\[\left\{ \begin{array}{c c c}
+	\frac{\partial \rho}{\partial t} + \frac{\partial U}{\partial x} + \frac{\partial V}{\partial y} +\frac{\partial W}{\partial z}&=&0\\
+     \frac{\partial U}{\partial t} + \frac{\partial U^2}{\partial x} + \frac{\partial (UV)}{\partial y} +\frac{\partial (UW)}{\partial z} &=& -\frac{1}{\rho}\frac{\partial p}{\partial x} + \Delta(\nu U)+fV\\
+	\frac{\partial V}{\partial t} + \frac{\partial (UV)}{\partial x} + \frac{\partial V^2}{\partial y} +\frac{\partial (VW)}{\partial z} &=& -\frac{1}{\rho}\frac{\partial p}{\partial y} + \Delta(\nu V)-fU\\
+	\frac{\partial W}{\partial t} + \frac{\partial (UW)}{\partial x} + \frac{\partial (VW)}{\partial y} +\frac{\partial W^2}{\partial z} &=& -\frac{1}{\rho}\frac{\partial p}{\partial z} + \Delta(\nu W)+f_z
+\end{array}\right.\]
+
+
+\section{Moyenne des équations de Navier-Stokes}
+Afin d'obtenir les équations de Saint-Venant, nous commençons par faire quelques hypothèses :
+	\paragraph{Hypothèses de Boussinesq}
+On considère ici la densité $\rho$ comme constante par rapport au temps et à l'espace. Cela permet de simplifier le système d'équations de Navier-Stokes, les termes tels que $\frac{\partial \rho}{\partial t}$ devenant nuls.
+
+	\paragraph{Hypothèse de pression hydrostatique}
+On considère également que l'acceleration du mouvement sur la verticale est négligeable devant l'accélération due à la gravité. Cela permet de négliger les termes $\frac{\partial W}{\partial x}$ et $\frac{\partial W}{\partial y}$. Cela débouche, dans les équations de quantité de mouvement, à l'égalité :
+
+	\[\frac{\partial p}{\partial z}=-\rho g\]
+
+	\paragraph{Vitesse moyenne}
+On considère $u$ la vitesse moyenne suivant $x$ sur la verticale et $v$ la vitesse moyenne suivant $y$ sur la verticale :
+	\[u=\frac{1}{h} \int_{Z_f}^{Z_s} U dz\]
+	\[v=\frac{1}{h} \int_{Z_f}^{Z_s} V dz\]
+avec $Z_s$ la hauteur de la surface et $Z_f$ la hauteur du fond, et $h=Z_s-Z_f$.
+
+	\paragraph{Transformation de l'équation de continuité}
+On va chercher à réexprimer l'équation de continuité $div(\overrightarrow{U})=0$ grâce à ces variables. On utilise pour cela la formule de Leibniz :
+\begin{equation} \label{II-3-1}\int_{Z_f}^{Z_s} div(\overrightarrow{U}) dz = \frac{\partial}{\partial x} \int_{Z_f}^{Z_s} Udz + \frac{\partial}{\partial y} \int_{Z_f}^{Z_s} V dz + W(Z_s)-W(Z_f) + U(x,y,Z_f)\frac{\partial Z_f}{\partial x}\end{equation}
+\[- U(x,y,Z_s)\frac{\partial Z_s}{\partial x} + V(x,y,Z_f)\frac{\partial Z_f}{\partial y} - V(x,y,Z_f)\frac{\partial Z_s}{\partial y}\]
+
+On fait à présent des hypothèses d'imperméabilité de la surface libre et du fond, c'est-à-dire qu'il n'y a aucun transfert de masse à travers le fond et la surface. Ces hypothèses s'expriment ainsi :
+\[U(x,y,Z_s)\frac{\partial Z_s}{\partial x} + V(x,y,Z_s)\frac{\partial Z_s}{\partial y}=W(Z_s)-\frac{\partial Z_s}{\partial t}\]
+\[U(x,y,Z_f)\frac{\partial Z_f}{\partial x} + V(x,y,Z_f)\frac{\partial Z_f}{\partial y}=W(Z_f)-\frac{\partial Z_f}{\partial t}\]
+
+L'équation \ref{II-3-1} devient donc :
+\[\frac{\partial}{\partial x} \int_{Z_f}^{Z_s} U dz + \frac{\partial}{\partial y} \int_{Z_f}^{Z_s} V dz + \frac{\partial}{\partial t} (Z_s-Z_f)=0\]
+\begin{equation}\label{II-3-2} div(h\overrightarrow{u}) + \frac{\partial h}{\partial t} = 0 \end{equation}
+avec $\overrightarrow{u}=(u,v)^T$
+
+\paragraph{Equation de quantité de mouvement : membre de gauche}
+On va maintenant tenir le même raisonnement sur les équations de quantité de mouvement. On s'intéressera principalement à la première des deux équations, la deuxième étant faite de façon analogue.\\
+On repart de l'équation :
+\[\frac{\partial U}{\partial t} + \frac{\partial U^2}{\partial x} + \frac{\partial (UV)}{\partial y} +\frac{\partial (UW)}{\partial z} = -\frac{1}{\rho}\frac{\partial p}{\partial x} + \Delta(\nu U)+f_x\]
+
+On s'intéresse uniquement au membre de droite, et on en calcule l'intégrale sur la verticale. On utilise la formule de Leibniz dans la plupart de ces égalités :
+\[\int_{Z_f}^{Z_s} \frac{\partial U}{\partial t} dz = \frac{\partial}{\partial t} (hu) + U(x,y,Z_f)\frac{\partial Z_f}{\partial t} - U(x,y,Z_s) \frac{\partial Z_s}{\partial t}\]
+\[\int_{Z_f}^{Z_s} \frac{\partial UW}{\partial z} dz =U(x,y,Z_s)W(x,y,Z_s)-U(x,y,Z_f)W(x,y,Z_f)\]
+\[\int_{Z_f}^{Z_s} \frac{\partial U^2}{\partial x} dz = \frac{\partial}{\partial x} \int_{Z_f}^{Z_s} U^2 dz + U^2(x,y,Z_f)\frac{\partial Z_f}{\partial x} - U^2(x,y,Z_s) \frac{\partial Z_s}{\partial x}\]
+\[\int_{Z_f}^{Z_s} \frac{\partial UV}{\partial y} dz = \frac{\partial}{\partial y} \int_{Z_f}^{Z_s} UV dz + U(x,y,Z_f)V(x,y,Z_f)\frac{\partial Z_f}{\partial y} - U(x,y,Z_s)V(x,y,Z_s) \frac{\partial Z_s}{\partial y}\]
+
+\bigskip
+Dans les deux dernières équations, on retrouve des termes qu'on peut encore simplifier :
+\begin{eqnarray*}
+	\frac{\partial}{\partial y} \int_{Z_f}^{Z_s} UV dz &=& \frac{\partial}{\partial y} \int_{Z_f}^{Z_s} (u+U-u)(v+V-v) dz \\
+							&=&\frac{\partial}{\partial y} (huv) + \frac{\partial}{\partial y} \int_{Z_f}^{Z_s} (U-u)(V-v) dz + \frac{\partial}{\partial y} \int_{Z_f}^{Z_s} (uV+vU-2uv) dz \\
+							&=&\frac{\partial}{\partial y} (huv) + \frac{\partial}{\partial y} \int_{Z_f}^{Z_s} (U-u)(V-v) dz + \frac{\partial}{\partial y} \underbrace{\left[ uhv + vhu - 2uvh \right]}_{=0} \\
+							&=& \frac{\partial}{\partial y} (huv) + \frac{\partial}{\partial y} \int_{Z_f}^{Z_s} (U-u)(V-v) dz
+\end{eqnarray*}
+
+De même, on va avoir :
+\[\frac{\partial}{\partial x} \int_{Z_f}^{Z_s} U^2 dz= \frac{\partial}{\partial t} (hu^2) + \frac{\partial}{\partial x} \int_{Z_f}^{Z_s} (U-u)^2 dz\]
+
+Après simplification, on obtient le résultat suivant :
+\begin{equation} \label{II-3-3} 
+	\int_{Z_f}^{Z_s} \left(\frac{\partial U}{\partial t} + \frac{\partial U^2}{\partial x} + \frac{\partial (UV)}{\partial y} +\frac{\partial (UW)}{\partial z}\right) dz = 
+\end{equation}
+	\[\frac{\partial}{\partial t} (hu) + \frac{\partial}{\partial x}(hu^2)+\frac{\partial}{\partial y}(huv) + \frac{\partial}{\partial x} \int_{Z_f}^{Z_s} (U-u)^2 dz + \frac{\partial}{\partial y} \int_{Z_f}^{Z_s} (U-u)(V-v) dz\]
+
+On peut démontrer les deux égalités suivantes :
+\[\int_{Z_f}^{Z_s} (U-u)^2 dz=\nu_d\frac{\partial}{\partial x}(hu)\]
+\[\int_{Z_f}^{Z_s} (U-u)(V-v) dz=\nu_d \frac{\partial}{\partial y} (hu)\]
+avec $\nu_d$ le coefficient de dispersion.\\
+L'équation \ref{II-3-3} devient ainsi :
+\begin{equation} \label{II-3-4}
+	\int_{Z_f}^{Z_s} \left(\frac{\partial U}{\partial t} + \frac{\partial U^2}{\partial x} + \frac{\partial (UV)}{\partial y} +\frac{\partial (UW)}{\partial z}\right) dz =\frac{\partial}{\partial t} (hu) + \frac{\partial}{\partial x}(hu^2)
+\end{equation}
+\[+\frac{\partial}{\partial y}(huv)+\Delta(\nu_dhu)\]
+
+\paragraph{Equation de quantité de mouvement : membre de droite}
+On s'intéresse maintenant au membre de gauche. On commence par le terme de pression. En réutilisant l'hypothèse de pression hydrostatique énoncé précédement :
+	\[\frac{\partial p}{\partial z}=-\rho g\]
+On en déduit que :
+	\[p(x,y,z)=-\rho g(Z_s-z)\]
+Ainsi, on obtient avec la première équation de quantité de mouvement :
+\begin{eqnarray*}
+	\int_{Z_f}^{Z_s} -\frac{1}{\rho} \frac{\partial}{\partial x} (\rho g(Z_s-z)) dz &=& \int_{Z_f}^{Z_s} \left[ \underbrace{\frac{\partial}{\partial x} (gz)}_{=0}-\frac{\partial gZ_s}{\partial x} \right] dz \\
+4							       &=& -g \frac{\partial Z_s}{\partial x} \int_{Z_f}^{Z_s} dz \\
+\end{eqnarray*}
+D'où :
+\begin{equation} \label{II-2-5} \int_{Z_f}^{Z_s} -\frac{1}{\rho} \frac{\partial}{\partial x} (\rho g(Z_s-z)) dz= -hg\frac{\partial Z_s}{\partial x} \end{equation}
+
+De même, on obtient pour la deuxième équation :
+\begin{equation} \label{II-2-6} \int_{Z_f}^{Z_s} -\frac{1}{\rho} \frac{\partial}{\partial y} (\rho g(Z_s-z)) dz= -hg\frac{\partial Z_s}{\partial y} \end{equation}
+
+Pour les termes de Coriolis, l'intégration se fait très facilement :
+\begin{equation} \label{II-2-7} \int_{Z_f}^{Z_s} fV dz = fhv \end{equation}
+\begin{equation} \label{II-2-8} \int_{Z_f}^{Z_s} fU dz = fhu \end{equation}
+
+\bigskip
+Il reste maintenant le terme utilisant le lagrangien. Une fois encore, on utilise la formule de Leibniz :
+\[\int_{Z_f}^{Z_s} \nu \Delta(U) dz = div\left( \int_{Z_f}^{Z_s} \nu \nabla U dz \right) - \nu \nabla U . \nabla Z_s + \nu \nabla U . \nabla Z_f\]
+
+Les deux derniers termes de cette équation représentent les contraintes de cisaillement au fond et à la surface dû au vent. Ces forces sont en fait superficielles, mais apparaissent dans les équations de Saint-Venant comme des termes sources appliquées à toute la masse de l'eau, puisque les équations représentent une moyenne sur la verticale. On pose ces deux contraintes comme étant $-\frac{1}{\rho h}\overrightarrow{\tau_f}$ pour le fond et $\frac{1}{\rho}\overrightarrow{\tau_s}$ pour la surface. \\
+On s'intéresse plus spécialement au terme $\tau_f$. On peut l'exprimer sous la forme :
+	\[\overrightarrow{\tau_f}=\begin{pmatrix} \tau_{fx} \\ \tau_{fy} \end{pmatrix} = \frac{1}{2} \rho C_f \sqrt{u^2+v^2} \overrightarrow{u}\]
+$C_f$ étant un coefficient de frottement, souvement déterminé par une des formules suivantes :
+\begin{itemize}
+	\item la formule de Chézy \[C_f = \frac{2g}{C_h^2}\]
+	\item la formule de Manning \[C_f = \frac{2gn^2}{R_h^{1/3}}\]
+\end{itemize}
+
+où $C_h$ est le coefficient de Chézy et $R_h$ le rayon hydrolique. 
+
+\bigskip
+En conclusion, on arrive à l'équation suivante :
+\begin{equation} \label{II-2-9}
+	\int_{Z_f}^{Z_s} \nu \Delta(U) dz = div(\nu \nabla(hu)) + \frac{\tau_{sx}}{\rho} - \frac{\tau_{fx}}{\rho}
+\end{equation}
+
+\paragraph{Conclusion}
+En combinant les équations \ref{II-3-4},  \ref{II-2-5}, \ref{II-2-7} et \ref{II-2-9}, on arrive à l'équation suivante :
+\[\frac{\partial}{\partial t}(hu) + \frac{\partial}{\partial x} (hu^2) + \frac{\partial}{\partial y}(huv) = -hg\frac{\partial Z_s}{\partial x} + fhv + div((\nu-\nu_d)(\nabla(hu))) + \frac{\tau_{sx}}{\rho} - \frac{\tau_{fx}}{\rho}\]
+
+En posant $A_H=\nu-\nu_d$, appelé coefficient de diffusion, on obtient :
+\begin{equation} \label{II-2-10}
+	\frac{\partial}{\partial t}(hu) + \frac{\partial}{\partial x} (hu^2) + \frac{\partial}{\partial y}(huv) = -hg\frac{\partial Z_s}{\partial x} + fhv + A_H\Delta(hu) + \frac{\tau_{sx}}{\rho} - \frac{\tau_{fx}}{\rho}
+\end{equation}
+
+De la même façon, l'équation de mouvement dans la direction $y$ nous donne :
+\begin{equation} \label{II-2-11}
+	\frac{\partial}{\partial t}(hv) + \frac{\partial}{\partial x} (huv) + \frac{\partial}{\partial y}(hv^2) = -hg\frac{\partial Z_s}{\partial y} - fhu + A_H\Delta(hv) + \frac{\tau_{sy}}{\rho} - \frac{\tau_{fy}}{\rho}
+\end{equation}
+
+\section{Les équations de Saint-Venant}
+\paragraph{Système d'équations}
+Les considérations de la sous-section précédente nous donne :
+\[\left\{ \begin{array}{c c c}
+	\frac{\partial}{\partial x} (hu) + \frac{\partial}{\partial y} (hv) + \frac{\partial h}{\partial t} &=& 0 \\
+      \frac{\partial}{\partial t}(hu) + \frac{\partial}{\partial x} (hu^2) + \frac{\partial}{\partial y}(huv) &=& -hg\frac{\partial Z_s}{\partial x} + fhv + A_H\Delta(hu) + \frac{\tau_{sx}}{\rho} - \frac{\tau_{fx}}{\rho}\\
+	     \frac{\partial}{\partial t}(hv) + \frac{\partial}{\partial x} (huv) + \frac{\partial}{\partial y}(hv^2) &=& -hg\frac{\partial Z_s}{\partial y} - fhu + A_H\Delta(hv) + \frac{\tau_{sy}}{\rho} - \frac{\tau_{fy}}{\rho}
+\end{array}\right.\]
+
+Ces équations peuvent par ailleurs encore se simplifier. Pour cela, on va utiliser la première équation et l'intégrer dans les deux suivantes.
+
+\bigskip
+Tout d'abord, remarquons l'égalité suivante :
+\begin{equation} \label{II-2-4-1}
+	\frac{\partial h}{\partial t} = \frac{\partial Z_s}{\partial t} - \underbrace{\frac{\partial Z_f}{\partial t}}_{=0} = \frac{\partial Z_s}{\partial t}
+\end{equation}
+
+Ensuite, intéressons nous aux membres de gauche des équations de quantité de mouvement. On va ici séparer les produits dans les dérivées :
+\begin{eqnarray*}
+	\frac{\partial}{\partial t}(hu) + \frac{\partial}{\partial x} (hu^2) + \frac{\partial}{\partial y}(huv) &=& h\frac{\partial u}{\partial t} + u\frac{\partial h}{\partial t} + hu\frac{\partial u}{\partial x} + u\frac{\partial hu}{\partial x} + u\frac{\partial hv}{\partial y} + hv\frac{\partial u}{\partial y} \\
+														&=& h\left(\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} \right) + u\underbrace{\left(\frac{\partial h}{\partial t} + \frac{\partial hu}{\partial x} + \frac{\partial hv}{\partial y} \right)}_{(\star)}
+\end{eqnarray*}
+
+Or, d'après l'équation de conservation de la masse, on a $(\star)=0$, d'où :
+\[\frac{\partial}{\partial t}(hu) + \frac{\partial}{\partial x} (hu^2) + \frac{\partial}{\partial y}(huv) = h\left(\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} \right)\]
+
+On démontre de la même façon : 
+\[\frac{\partial}{\partial t}(hv) + \frac{\partial}{\partial x} (huv) + \frac{\partial}{\partial y}(hv^2)=h\left( \frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y}\right)\]
+
+On arrive donc à la formulation suivante :
+\begin{equation} \label{II-2-4-3}
+	\left\{ \begin{array}{c c c}
+	\frac{\partial}{\partial x} (hu) + \frac{\partial}{\partial y} (hv) + \frac{\partial h}{\partial t} &=& 0 \\
+      \frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} &=& -g\frac{\partial Z_s}{\partial x} + F_x\\
+	 \frac{\partial v}{\partial t} + u\frac{\partial v}{\partial x} + v\frac{\partial v}{\partial y}&=& -g\frac{\partial Z_s}{\partial y} + F_y
+	\end{array}\right.
+\end{equation}
+
+où $F_x$ et $F_y$ désigneront toutes les forces extérieures normalisées par la hauteur. \\
+shallow water en anglais\\
+leurs spécificités d'utilisation\\
+
+\subsection{Les équations linéarisées}
+
+On considère que $u$ et $v$ sont petits, et que la hauteur $Z_s$ vaut $Z_s={Z_s}_0+\eta$ où ${Z_s}_0$ serait une hauteur moyenne et $\eta$ une fluctuation autour de la moyenne supposée petite. De même, on néglige les forces extérieures. On pose également $h_0 = {Z_s}_0 - Z_f$
+
+Sous ces hypothèses, les deux équations de quantité de mouvement se simplifient :
+\[\left\{\begin{array}{c c c}
+	\frac{\partial u}{\partial t} &=& -g\frac{\partial \eta}{\partial x} \\
+	\frac{\partial v}{\partial t} &=& -g\frac{\partial \eta}{\partial y} 
+\end{array}\right.\]
+
+Pour l'équation de conservation de la masse, on sépare les produits dans les dérivées :
+\begin{eqnarray*}
+	\frac{\partial h}{\partial t} + \frac{\partial (hu)}{\partial x} + \frac{\partial (hv)}{\partial y} &=& \underbrace{\frac{\partial {Z_s}_0}{\partial t} - \frac{\partial Z_f}{\partial t}}_{=0} + \frac{\partial \eta}{\partial t} + h\frac{\partial u}{\partial x} + \underbrace{u \frac{\partial h}{\partial x} + v\frac{\partial h}{\partial y}}_{\text{négligés}} + h\frac{\partial v}{\partial y} \\
+	     &=&\frac{\partial \eta}{\partial t} + ({Z_s}_0 + \underbrace{\eta}_{\text{négligé}} - Z_f)\left(\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} \right) \\
+	     &=&\frac{\partial \eta}{\partial t} + h_0\left(\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} \right) \\
+		&=& 0
+\end{eqnarray*}
+
+D'où le système d'équations de Saint-Venant linéarisé :
+\begin{equation}\label{II-4-4}
+	\left\{ 
+	\begin{array}{c c c}
+		\frac{\partial u}{\partial t}	& = & -g \frac{\partial \eta}{\partial x}\\
+		\frac{\partial v}{\partial t} & = & -g  \frac{\partial \eta}{\partial y}\\
+      \frac{\partial \eta}{\partial t} & = & - h_0  (\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y} )\\
+		
+		
+	\end{array}
+	\right.
+\end{equation}
