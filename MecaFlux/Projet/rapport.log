@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.11.29)  15 APR 2014 16:50
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.12.4)  7 MAY 2014 03:22
 entering extended mode
  %&-line parsing enabled.
 **Rapport.tex
@@ -1110,24 +1110,130 @@ l.41 \include{en-tete}
 ]
 \openout2 = `dvpmt.aux'.
 
- (./dvpmt.tex) [3
+ (./dvpmt.tex
+<images/camion_cabine_1.png, id=81, 1199.48125pt x 257.96375pt>
+File: images/camion_cabine_1.png Graphic file (type png)
 
-] (./Rapport.aux
+<use images/camion_cabine_1.png>
+Overfull \hbox (21.97916pt too wide) in paragraph at lines 12--13
+ [][] 
+ []
+
+<images/camion_remorque_1.png, id=82, 1270.7475pt x 282.05376pt>
+File: images/camion_remorque_1.png Graphic file (type png)
+
+<use images/camion_remorque_1.png>
+Overfull \hbox (25.08421pt too wide) in paragraph at lines 26--27
+ [][] 
+ []
+
+[3
+
+ <./images/camion_cabine_1.png (PNG copy)>] [4 <./images/camion_remorque_1.png 
+(PNG copy)>]
+<resultsCx/camion110_stream.png, id=99, 1281.78876pt x 775.89874pt>
+File: resultsCx/camion110_stream.png Graphic file (type png)
+
+<use resultsCx/camion110_stream.png>
+Overfull \hbox (54.90157pt too wide) in paragraph at lines 60--61
+ [][] 
+ []
+
+<resultsCx/camion110_velocityVectors.png, id=102, 1278.7775pt x 776.9025pt>
+File: resultsCx/camion110_velocityVectors.png Graphic file (type png)
+
+<use resultsCx/camion110_velocityVectors.png>
+Overfull \hbox (53.69708pt too wide) in paragraph at lines 69--70
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5 <./resultsCx/camion110_stream.png (PNG copy)>] [6 <./resultsCx/camion110_vel
+ocityVectors.png (PNG copy)>]
+<resultsCx/camion110_pressure.png, id=115, 1277.77374pt x 773.89125pt>
+File: resultsCx/camion110_pressure.png Graphic file (type png)
+
+<use resultsCx/camion110_pressure.png>
+Overfull \hbox (53.2956pt too wide) in paragraph at lines 78--79
+ [][] 
+ []
+
+[7
+
+ <./resultsCx/camion110_pressure.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 137--138
+
+ []
+
+<resultsCx/remorque2_110_stream.png, id=122, 1272.755pt x 780.9175pt>
+File: resultsCx/remorque2_110_stream.png Graphic file (type png)
+
+<use resultsCx/remorque2_110_stream.png>
+Overfull \hbox (51.28813pt too wide) in paragraph at lines 141--142
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[8] [9 <./resultsCx/remorque2_110_stream.png (PNG copy)>]
+<resultsCx/Remorque2-110_VelocityVectors.png, id=134, 1278.7775pt x 779.91376pt
+>
+File: resultsCx/Remorque2-110_VelocityVectors.png Graphic file (type png)
+ <use resultsCx/Remorque2-110_VelocityVectors.png>
+Overfull \hbox (53.69708pt too wide) in paragraph at lines 150--151
+ [][] 
+ []
+
+
+<resultsCx/remorque2-hautCabineAbsorption.png, id=135, 1274.7625pt x 776.9025pt
+>
+File: resultsCx/remorque2-hautCabineAbsorption.png Graphic file (type png)
+ <use resultsCx/remorque2-hautCabineAbsorption.png>
+Overfull \hbox (52.09111pt too wide) in paragraph at lines 156--157
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[10
+
+ <./resultsCx/Remorque2-110_VelocityVectors.png (PNG copy)>] [11 <./resultsCx/r
+emorque2-hautCabineAbsorption.png (PNG copy)>]
+<resultsCx/remorque2-110_pressure.png, id=147, 1276.77pt x 777.90625pt>
+File: resultsCx/remorque2-110_pressure.png Graphic file (type png)
+
+<use resultsCx/remorque2-110_pressure.png>
+Overfull \hbox (52.8941pt too wide) in paragraph at lines 165--166
+ [][] 
+ []
+
+[12
+
+ <./resultsCx/remorque2-110_pressure.png (PNG copy)>]) [13] (./Rapport.aux
 (./en-tete.aux) (./dvpmt.aux)) ) 
 Here is how much of TeX's memory you used:
- 19347 strings out of 493848
- 342757 string characters out of 1152822
- 454331 words of memory out of 3000000
- 22144 multiletter control sequences out of 15000+50000
- 41593 words of font info for 58 fonts, out of 3000000 for 9000
+ 19430 strings out of 493848
+ 344774 string characters out of 1152823
+ 460330 words of memory out of 3000000
+ 22192 multiletter control sequences out of 15000+50000
+ 47462 words of font info for 62 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 56i,5n,56p,792b,425s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 56i,8n,56p,1053b,515s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/
 8r.enc}</usr/share/texmf-texlive/fonts/type1/bitstrea/charter/bchb8a.pfb></usr/
-share/texmf-texlive/fonts/type1/bitstrea/charter/bchr8a.pfb>
-Output written on Rapport.pdf (4 pages, 46000 bytes).
+share/texmf-texlive/fonts/type1/bitstrea/charter/bchr8a.pfb></usr/share/texmf-t
+exlive/fonts/type1/bitstrea/charter/bchri8a.pfb></usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on Rapport.pdf (14 pages, 662393 bytes).
 PDF statistics:
- 99 PDF objects out of 1000 (max. 8388607)
- 17 named destinations out of 1000 (max. 500000)
- 109 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 194 PDF objects out of 1000 (max. 8388607)
+ 36 named destinations out of 1000 (max. 500000)
+ 154 words of extra memory for PDF output out of 10000 (max. 10000000)
 

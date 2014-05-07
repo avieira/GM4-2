@@ -1,37 +1,4 @@
 \addcontentsline{toc}{section}{Introduction}
-Le but de ce projet est de modéliser un site internet de nouvelles en ligne. On retrouve bien souvent des sites internet qui réunissent en leur sein deux services :
-\begin{itemize}
-	\item Une ou plusieurs pages présentant plusieurs nouvelles (news), qui peuvent être commentées
-	\item Un forum où les utilisateurs peuvent échangés publiquement (posts) ou de façon plus privée (messages privés, ou MP)
-\end{itemize}
-
-\smallskip
-Au c\oe ur de tout cela se trouve donc une base d'utilisateurs, qui forment des groupes :
-\begin{itemize}
-	\item des utilisateurs communs qui postent des commentaires sur les news, sur le forum ou qui s'envoient des messages privés
-	\item des modérateurs pour le forum ou les commentaires
-	\item des "newseurs" qui postent les nouvelles sur le site, et qui utilisent parfois certaines sources qu'il faut pouvoir citer et retrouver
-\end{itemize}
-
-\smallskip
-Le forum aura également sa propre organisation interne, que la base de données devra églament présenter :
-\begin{itemize}
-	\item les posts publics seront inclus dans des sous-sections, eux-mêmes inclus dans des sections
-	\item les messages privés s'organisent par sujet qui connaîtront un certain nombre de destinataires qui échangeront toute une conversation
-\end{itemize}
-
-\bigskip
-La base de données devra donc pouvoir répondre aux problèmes suivants :
-\begin{itemize}
-	\item Quelles news ont été postées à une date donnée et qui les a posté ?
-	\item Où telle source a été utlisée ? Quand ? Et par qui ?
-	\item Qui a écrit un commentaire donné ? Sur quelle news ?
-	\item Quelles sont les sous-section de telle section ? Quels sont les sujets compris dans telle sous-section ?
-	\item Qui a écrit tel post ? Dans quel sujet ? Quand ?
-	\item Quels sont les destinataires d'un sujet de message privé ? Qui a écrit tel message privé ? En rapport avec quel sujet ?
-	\item Quels sont les conversations par messages privés ou sections sur le forum auquel un utilisateur a accès ?
-	\item A quel groupe appartient un utilisateur donné ? Qui sont les modérateurs du forum ? 
-\end{itemize}
-
-\bigskip
-Dans un premier temps, le modèle Entités/Associations sera présenté, puis on en déduira le modèle relationnel. Chacun de ces modèles sera commenté et justifié.
+- Présenter le projet (cadre, données)
+- Ce qu'on doit analyser
+- Questions posées

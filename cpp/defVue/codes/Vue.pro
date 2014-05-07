@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Vue
 TEMPLATE = app
 DEFINES += WITH_CGRAPH
-INCLUDEPATH+=/usr/include/graphviz/
+INCLUDEPATH+=./graphviz/
 
 SOURCES += main.cpp\
         Vue/fenetre.cpp\
@@ -42,11 +42,11 @@ FORMS    += Vue/fenetre.ui
 
 unix|win32: LIBS += -lgraph -lcgraph
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../../../../usr/lib/release/ -lcgraph
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../../../../usr/lib/debug/ -lcgraph
-else:unix: LIBS += -L$$PWD/../../../../../../../../usr/lib/ -lcgraph
-
-INCLUDEPATH += $$PWD/../../../../../../../../usr/include
-DEPENDPATH += $$PWD/../../../../../../../../usr/include
+#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../../../../usr/lib/release/ -lcgraph
+#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../../../../usr/lib/debug/ -lcgraph
+#else:unix: LIBS += -L$$PWD/../../../../../../../../usr/lib/ -lcgraph
+#
+#INCLUDEPATH += $$PWD/../../../../../../../../usr/include
+#DEPENDPATH += $$PWD/../../../../../../../../usr/include
 
 unix|win32: LIBS += -lgvc -lcdt
