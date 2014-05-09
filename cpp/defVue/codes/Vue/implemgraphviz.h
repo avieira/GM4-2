@@ -20,7 +20,7 @@
 #include <QSvgWidget>
 #include<vector>
 
-#include <graphviz/gvc.h>
+#include "graphviz/gvc.h"
 
 #include"Model/graphe.h"
 #include"Model/grapheoriente.h"
