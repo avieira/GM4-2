@@ -13,6 +13,22 @@ Fenetre::Fenetre(QWidget *parent, Graphe *graph) :
     QMainWindow(parent),
     ui(new Ui::Fenetre)
 {
+    //Récupération infos graph
+    /*listeSommets=&(graph->getListeSommets());
+    listeArcs=&(graph->getListeArcs());*/
+
+    listeSommets=new vector<Sommet*>;
+    listeSommets->push_back(new Sommet("id1"));
+    listeSommets->push_back(new Sommet("id2"));
+    listeSommets->push_back(new Sommet("id3"));
+    listeSommets->push_back(new Sommet("id4"));
+
+    listeArcs=new vector<Arete*>;
+    listeArcs->push_back(new Arete(listeSommets->at(0),listeSommets->at(1)));
+    listeArcs->push_back(new Arete(listeSommets->at(2),listeSommets->at(3)));
+    listeArcs->push_back(new Arete(listeSommets->at(2),listeSommets->at(1)));
+    listeArcs->push_back(new Arete(listeSommets->at(3),listeSommets->at(1)));
+
     ui->setupUi(this);
     setWindowTitle("GraphCalculus");
 
