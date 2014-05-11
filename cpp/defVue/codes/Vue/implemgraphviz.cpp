@@ -10,7 +10,7 @@ ImplemGraphviz::ImplemGraphviz(QWidget *parent, Graphe *graph) : QSvgWidget(pare
     //drawGraph();
 }
 
-ImplemGraphviz::ImplemGraphviz(QWidget *parent, GrapheOriente *graph) : QSvgWidget(parent)
+/*ImplemGraphviz::ImplemGraphviz(QWidget *parent, GrapheOriente *graph) : QSvgWidget(parent)
 {
     graphe=graph;
     lienSVG=QString("imageGraph.svg");
@@ -18,7 +18,7 @@ ImplemGraphviz::ImplemGraphviz(QWidget *parent, GrapheOriente *graph) : QSvgWidg
     G=agopen("G",Agdirected,0);
 
     //drawGraph();
-}
+}*/
 
 void ImplemGraphviz::creerListeNodes(Graphe* graphe)
 {

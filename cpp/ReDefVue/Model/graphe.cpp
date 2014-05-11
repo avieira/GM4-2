@@ -48,28 +48,28 @@ void Graphe::ajouterArc(Arete* arc)
 
 vector<Sommet*>  Graphe::obtenirListeAdj(Sommet * s)
 {
-    vector<Sommet *> lAdj = vector<Sommet*>();
-    for(int i=0;i<listeArcs.size();i++)
-    {
-        if((listeArcs[i]->getDepart()->getId()) == (s->getId()) )
-            lAdj.push_back(listeArcs[i]->getArrivee());
-        else if((listeArcs[i]->getArrivee()->getId()) == (s->getId()) )
-            lAdj.push_back(listeArcs[i]->getDepart());
-    }
+	vector<Sommet *> lAdj = vector<Sommet*>();
+	for(int i=0;i<listeArcs.size();i++)
+	{
+		if((listeArcs[i]->getDepart()->getId()) == (s->getId()) )
+			lAdj.push_back(listeArcs[i]->getArrivee());
+		else if((listeArcs[i]->getArrivee()->getId()) == (s->getId()) )
+			lAdj.push_back(listeArcs[i]->getDepart());
+	}
 
-    return lAdj;
+	return lAdj;
 }
 
 void Graphe::supprSommet(Sommet* som)
 {
-    vector<Sommet*>::iterator it=getListeSommets().begin();
-    while(*it!=som)
-        it++;
+	vector<Sommet*>::iterator it=getListeSommets().begin();
+	while(*it!=som)
+		it++;
 
-    vector<Sommet*>::iterator itSuiv=it+1;
+	vector<Sommet*>::iterator itSuiv=it+1;
     delete *it;
     getListeSommets().erase(it);
-
+	
     //On reaffecte les id suivants
     int nvId;
     do

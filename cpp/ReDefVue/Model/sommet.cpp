@@ -8,7 +8,7 @@ Sommet::Sommet(bool m)
     //Les id doivent impérativement commencer à 0 !!
     id=nombreSommets;
     marque=m;
-
+    
     nombreSommets++;
 }
 

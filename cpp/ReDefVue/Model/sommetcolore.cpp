@@ -68,9 +68,9 @@ vector<string> SommetColore::getTableCouleur()
 string SommetColore::getCouleurDansTable(int ind)
 {
     if(ind<tableCouleur.size())
-    return tableCouleur[ind];
+	return tableCouleur[ind];
     else
-    return "#FFFFFF";
+	return "#FFFFFF";
 }
 
 void SommetColore::setCouleur(string codeRGB)

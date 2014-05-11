@@ -20,11 +20,12 @@ SOURCES += main.cpp\
     Vue/xmltree.cpp \
     Vue/messagehandler.cpp \
     Model/sommetcolore.cpp \
-    Model/sommetvalue.cpp \
     Model/graphe.cpp \
-    Model/grapheoriente.cpp \
     Model/graphecolore.cpp \
-    Vue/implemgraphviz.cpp
+    Vue/implemgraphviz.cpp \
+    AccesDonnees/importexport.cpp \
+    AccesDonnees/documentxml.cpp \
+    Vue/interfacegraph.cpp
 
 HEADERS  += Vue/fenetre.h \
     Model/sommet.h \
@@ -32,11 +33,12 @@ HEADERS  += Vue/fenetre.h \
     Vue/xmltree.h \
     Vue/messagehandler.h \
     Model/sommetcolore.h \
-    Model/sommetvalue.h \
     Model/graphe.h \
-    Model/grapheoriente.h \
     Model/graphecolore.h \
-    Vue/implemgraphviz.h
+    Vue/implemgraphviz.h \
+    AccesDonnees/importexport.h \
+    AccesDonnees/documentxml.h \
+    Vue/interfacegraph.h
 
 FORMS    += Vue/fenetre.ui
 

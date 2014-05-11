@@ -7,8 +7,8 @@
   * \bug to define
   * \warning to define
   *
-  * Cette classe se charge de dessiner le graphe en mémoire et de l'afficher dans l'interface graphique. Chaque mise à jour du modèle entraine une mise à jour de la vue. 
-  * Seul le contructeur est ici accessible. 
+  * Cette classe se charge de dessiner le graphe en mémoire et de l'afficher dans l'interface graphique. Chaque mise à jour du modèle entraine une mise à jour de la vue.
+  * Seul le contructeur est ici accessible.
   */
 
 
@@ -19,13 +19,14 @@
 #include<QHash>
 #include <QSvgWidget>
 #include<vector>
+#include <fstream>
 
 #include "graphviz/gvc.h"
 
 #include"Model/graphe.h"
 //#include"Model/grapheoriente.h"
 #include"Model/graphecolore.h"
-
+#include"interfacegraph.h"
 
 class ImplemGraphviz : public QSvgWidget
 {
@@ -37,15 +38,7 @@ public:
  * \param parent, pointeur sur widget défini par Qt, peut être NULL.
  * \param graph, pointeur sur un Graphe.
  */
-    ImplemGraphviz(QWidget *parent = 0, Graphe *graphe=new Graphe());
-/*
- * \fn ImplemGraphviz(QWidget *parent = 0, GrapheOriente *graphe=new GrapheOriente())
- * \brief Constructeur de classe pour graphe orienté
- *
- * \param parent, pointeur sur widget défini par Qt, peut être NULL.
- * \param graph, pointeur sur une instance de GrapheOriente.
- */
-//    ImplemGraphviz(QWidget *parent = 0, GrapheOriente *graphe=new GrapheOriente());
+    ImplemGraphviz(InterfaceGraph* graph, QWidget *parent = 0);
 /**
  * \fn drawGraph()
  * \brief Dessine le graph et actualise la vue avec celui-ci.
@@ -53,15 +46,15 @@ public:
     void drawGraph();
 
 private:
-    Graphe* graphe;
     QString lienSVG;
     Agraph_t* G;
     QHash<Sommet*, Agnode_t*> tableNodes;
     QHash<Arete*, Agedge_t*> tableEdges;
+    InterfaceGraph* graphe;
 
     void creerListeNodes(Graphe *graphe);
     void creerListeNodes(GrapheColore *graphe);
-    void creerListeEdges();
+    void creerListeEdges(Graphe* graphe);
 };
 
 #endif // ImplemGraphviz_H

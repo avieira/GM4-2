@@ -9,9 +9,6 @@
 
 
 
-
-
-
 	<!--                                                      -->
 		<!-- Définir les types couleur, valeur, forme-->
 	<!--                                                      -->
@@ -47,6 +44,7 @@
 			<xs:element name="Sommet">
 			<xs:complexType>
 				<xs:sequence maxOccurs="1">
+			                <xs:element name="Nom" type="xs:string" minOccurs="0"/>
 			                <xs:element ref="Couleur" minOccurs="0"/>
 			                <xs:element ref="Valeur" minOccurs="0"/>
 			                <xs:element name="Forme" type="form" minOccurs="0"/>

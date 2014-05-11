@@ -1,9 +1,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[francais]{babel}
+\usepackage{geometry}
 \usepackage{amsmath}
 \usepackage{graphicx}
-\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{pdfpages} 
 \usepackage{listings}
 \usepackage{graphicx}
@@ -14,9 +15,10 @@
 \usepackage{moreverb}
 \usepackage{titletoc}
 \usepackage{lmodern}
-\usepackage{cubeDrawing}
+\usepackage{tikz}
+\usetikzlibrary{shapes, positioning}
+\usepackage{varwidth}
 \usepackage{lipsum}
-\usepackage{bbold}
 
 \definecolor{oxf}{RGB}{0, 33, 71}
 \definecolor{or}{RGB}{239, 155, 15}
@@ -42,9 +44,10 @@
             {\contentslabel[\thecontentslabel]{25pt}}{}{\dotfill\contentspage}[]                            
 \titlecontents*{subsubsection}[60pt]% 
    {\filright\normalfont\sffamily\footnotesize}{}{}{}[~{–}\ ][] 
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{1}
 
-\makeatletter\@addtoreset{section}{part}
+\makeatletter
+	\@addtoreset{section}{part}
 \makeatother
 
 
@@ -108,6 +111,7 @@ xshift=2cm] at (midpoint){\Large{\textsf{Institut National des Sciences Appliqu�
 \par
 \vspace{0.5cm}
 \begin{center}
+\Large Projet semestriel\\
 \Large \@author
 \par
 \end{center}
@@ -129,12 +133,15 @@ xshift=2cm] at (midpoint){\Large{\textsf{Institut National des Sciences Appliqu�
 \def\blurb#1{\def\@blurb{#1}}
 \makeatother
 
-
-\date{\today}
-\title{Résolution numérique des équations de Saint-Venant par la méthode des éléments finis}
 \author{Gabrielle Collette, Alexandre Vieira \& Conrad Hillairet}
+\title{Résolution numérique des équations de Saint-Venant par la méthode des éléments finis}
+\date{\today}
 \vfill
 \blurb{
 \textbf{Rapport}\\[1em]
 Professeur référent : Christian Goût\\
 }
+
+
+
+

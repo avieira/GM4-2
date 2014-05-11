@@ -21,7 +21,7 @@
 #include <QTreeWidget>
 
 #include "Model/sommetcolore.h"
-#include "Model/sommetvalue.h"
+//#include "Model/sommetvalue.h"
 #include "Model/graphe.h"
 
 
@@ -40,20 +40,6 @@ public:
     XMLTree(QWidget *parent = 0, Graphe *graph=new Graphe());
 
 /**
- * \fn bool ouvrir(QIODevice *device);
- * \brief Ouverture d'un fichier pour construire le graphe et l'arbre
- *
- * \param device, pointeur sur fichier devant être lu
- */
-    bool ouvrir(QIODevice *device);
-/**
- * \fn bool enregistrer(QIODevice *device)
- * \brief Enregistrement du graphe et de l'arbre sous forme de document XML
- *
- * \param device, pointeur sur fichier dans lequel sera enregistré le document
- */
-    bool enregistrer(QIODevice *device);
-/**
  * \fn void ajouterSommet(Sommet*)
  * \brief Ajout du sommet dans le document ainsi que dans l'arbre
  *
@@ -67,13 +53,13 @@ public:
  * \param Pointeur vers un sommet
  */
     void ajouterSommet(SommetColore*);
-/**
+/*
  * \fn void ajouterSommet(SommetColore*)
  * \brief Ajout du sommet dans le document ainsi que dans l'arbre (Méthode surchargée pour coller avecun sommet valué)
  *
  * \param Pointeur vers un sommet
  */
-    void ajouterSommet(SommetValue*);
+    //void ajouterSommet(SommetValue*);
 /*
  * \fn void ajouterSommet(SommetValueColore*)
  * \brief Ajout du sommet dans le document ainsi que dans l'arbre (Méthode surchargée pour coller avecun sommet coloré et valué)
@@ -93,20 +79,11 @@ private slots:
     void updateDomElement(QTreeWidgetItem *item, int column);
 
 private:
-    void parseGraphe(const QDomElement &element,
-                            QTreeWidgetItem *parentItem = 0);
-    void parseElement(const QDomElement &element,
-                            QTreeWidgetItem *parentItem,
-                            Sommet* sommet);
-    void parseElement(const QDomElement &element,
-                            QTreeWidgetItem *parentItem,
-                            Arete* arc);
     QTreeWidgetItem *createItem(const QDomElement &element,
                                 QTreeWidgetItem *parentItem = 0);
-    QDomDocument domDocument;
     QHash<QTreeWidgetItem *, QDomElement> domElementForItem;
 
-    Graphe* graphe;
+    Graphe* graphe; //Vraiment utile ?
 };
 
 #endif // XMLTREE_H

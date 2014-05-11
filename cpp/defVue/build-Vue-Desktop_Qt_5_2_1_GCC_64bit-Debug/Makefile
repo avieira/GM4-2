@@ -15,10 +15,10 @@ CXX           = g++
 DEFINES       = -DWITH_CGRAPH -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -DQT_SVG_LIB -DQT_XMLPATTERNS_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DQT_XML_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIE $(DEFINES)
 CXXFLAGS      = -pipe -g -Wall -W -D_REENTRANT -fPIE $(DEFINES)
-INCPATH       = -I/home/alexandre/Qt/5.2.1/gcc_64/mkspecs/linux-g++ -I../codes -I/usr/include/graphviz -I/usr/include -I/home/alexandre/Qt/5.2.1/gcc_64/include -I/home/alexandre/Qt/5.2.1/gcc_64/include/QtSvg -I/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns -I/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets -I/home/alexandre/Qt/5.2.1/gcc_64/include/QtNetwork -I/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml -I/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui -I/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore -I. -I. -I.
+INCPATH       = -I/home/alexandre/Qt/5.2.1/gcc_64/mkspecs/linux-g++ -I../codes -I./graphviz/ -I/home/alexandre/Qt/5.2.1/gcc_64/include -I/home/alexandre/Qt/5.2.1/gcc_64/include/QtSvg -I/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns -I/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets -I/home/alexandre/Qt/5.2.1/gcc_64/include/QtNetwork -I/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml -I/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui -I/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore -I. -I. -I.
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/alexandre/Qt/5.2.1/gcc_64 -Wl,-rpath,/home/alexandre/Qt/5.2.1/gcc_64/lib
-LIBS          = $(SUBLIBS) -lgraph -L/media/Data/Documents/Cours/GM4-2/cpp/defVue/codes/../../../../../../../../usr/lib/ -lcgraph -lgvc -lcdt -L/home/alexandre/Qt/5.2.1/gcc_64/lib -lQt5Svg -lQt5XmlPatterns -lQt5Widgets -lQt5Network -lQt5Xml -lQt5Gui -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -lgraph -lcgraph -lgvc -lcdt -L/home/alexandre/Qt/5.2.1/gcc_64/lib -lQt5Svg -lQt5XmlPatterns -lQt5Widgets -lQt5Network -lQt5Xml -lQt5Gui -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 QMAKE         = /home/alexandre/Qt/5.2.1/gcc_64/bin/qmake
@@ -52,11 +52,12 @@ SOURCES       = ../codes/main.cpp \
 		../codes/Vue/xmltree.cpp \
 		../codes/Vue/messagehandler.cpp \
 		../codes/Model/sommetcolore.cpp \
-		../codes/Model/sommetvalue.cpp \
 		../codes/Model/graphe.cpp \
-		../codes/Model/grapheoriente.cpp \
 		../codes/Model/graphecolore.cpp \
-		../codes/Vue/implemgraphviz.cpp moc_fenetre.cpp \
+		../codes/Vue/implemgraphviz.cpp \
+		../codes/AccesDonnees/importexport.cpp \
+		../codes/AccesDonnees/documentxml.cpp \
+		../codes/Vue/interfacegraph.cpp moc_fenetre.cpp \
 		moc_xmltree.cpp
 OBJECTS       = main.o \
 		fenetre.o \
@@ -65,11 +66,12 @@ OBJECTS       = main.o \
 		xmltree.o \
 		messagehandler.o \
 		sommetcolore.o \
-		sommetvalue.o \
 		graphe.o \
-		grapheoriente.o \
 		graphecolore.o \
 		implemgraphviz.o \
+		importexport.o \
+		documentxml.o \
+		interfacegraph.o \
 		moc_fenetre.o \
 		moc_xmltree.o
 DIST          = /home/alexandre/Qt/5.2.1/gcc_64/mkspecs/features/spec_pre.prf \
@@ -443,7 +445,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/Vue1.0.0 || mkdir -p .tmp/Vue1.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/Vue1.0.0/ && $(COPY_FILE) --parents ../codes/Vue/fenetre.h ../codes/Model/sommet.h ../codes/Model/arete.h ../codes/Vue/xmltree.h ../codes/Vue/messagehandler.h ../codes/Model/sommetcolore.h ../codes/Model/sommetvalue.h ../codes/Model/graphe.h ../codes/Model/grapheoriente.h ../codes/Model/graphecolore.h ../codes/Vue/implemgraphviz.h .tmp/Vue1.0.0/ && $(COPY_FILE) --parents ../codes/main.cpp ../codes/Vue/fenetre.cpp ../codes/Model/sommet.cpp ../codes/Model/arete.cpp ../codes/Vue/xmltree.cpp ../codes/Vue/messagehandler.cpp ../codes/Model/sommetcolore.cpp ../codes/Model/sommetvalue.cpp ../codes/Model/graphe.cpp ../codes/Model/grapheoriente.cpp ../codes/Model/graphecolore.cpp ../codes/Vue/implemgraphviz.cpp .tmp/Vue1.0.0/ && $(COPY_FILE) --parents ../codes/Vue/fenetre.ui .tmp/Vue1.0.0/ && (cd `dirname .tmp/Vue1.0.0` && $(TAR) Vue1.0.0.tar Vue1.0.0 && $(COMPRESS) Vue1.0.0.tar) && $(MOVE) `dirname .tmp/Vue1.0.0`/Vue1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/Vue1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/Vue1.0.0/ && $(COPY_FILE) --parents ../codes/Vue/fenetre.h ../codes/Model/sommet.h ../codes/Model/arete.h ../codes/Vue/xmltree.h ../codes/Vue/messagehandler.h ../codes/Model/sommetcolore.h ../codes/Model/graphe.h ../codes/Model/graphecolore.h ../codes/Vue/implemgraphviz.h ../codes/AccesDonnees/importexport.h ../codes/AccesDonnees/documentxml.h ../codes/Vue/interfacegraph.h .tmp/Vue1.0.0/ && $(COPY_FILE) --parents ../codes/main.cpp ../codes/Vue/fenetre.cpp ../codes/Model/sommet.cpp ../codes/Model/arete.cpp ../codes/Vue/xmltree.cpp ../codes/Vue/messagehandler.cpp ../codes/Model/sommetcolore.cpp ../codes/Model/graphe.cpp ../codes/Model/graphecolore.cpp ../codes/Vue/implemgraphviz.cpp ../codes/AccesDonnees/importexport.cpp ../codes/AccesDonnees/documentxml.cpp ../codes/Vue/interfacegraph.cpp .tmp/Vue1.0.0/ && $(COPY_FILE) --parents ../codes/Vue/fenetre.ui .tmp/Vue1.0.0/ && (cd `dirname .tmp/Vue1.0.0` && $(TAR) Vue1.0.0.tar Vue1.0.0 && $(COMPRESS) Vue1.0.0.tar) && $(MOVE) `dirname .tmp/Vue1.0.0`/Vue1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/Vue1.0.0
 
 
 clean:compiler_clean 
@@ -519,17 +521,10 @@ moc_fenetre.cpp: /home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qbytearray.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qrefcount.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qarraydata.h \
-		/usr/include/string.h \
-		/usr/include/features.h \
-		/usr/include/stdc-predef.h \
-		/usr/include/xlocale.h \
-		/usr/include/stdlib.h \
-		/usr/include/alloca.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstringbuilder.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlist.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qalgorithms.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qiterator.h \
-		/usr/include/limits.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcoreevent.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qscopedpointer.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmetatype.h \
@@ -577,15 +572,6 @@ moc_fenetre.cpp: /home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qdebug.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qtextstream.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlocale.h \
-		/usr/include/stdio.h \
-		/usr/include/libio.h \
-		/usr/include/_G_config.h \
-		/usr/include/wchar.h \
-		/usr/include/wctype.h \
-		/usr/include/endian.h \
-		/usr/include/gconv.h \
-		/usr/include/getopt.h \
-		/usr/include/ctype.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qset.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcontiguouscache.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qurl.h \
@@ -597,6 +583,13 @@ moc_fenetre.cpp: /home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qicon.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QTabWidget \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QLineEdit \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qlineedit.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qframe.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qtextcursor.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qtextformat.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qpen.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qtextoption.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QPushButton \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qpushbutton.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -612,12 +605,63 @@ moc_fenetre.cpp: /home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qstyle.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtabbar.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qrubberband.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qframe.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../codes/Model/sommetcolore.h \
-		../codes/Model/sommet.h \
-		../codes/Model/graphe.h \
-		../codes/Model/arete.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QMessageBox \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qmessagebox.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qdialog.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/QXmlSchema \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/qxmlschema.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QSharedDataPointer \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QUrl \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/QXmlNamePool \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/qxmlnamepool.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QSharedData \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QString \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/qtxmlpatternsglobal.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/QXmlSchemaValidator \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/qxmlschemavalidator.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QFile \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QFileDialog \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qfiledialog.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qdir.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qfileinfo.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QDir \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QColorDialog \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qcolordialog.h \
+		ui_fenetre.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QVariant \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QAction \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qaction.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qactiongroup.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QApplication \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qapplication.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qeventloop.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qguiapplication.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qinputmethod.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QButtonGroup \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QFrame \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QHBoxLayout \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qboxlayout.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qlayout.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qgridlayout.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QHeaderView \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qheaderview.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QMenu \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qmenu.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QMenuBar \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qmenubar.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QStatusBar \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qstatusbar.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QToolBar \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtoolbar.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QWidget \
 		../codes/Vue/xmltree.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/QDomDocument \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/qdom.h \
@@ -627,11 +671,35 @@ moc_fenetre.cpp: /home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QTreeWidget \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtreewidget.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtreeview.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractitemview.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qitemselectionmodel.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtreewidgetitemiterator.h \
-		../codes/Model/sommetvalue.h \
+		../codes/Model/sommetcolore.h \
+		../codes/Model/sommet.h \
+		../codes/Model/graphe.h \
+		../codes/Model/arete.h \
+		../codes/AccesDonnees/documentxml.h \
+		../codes/Vue/messagehandler.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/QAbstractMessageHandler \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/qabstractmessagehandler.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/QSourceLocation \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/qsourcelocation.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QMetaType \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QObject \
+		../codes/AccesDonnees/importexport.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QIODevice \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QTextStream \
+		../codes/Model/graphecolore.h \
+		../codes/Model/Solution.h \
+		../codes/Vue/implemgraphviz.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QGraphicsView \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qgraphicsview.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qpainter.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qscrollarea.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtSvg/QSvgWidget \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtSvg/qsvgwidget.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtSvg/qtsvgglobal.h \
+		../codes/Vue/interfacegraph.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QStringList \
 		../codes/Vue/fenetre.h
 	/home/alexandre/Qt/5.2.1/gcc_64/bin/moc $(DEFINES) $(INCPATH) ../codes/Vue/fenetre.h -o moc_fenetre.cpp
 
@@ -680,19 +748,12 @@ moc_xmltree.cpp: /home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/QDomDocument \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qrefcount.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qnamespace.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qarraydata.h \
-		/usr/include/string.h \
-		/usr/include/features.h \
-		/usr/include/stdc-predef.h \
-		/usr/include/xlocale.h \
-		/usr/include/stdlib.h \
-		/usr/include/alloca.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstringbuilder.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QHash \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qhash.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qiterator.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlist.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qalgorithms.h \
-		/usr/include/limits.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qpair.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/QIcon \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qicon.h \
@@ -753,15 +814,6 @@ moc_xmltree.cpp: /home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/QDomDocument \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qdebug.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qtextstream.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlocale.h \
-		/usr/include/stdio.h \
-		/usr/include/libio.h \
-		/usr/include/_G_config.h \
-		/usr/include/wchar.h \
-		/usr/include/wctype.h \
-		/usr/include/endian.h \
-		/usr/include/gconv.h \
-		/usr/include/getopt.h \
-		/usr/include/ctype.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qset.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcontiguouscache.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qurl.h \
@@ -786,7 +838,6 @@ moc_xmltree.cpp: /home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/QDomDocument \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtreewidgetitemiterator.h \
 		../codes/Model/sommetcolore.h \
 		../codes/Model/sommet.h \
-		../codes/Model/sommetvalue.h \
 		../codes/Model/graphe.h \
 		../codes/Model/arete.h \
 		../codes/Vue/xmltree.h
@@ -861,17 +912,10 @@ main.o: ../codes/main.cpp ../codes/Vue/fenetre.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qbytearray.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qrefcount.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qarraydata.h \
-		/usr/include/string.h \
-		/usr/include/features.h \
-		/usr/include/stdc-predef.h \
-		/usr/include/xlocale.h \
-		/usr/include/stdlib.h \
-		/usr/include/alloca.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstringbuilder.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlist.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qalgorithms.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qiterator.h \
-		/usr/include/limits.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcoreevent.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qscopedpointer.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmetatype.h \
@@ -919,15 +963,6 @@ main.o: ../codes/main.cpp ../codes/Vue/fenetre.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qdebug.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qtextstream.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlocale.h \
-		/usr/include/stdio.h \
-		/usr/include/libio.h \
-		/usr/include/_G_config.h \
-		/usr/include/wchar.h \
-		/usr/include/wctype.h \
-		/usr/include/endian.h \
-		/usr/include/gconv.h \
-		/usr/include/getopt.h \
-		/usr/include/ctype.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qset.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcontiguouscache.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qurl.h \
@@ -939,6 +974,13 @@ main.o: ../codes/main.cpp ../codes/Vue/fenetre.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qicon.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QTabWidget \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QLineEdit \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qlineedit.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qframe.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qtextcursor.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qtextformat.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qpen.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qtextoption.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QPushButton \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qpushbutton.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -954,12 +996,63 @@ main.o: ../codes/main.cpp ../codes/Vue/fenetre.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qstyle.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtabbar.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qrubberband.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qframe.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../codes/Model/sommetcolore.h \
-		../codes/Model/sommet.h \
-		../codes/Model/graphe.h \
-		../codes/Model/arete.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QMessageBox \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qmessagebox.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qdialog.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/QXmlSchema \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/qxmlschema.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QSharedDataPointer \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QUrl \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/QXmlNamePool \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/qxmlnamepool.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QSharedData \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QString \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/qtxmlpatternsglobal.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/QXmlSchemaValidator \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/qxmlschemavalidator.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QFile \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QFileDialog \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qfiledialog.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qdir.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qfileinfo.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QDir \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QColorDialog \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qcolordialog.h \
+		ui_fenetre.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QVariant \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QAction \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qaction.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qactiongroup.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QApplication \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qapplication.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qeventloop.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qguiapplication.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qinputmethod.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QButtonGroup \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QFrame \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QHBoxLayout \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qboxlayout.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qlayout.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qgridlayout.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QHeaderView \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qheaderview.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QMenu \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qmenu.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QMenuBar \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qmenubar.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QStatusBar \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qstatusbar.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QToolBar \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtoolbar.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QWidget \
 		../codes/Vue/xmltree.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/QDomDocument \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/qdom.h \
@@ -969,18 +1062,35 @@ main.o: ../codes/main.cpp ../codes/Vue/fenetre.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QTreeWidget \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtreewidget.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtreeview.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractitemview.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qitemselectionmodel.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtreewidgetitemiterator.h \
-		../codes/Model/sommetvalue.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QApplication \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qapplication.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcoreapplication.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qeventloop.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qguiapplication.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qinputmethod.h
+		../codes/Model/sommetcolore.h \
+		../codes/Model/sommet.h \
+		../codes/Model/graphe.h \
+		../codes/Model/arete.h \
+		../codes/AccesDonnees/documentxml.h \
+		../codes/Vue/messagehandler.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/QAbstractMessageHandler \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/qabstractmessagehandler.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/QSourceLocation \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/qsourcelocation.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QMetaType \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QObject \
+		../codes/AccesDonnees/importexport.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QIODevice \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QTextStream \
+		../codes/Model/graphecolore.h \
+		../codes/Model/Solution.h \
+		../codes/Vue/implemgraphviz.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QGraphicsView \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qgraphicsview.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qpainter.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qscrollarea.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtSvg/QSvgWidget \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtSvg/qsvgwidget.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtSvg/qtsvgglobal.h \
+		../codes/Vue/interfacegraph.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QStringList
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../codes/main.cpp
 
 fenetre.o: ../codes/Vue/fenetre.cpp /home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QtWidgets \
@@ -1033,17 +1143,10 @@ fenetre.o: ../codes/Vue/fenetre.cpp /home/alexandre/Qt/5.2.1/gcc_64/include/QtWi
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qbytearray.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qrefcount.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qarraydata.h \
-		/usr/include/string.h \
-		/usr/include/features.h \
-		/usr/include/stdc-predef.h \
-		/usr/include/xlocale.h \
-		/usr/include/stdlib.h \
-		/usr/include/alloca.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstringbuilder.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlist.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qalgorithms.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qiterator.h \
-		/usr/include/limits.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcoreevent.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qscopedpointer.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmetatype.h \
@@ -1068,15 +1171,6 @@ fenetre.o: ../codes/Vue/fenetre.cpp /home/alexandre/Qt/5.2.1/gcc_64/include/QtWi
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qiodevice.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlocale.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qshareddata.h \
-		/usr/include/stdio.h \
-		/usr/include/libio.h \
-		/usr/include/_G_config.h \
-		/usr/include/wchar.h \
-		/usr/include/wctype.h \
-		/usr/include/endian.h \
-		/usr/include/gconv.h \
-		/usr/include/getopt.h \
-		/usr/include/ctype.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qset.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcontiguouscache.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstringlist.h \
@@ -1086,7 +1180,6 @@ fenetre.o: ../codes/Vue/fenetre.cpp /home/alexandre/Qt/5.2.1/gcc_64/include/QtWi
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qsequentialanimationgroup.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qtextcodec.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qendian.h \
-		/usr/include/byteswap.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlibraryinfo.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qdatetime.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qsharedpointer.h \
@@ -1130,7 +1223,6 @@ fenetre.o: ../codes/Vue/fenetre.cpp /home/alexandre/Qt/5.2.1/gcc_64/include/QtWi
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qbasictimer.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcoreapplication.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmath.h \
-		/usr/include/math.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmetaobject.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmimedata.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qobjectcleanuphandler.h \
@@ -1246,11 +1338,6 @@ fenetre.o: ../codes/Vue/fenetre.cpp /home/alexandre/Qt/5.2.1/gcc_64/include/QtWi
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qopengl.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qt_windows.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qopengles2ext.h \
-		/usr/include/GL/gl.h \
-		/usr/include/GL/gl_mangle.h \
-		/usr/include/GL/glext.h \
-		/usr/include/inttypes.h \
-		/usr/include/stdint.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qopenglext.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qopenglversionfunctions.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qpalette.h \
@@ -1460,25 +1547,18 @@ fenetre.o: ../codes/Vue/fenetre.cpp /home/alexandre/Qt/5.2.1/gcc_64/include/QtWi
 		../codes/Vue/fenetre.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QTabWidget \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QLineEdit \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QComboBox \
-		../codes/Model/sommetcolore.h \
-		../codes/Model/sommet.h \
-		../codes/Model/graphe.h \
-		../codes/Model/arete.h \
-		../codes/Vue/xmltree.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/QDomDocument \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/qdom.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/qtxmlglobal.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QHash \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/QIcon \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QTreeWidget \
-		../codes/Model/sommetvalue.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QMessageBox \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QFile \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QFileDialog \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QDir \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QColorDialog \
 		ui_fenetre.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QAction \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QApplication \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QButtonGroup \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QFrame \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QGraphicsView \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QHBoxLayout \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QHeaderView \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QMenu \
@@ -1486,7 +1566,30 @@ fenetre.o: ../codes/Vue/fenetre.cpp /home/alexandre/Qt/5.2.1/gcc_64/include/QtWi
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QStatusBar \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QToolBar \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QWidget \
-		../codes/Vue/messagehandler.h
+		../codes/Vue/xmltree.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/QDomDocument \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/qdom.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/qtxmlglobal.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QHash \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/QIcon \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QTreeWidget \
+		../codes/Model/sommetcolore.h \
+		../codes/Model/sommet.h \
+		../codes/Model/graphe.h \
+		../codes/Model/arete.h \
+		../codes/AccesDonnees/documentxml.h \
+		../codes/Vue/messagehandler.h \
+		../codes/AccesDonnees/importexport.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QIODevice \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QTextStream \
+		../codes/Model/graphecolore.h \
+		../codes/Model/Solution.h \
+		../codes/Vue/implemgraphviz.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QGraphicsView \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtSvg/QSvgWidget \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtSvg/qsvgwidget.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtSvg/qtsvgglobal.h \
+		../codes/Vue/interfacegraph.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fenetre.o ../codes/Vue/fenetre.cpp
 
 sommet.o: ../codes/Model/sommet.cpp ../codes/Model/sommet.h \
@@ -1543,19 +1646,12 @@ xmltree.o: ../codes/Vue/xmltree.cpp ../codes/Vue/xmltree.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qrefcount.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qnamespace.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qarraydata.h \
-		/usr/include/string.h \
-		/usr/include/features.h \
-		/usr/include/stdc-predef.h \
-		/usr/include/xlocale.h \
-		/usr/include/stdlib.h \
-		/usr/include/alloca.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstringbuilder.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QHash \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qhash.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qiterator.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlist.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qalgorithms.h \
-		/usr/include/limits.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qpair.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/QIcon \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qicon.h \
@@ -1616,15 +1712,6 @@ xmltree.o: ../codes/Vue/xmltree.cpp ../codes/Vue/xmltree.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qdebug.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qtextstream.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlocale.h \
-		/usr/include/stdio.h \
-		/usr/include/libio.h \
-		/usr/include/_G_config.h \
-		/usr/include/wchar.h \
-		/usr/include/wctype.h \
-		/usr/include/endian.h \
-		/usr/include/gconv.h \
-		/usr/include/getopt.h \
-		/usr/include/ctype.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qset.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcontiguouscache.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qurl.h \
@@ -1649,7 +1736,6 @@ xmltree.o: ../codes/Vue/xmltree.cpp ../codes/Vue/xmltree.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtreewidgetitemiterator.h \
 		../codes/Model/sommetcolore.h \
 		../codes/Model/sommet.h \
-		../codes/Model/sommetvalue.h \
 		../codes/Model/graphe.h \
 		../codes/Model/arete.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QtWidgets \
@@ -1666,7 +1752,6 @@ xmltree.o: ../codes/Vue/xmltree.cpp ../codes/Vue/xmltree.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qsequentialanimationgroup.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qtextcodec.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qendian.h \
-		/usr/include/byteswap.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlibraryinfo.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qdatetime.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qnumeric.h \
@@ -1702,7 +1787,6 @@ xmltree.o: ../codes/Vue/xmltree.cpp ../codes/Vue/xmltree.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qbasictimer.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcoreapplication.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmath.h \
-		/usr/include/math.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmetaobject.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmimedata.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qobjectcleanuphandler.h \
@@ -1793,11 +1877,6 @@ xmltree.o: ../codes/Vue/xmltree.cpp ../codes/Vue/xmltree.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qopengl.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qt_windows.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qopengles2ext.h \
-		/usr/include/GL/gl.h \
-		/usr/include/GL/gl_mangle.h \
-		/usr/include/GL/glext.h \
-		/usr/include/inttypes.h \
-		/usr/include/stdint.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qopenglext.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qopenglversionfunctions.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qscreen.h \
@@ -2015,12 +2094,6 @@ messagehandler.o: ../codes/Vue/messagehandler.cpp ../codes/Vue/messagehandler.h 
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qrefcount.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qnamespace.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qarraydata.h \
-		/usr/include/string.h \
-		/usr/include/features.h \
-		/usr/include/stdc-predef.h \
-		/usr/include/xlocale.h \
-		/usr/include/stdlib.h \
-		/usr/include/alloca.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstringbuilder.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/QAbstractMessageHandler \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXmlPatterns/qabstractmessagehandler.h \
@@ -2038,7 +2111,6 @@ messagehandler.o: ../codes/Vue/messagehandler.cpp ../codes/Vue/messagehandler.h 
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qurl.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlist.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qiterator.h \
-		/usr/include/limits.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qpair.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qurlquery.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qshareddata.h \
@@ -2059,26 +2131,17 @@ sommetcolore.o: ../codes/Model/sommetcolore.cpp ../codes/Model/sommetcolore.h \
 		../codes/Model/sommet.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sommetcolore.o ../codes/Model/sommetcolore.cpp
 
-sommetvalue.o: ../codes/Model/sommetvalue.cpp ../codes/Model/sommetvalue.h \
-		../codes/Model/sommet.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sommetvalue.o ../codes/Model/sommetvalue.cpp
-
 graphe.o: ../codes/Model/graphe.cpp ../codes/Model/graphe.h \
 		../codes/Model/arete.h \
 		../codes/Model/sommet.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graphe.o ../codes/Model/graphe.cpp
 
-grapheoriente.o: ../codes/Model/grapheoriente.cpp ../codes/Model/grapheoriente.h \
-		../codes/Model/graphe.h \
-		../codes/Model/arete.h \
-		../codes/Model/sommet.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o grapheoriente.o ../codes/Model/grapheoriente.cpp
-
 graphecolore.o: ../codes/Model/graphecolore.cpp ../codes/Model/graphecolore.h \
 		../codes/Model/graphe.h \
 		../codes/Model/arete.h \
 		../codes/Model/sommet.h \
-		../codes/Model/sommetcolore.h
+		../codes/Model/sommetcolore.h \
+		../codes/Model/Solution.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graphecolore.o ../codes/Model/graphecolore.cpp
 
 implemgraphviz.o: ../codes/Vue/implemgraphviz.cpp ../codes/Vue/implemgraphviz.h \
@@ -2125,12 +2188,6 @@ implemgraphviz.o: ../codes/Vue/implemgraphviz.cpp ../codes/Vue/implemgraphviz.h 
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qrefcount.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qnamespace.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qarraydata.h \
-		/usr/include/string.h \
-		/usr/include/features.h \
-		/usr/include/stdc-predef.h \
-		/usr/include/xlocale.h \
-		/usr/include/stdlib.h \
-		/usr/include/alloca.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstring.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qchar.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstringbuilder.h \
@@ -2157,7 +2214,6 @@ implemgraphviz.o: ../codes/Vue/implemgraphviz.cpp ../codes/Vue/implemgraphviz.h 
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qobject.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlist.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qiterator.h \
-		/usr/include/limits.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcoreevent.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qobject_impl.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qpair.h \
@@ -2196,15 +2252,6 @@ implemgraphviz.o: ../codes/Vue/implemgraphviz.cpp ../codes/Vue/implemgraphviz.h 
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qdebug.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qtextstream.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlocale.h \
-		/usr/include/stdio.h \
-		/usr/include/libio.h \
-		/usr/include/_G_config.h \
-		/usr/include/wchar.h \
-		/usr/include/wctype.h \
-		/usr/include/endian.h \
-		/usr/include/gconv.h \
-		/usr/include/getopt.h \
-		/usr/include/ctype.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qset.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcontiguouscache.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qurl.h \
@@ -2214,35 +2261,381 @@ implemgraphviz.o: ../codes/Vue/implemgraphviz.cpp ../codes/Vue/implemgraphviz.h 
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qvector2d.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qtouchdevice.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qgraphicsscene.h \
-		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QUrl \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QHash \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtSvg/QSvgWidget \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtSvg/qsvgwidget.h \
 		/home/alexandre/Qt/5.2.1/gcc_64/include/QtSvg/qtsvgglobal.h \
-		/usr/include/graphviz/gvc.h \
-		/usr/include/graphviz/types.h \
-		/usr/include/assert.h \
-		/usr/include/signal.h \
-		/usr/include/time.h \
-		/usr/include/graphviz/geom.h \
-		/usr/include/graphviz/arith.h \
-		/usr/include/values.h \
-		/usr/include/math.h \
-		/usr/include/graphviz/gvcext.h \
-		/usr/include/graphviz/pathgeom.h \
-		/usr/include/graphviz/textpara.h \
-		/usr/include/cgraph.h \
-		/usr/include/cdt.h \
-		/usr/include/graphviz/usershape.h \
-		/usr/include/graphviz/graph.h \
-		/usr/include/graphviz/gvplugin.h \
 		../codes/Model/graphe.h \
 		../codes/Model/arete.h \
 		../codes/Model/sommet.h \
-		../codes/Model/grapheoriente.h \
 		../codes/Model/graphecolore.h \
-		../codes/Model/sommetcolore.h
+		../codes/Model/sommetcolore.h \
+		../codes/Model/Solution.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o implemgraphviz.o ../codes/Vue/implemgraphviz.cpp
+
+importexport.o: ../codes/AccesDonnees/importexport.cpp ../codes/AccesDonnees/importexport.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QIODevice \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qiodevice.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qglobal.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qconfig.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qfeatures.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_integrity.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qoldbasicatomic.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_vxworks.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_power.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_alpha.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_armv7.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_armv6.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_armv5.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_bfin.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_ia64.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_mips.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_s390.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_sh4a.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_sparc.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_x86.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_gcc.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_unix.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmutex.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlogging.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qflags.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qtypetraits.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qobject.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstring.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qchar.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlist.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qalgorithms.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qiterator.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcoreevent.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmetatype.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qisenum.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qobject_impl.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QTreeWidget \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtreewidget.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtreeview.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qframe.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qwidget.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmargins.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qrect.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qsize.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qpoint.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qpalette.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qcolor.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qrgb.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstringlist.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qdatastream.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qpair.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qregexp.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qbrush.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qvector.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qmatrix.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qpolygon.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qregion.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qline.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qtransform.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qpainterpath.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qimage.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qpixmap.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qshareddata.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qhash.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qfont.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qfontinfo.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qcursor.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qkeysequence.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qevent.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qvariant.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmap.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qdebug.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qtextstream.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlocale.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qset.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qurl.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qurlquery.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qfile.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qfiledevice.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qvector2d.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qstyleoption.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qvalidator.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qregularexpression.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qicon.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qslider.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractslider.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qstyle.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtabbar.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtreewidgetitemiterator.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/QDomDocument \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/qdom.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/qtxmlglobal.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QMessageBox \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qmessagebox.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qdialog.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QHash \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QTextStream \
+		../codes/Model/graphecolore.h \
+		../codes/Model/graphe.h \
+		../codes/Model/arete.h \
+		../codes/Model/sommet.h \
+		../codes/Model/sommetcolore.h \
+		../codes/Model/Solution.h \
+		../codes/Vue/xmltree.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/QIcon
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o importexport.o ../codes/AccesDonnees/importexport.cpp
+
+documentxml.o: ../codes/AccesDonnees/documentxml.cpp ../codes/AccesDonnees/documentxml.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/QDomDocument \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/qdom.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtXml/qtxmlglobal.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qglobal.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qconfig.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qfeatures.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_integrity.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qoldbasicatomic.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_vxworks.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_power.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_alpha.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_armv7.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_armv6.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_armv5.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_bfin.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_ia64.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_mips.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_s390.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_sh4a.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_sparc.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_x86.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_gcc.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_unix.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmutex.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlogging.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qflags.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qtypetraits.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstring.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qchar.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QHash \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qhash.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qiterator.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlist.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qalgorithms.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qpair.h \
+		../codes/Vue/xmltree.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/QIcon \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qicon.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qsize.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qpixmap.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qrect.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qpoint.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qcolor.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qrgb.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstringlist.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qdatastream.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qiodevice.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qobject.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcoreevent.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmetatype.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qisenum.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qobject_impl.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qregexp.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qshareddata.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qimage.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qtransform.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qmatrix.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qpolygon.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qvector.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qregion.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qline.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qpainterpath.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/QTreeWidget \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtreewidget.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtreeview.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qframe.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qwidget.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmargins.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qpalette.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qbrush.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qfont.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qfontinfo.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qcursor.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qkeysequence.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qevent.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qvariant.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmap.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qdebug.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qtextstream.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlocale.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qset.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qurl.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qurlquery.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qfile.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qfiledevice.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qvector2d.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qstyleoption.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtGui/qvalidator.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qregularexpression.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qslider.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qabstractslider.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qstyle.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtabbar.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtWidgets/qtreewidgetitemiterator.h \
+		../codes/Model/sommetcolore.h \
+		../codes/Model/sommet.h \
+		../codes/Model/graphe.h \
+		../codes/Model/arete.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o documentxml.o ../codes/AccesDonnees/documentxml.cpp
+
+interfacegraph.o: ../codes/Vue/interfacegraph.cpp ../codes/Vue/interfacegraph.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QString \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstring.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qchar.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qglobal.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qconfig.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qfeatures.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_integrity.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qoldbasicatomic.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_vxworks.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_power.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_alpha.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_armv7.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_armv6.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_armv5.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_bfin.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_ia64.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_mips.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_s390.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_sh4a.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_sparc.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_x86.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_gcc.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qatomic_unix.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmutex.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlogging.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qflags.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qtypetraits.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QStringList \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstringlist.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qalgorithms.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qdatastream.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qiodevice.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qobject.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qlist.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qiterator.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcoreevent.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qmetatype.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qisenum.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qobject_impl.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qpair.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qregexp.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/QHash \
+		/home/alexandre/Qt/5.2.1/gcc_64/include/QtCore/qhash.h \
+		../codes/Model/graphecolore.h \
+		../codes/Model/graphe.h \
+		../codes/Model/arete.h \
+		../codes/Model/sommet.h \
+		../codes/Model/sommetcolore.h \
+		../codes/Model/Solution.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o interfacegraph.o ../codes/Vue/interfacegraph.cpp
 
 moc_fenetre.o: moc_fenetre.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_fenetre.o moc_fenetre.cpp

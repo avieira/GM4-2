@@ -20,7 +20,7 @@ public:
     int getNombreSommets();
 
     virtual void* sommetToColore();
-
+    
     friend ostream& operator<<( ostream &flux, Sommet& som );
 
     //void setForme(string);
