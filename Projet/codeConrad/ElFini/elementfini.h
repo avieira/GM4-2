@@ -2,7 +2,7 @@
 #define ELEMENTFINI_H
 
 #include "geometrie.h"
-#include "restfctbase.h"
+#include "restfctbaser2p1.h"
 
 //Il est identifie par son numero, il possede un domaine, et pour chaque point du domaine est associee la restriction d'une fonction de base au domaine. Il y a aussi des conditions au bord
 class ElementFini
@@ -10,13 +10,12 @@ class ElementFini
 public:
     int	numero;
     Geometrie *domaine;
-    RestFctBase *listeFonctions; //VECTOR
-    //      		conditionsAuBord=[]
+    RestFctBaseR2P1 listeFonctions[3];
 
     ElementFini();
     Geometrie *getDomaine();
-    void setListeFonctions(RestFctBase *l);
-    RestFctBase *getListeFonctions();
+    void setListeFonctions(RestFctBaseR2P1 *l);
+    RestFctBaseR2P1 *getListeFonctions();
 };
 
 

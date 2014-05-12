@@ -3,12 +3,18 @@
 #include "maillager2.h"
 #include "triangle.h"
 #include "carre.h"
+#include "formbilinr2p1.h"
+#include "formlinr2p1.h"
+#include "probleme.h"
 
 using namespace std;
 
 int main()
 {
-    //TESTS SUR LES POINTS
+    //PRECISION DES FLOAT :
+    cout.precision(4);
+
+/*	//TESTS SUR LES POINTS
     cout<<"//TESTS SUR LES POINTS//\n";
     SommetR2 *p1 = new SommetR2(1,0,0);
     p1->afficher();
@@ -18,8 +24,17 @@ int main()
     SommetR2 *p2 = new SommetR2(2,1,0);
     SommetR2 *p3 = new SommetR2(3,0,1);
     Triangle *t1= new Triangle(p1,p2,p3);
-    cout<<t1->dimension<<"\n";
+    cout<<fixed<<t1->dimension<<"\n";
     t1->afficher();
+    cout<<"AIRE : "<<t1->aire()<<"\n";
+    p1->setAbscisse(0);
+    p1->setOrdonnee(0);
+    p2->setAbscisse(2);
+    p2->setOrdonnee(0);
+    p3->setAbscisse(2);
+    p3->setOrdonnee(2);
+    t1->afficher();
+    cout<<"AIRE : "<<t1->aire()<<"\n";
     p1=p3;
     t1->afficher();
     t1->setSommet(1,p3);
@@ -27,6 +42,7 @@ int main()
     p2->setAbscisse(23);
     p2->setOrdonnee(23);
     t1->afficher();
+
 
     //TESTS SUR LES ELEMENTS FINIS
     cout<<"//TESTS SUR LES ELEMENTS FINIS//\n";
@@ -60,11 +76,29 @@ int main()
     SommetR2 *s2 = new SommetR2(2,1,0);
     SommetR2 *s3 = new SommetR2(3,1,1);
     SommetR2 *s4 = new SommetR2(4,0,1);
-    Carre	 *c  = new Carre(100,s1,s2,s3,s4);
+    Carre	 *c  = new Carre(4,s1,s2,s3,s4);
     delete m1;
     m1 = c->mailler(1);
-    m1->afficher();
+//	m1->afficher();
+*/
+    //TESTS PROBLEME
+//	cout<<"//TESTS PROBLEME//\n";
+    FormBilinR2P1 *a = new FormBilinR2P1();
+    FormLinR2P1 *L = new FormLinR2P1();
+    SommetR2 *s5 = new SommetR2(1,0,0);
+    SommetR2 *s6 = new SommetR2(2,4,0);
+    SommetR2 *s7 = new SommetR2(3,4,4);
+    SommetR2 *s8 = new SommetR2(4,0,4);
+    Carre	 *c2  = new Carre(4.,s5,s6,s7,s8);
+    Probleme *p = new Probleme(c2,a,L);
+    p->genererMaillage(1.);
+//	p->afficherMaillage();
+    p->calculerMatrices();
+//	p->afficherMatrices();
+    p->resoudreProbleme();
+    p->calculerSolutionPoints();
+    p->afficherSolution();
 
     return 0;
-};
+}
 

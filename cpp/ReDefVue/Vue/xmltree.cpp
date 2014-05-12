@@ -5,7 +5,7 @@ XMLTree::XMLTree(InterfaceGraph* graph, QWidget *parent):QTreeWidget(parent)
     QStringList labels;
     labels << tr("Liste de sommets") << tr("Valeur de l'arguement");
 
-    header()->setSectionResizeMode(QHeaderView::Stretch);
+    //header()->setSectionResizeMode(QHeaderView::Stretch);
     setHeaderLabels(labels);
 
     graphe=graph;

@@ -2,6 +2,7 @@
 #define CARRE_H
 
 #include "maillager2.h"
+#include "fonctionsmath.h"
 
 class Carre : public GeometrieR2
         //p1:bas gauche,p2:bas droite,p3:haut droite,p4:haut gauche
