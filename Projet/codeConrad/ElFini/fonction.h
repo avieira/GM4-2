@@ -5,6 +5,7 @@ class Fonction
 {
 public:
     Fonction();
+    float calc();
 };
 
 #endif // FONCTION_H

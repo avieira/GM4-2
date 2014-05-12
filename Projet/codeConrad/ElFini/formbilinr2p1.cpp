@@ -3,20 +3,18 @@
 #include "triangle.h"
 
 
-formBilinR2P1::formBilinR2P1()
+FormBilinR2P1::FormBilinR2P1()
 {
 }
 
-float formBilinR2P1::calc(ElementFiniR2 e,int if1,int if2)
+float 	FormBilinR2P1::calc(ElementFiniR2 *e,int if1,int if2)
 {
-    /*RestFctBaseR2P1 f1,f2;
+    RestFctBaseR2P1 *l,f1,f2;
     Triangle *t;
-    SommetR2 *s1,*s2,*s3;
 
-    t=e->getDomaine();
-    s1=t->getSommet(1);
-    s2=t->getSommet(2);
-    s3=t->getSommet(3);*/
-
-    return 1.;
+    t=(Triangle *) e->getDomaine();
+    l=(RestFctBaseR2P1*) e->getListeFonctions();
+    f1=l[if1];
+    f2=l[if2];
+    return  (f1.getParam(1)*f2.getParam(1)+f1.getParam(2)*f2.getParam(2))*(t->aire());
 }

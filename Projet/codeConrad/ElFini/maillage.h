@@ -8,25 +8,23 @@
 class Maillage
 {
 public:
-    int nombrePointsMaillage,nombreElemFin;
-    //		Geometrie *domaine; //C est la geometrie qui genere le maillage?
-
+    int nombrePointsMaillage,nombrePointsMaillageBord,nombrePointsMaillageInterieur,nombreElemFin;
     Sommet **listePointsMaillage;
     ElementFini **listeElemFin;
-
+    Sommet **listePointsMaillageBord;
     //       	listeFonctionsBase=[]
-    //			Maillage(Geometrie *dom)
-    //			{
-    //				domaine=dom;
-    //			};
+
 
     Maillage();
+    ElementFini ** getListeElementsFinis();
     ElementFini *getElementFini(int i);
     Sommet *getPointMaillage(int i);
-    void setNombrePointsMaillage(int n);
-    void setNombreElemFin(int n);
-    void setListePointsMaillage(Sommet **l);
-    void setListeElemFin(ElementFini **l);
+    Sommet *getPointMaillageBord(int i);
+    void 	setNombrePointsMaillage(int n);
+    void 	setNombreElemFin(int n);
+    void 	setListePointsMaillage(Sommet **l);
+    void 	setListePointsMaillageBord(Sommet **l);
+    void 	setListeElemFin(ElementFini **l);
 };
 
 

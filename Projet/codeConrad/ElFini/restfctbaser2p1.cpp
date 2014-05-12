@@ -18,3 +18,8 @@ float RestFctBaseR2P1::calc(float x,float y)
 {
     return param[0]*x+param[1]*y+param[2];
 }
+
+void RestFctBaseR2P1::afficher()
+    {
+        cout<<"par1 : "<<param[0]<<" par2 : "<<param[1]<<" par3 : "<<param[2]<<";\n";
+    }

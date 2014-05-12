@@ -16,7 +16,10 @@ SOURCES += \
     maillager2.cpp \
     integer_part.c \
     carre.cpp \
-    main.cpp
+    main.cpp \
+    fonctionsmath.cpp \
+    formlinr2p1.cpp \
+    probleme.cpp
 
 HEADERS += \
     sommet.h \
@@ -34,4 +37,7 @@ HEADERS += \
     elementfinir2.h \
     maillage.h \
     maillager2.h \
-    carre.h
+    carre.h \
+    fonctionsmath.h \
+    formlinr2p1.h \
+    probleme.h
