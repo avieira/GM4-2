@@ -30,7 +30,7 @@ void ImplemGraphviz::creerListeNodes(Graphe* graph)
             forme="ellipse";
 
         char* shapeAttr=(char*)forme.c_str();
-        agset(agnod,shape,shapeAttr);
+        agsafeset(agnod,shape,shapeAttr,"");
 
         tableNodes.insert(som, agnod);
     }
@@ -56,16 +56,20 @@ void ImplemGraphviz::creerListeNodes(GrapheColore* graph)
             forme="ellipse";
 
         char* shapeAttr=(char*)forme.c_str();
-        agset(agnod,shape,shapeAttr);
+        agsafeset(agnod,shape,shapeAttr,"");
 
-        char* color=(char*)"color";
+        char* style=(char*)"style";
+        char* filled=(char*)"filled";
+        agsafeset(agnod,style,filled,"");
+
+        char* color=(char*)"fillcolor";
         string couleur;
-        if(som->getCouleur()!="")
+        if(som->getCouleur()!="#FFFFFF")
             couleur=som->getCouleur();
         else
             couleur="lightgrey";
         char* colorAttr=(char*)couleur.c_str();
-        agset(agnod,color,colorAttr);
+        agsafeset(agnod,color,colorAttr,"");
 
         tableNodes.insert(som, agnod);
     }

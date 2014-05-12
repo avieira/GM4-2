@@ -10,8 +10,8 @@ GrapheColore::~GrapheColore()
     for(i=0;i<listeSommets.size();i++)
         delete listeSommets[i];
 
-    for(i=0;i<listeArcs.size();i++)
-        delete listeArcs[i];
+    /*for(i=0;i<listeArcs.size();i++)
+        delete listeArcs[i];*/
 }
 
 void GrapheColore::setListeSommets(vector<SommetColore*> liste)
@@ -224,4 +224,10 @@ void GrapheColore::colorerH(int k)
 		nbIter++;
 	}
    */
+}
+
+ostream& operator<<( ostream &flux, GrapheColore& graph ){
+    flux<<"Sommets existant : "<<"\n";
+    for(int i=0;i<graph.getListeSommets().size();i++)
+        flux<<*(graph.getListeSommets().at(i));
 }

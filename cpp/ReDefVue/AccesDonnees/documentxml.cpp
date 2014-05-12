@@ -14,6 +14,8 @@ QDomElement* DocumentXML::ajouterSommet(Sommet* sommet, QString id){
 
     elmt.setAttribute(QString("id"),id);
 
+    sommetForElmt.insert(sommet,&elmt);
+
     return &elmt;
 }
 
@@ -31,6 +33,8 @@ QDomElement* DocumentXML::ajouterSommet(SommetColore* sommet, QString id)
     string couleur="#"+sommet->getCouleur();
     couleurElmt.appendChild(createTextNode(QString(couleur.c_str())));
 
+    sommetForElmt.insert(sommet,&elmt);
+
     return &elmt;
 }
 
@@ -46,30 +50,32 @@ QDomElement* DocumentXML::ajouterArc(Arete* arc){
     elmt.attribute(QString("Depart"),depart);
     elmt.attribute(QString("Arrivee"),arrivee);
 
+    //arcForElmt.insert(arc,&elmt);
+
     return &elmt;
 }
 
-QDomElement* DocumentXML::changerNom(Sommet* sommet, QString ancienNom)
+QDomElement* DocumentXML::changerNom(Sommet* sommet)
 {
-    QDomElement root=documentElement();
-    QDomElement listeDomSommets = root.firstChildElement("Sommets");
-    QDomElement domSommet=listeDomSommets.firstChildElement();
+    QDomElement* domSommet=sommetForElmt[sommet];
 
-    while((domSommet.attribute("id"))!=ancienNom)
-        domSommet=domSommet.nextSiblingElement(); //Dangereux : et si on ne trouve jamais l'ancien ID ?
+    domSommet->setAttribute("id",graphe->obtenirId(sommet));
 
-    domSommet.setAttribute("id",graphe->obtenirId(sommet));
+    return domSommet;
 }
 
 QDomElement* DocumentXML::changerForme(Sommet* sommet)
 {
-    QDomElement root=documentElement();
-    QDomElement listeDomSommets = root.firstChildElement("Sommets");
-    QDomElement domSommet=listeDomSommets.firstChildElement();
+    QDomElement* domSommet=sommetForElmt[sommet];
 
-    while((domSommet.attribute("id"))!=graphe->obtenirId(sommet))
-        domSommet=domSommet.nextSiblingElement(); //Dangereux : et si on ne trouve jamais l'ancien ID ?
+    QDomElement ancienDomForme=domSommet->firstChildElement("Forme");
+    QDomElement newDomForme=createElement(QString("Forme"));
+    newDomForme.setNodeValue(graphe->obtenirForme(sommet));
 
-    QDomElement domForme=domSommet.firstChildElement("Sommet");
-    domForme.setNodeValue(graphe->obtenirForme(sommet));
+    if(ancienDomForme.isNull())
+        domSommet->appendChild(newDomForme);
+    else
+        replaceChild(newDomForme, ancienDomForme);
+
+    return &newDomForme;
 }

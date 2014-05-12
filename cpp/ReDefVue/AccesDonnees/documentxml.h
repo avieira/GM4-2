@@ -48,11 +48,13 @@ public:
      */
     QDomElement* ajouterArc(Arete*);
 
-    QDomElement* changerNom(Sommet* sommet, QString ancienNom);
+    QDomElement* changerNom(Sommet* sommet);
 
     QDomElement* changerForme(Sommet* sommet);
 
 private:
+    QHash<const Sommet*, QDomElement*> sommetForElmt;
+    QHash<const Sommet*, QDomElement*> formeSommet;
     InterfaceGraph* graphe;
 };
 

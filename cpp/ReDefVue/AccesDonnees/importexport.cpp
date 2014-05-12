@@ -38,7 +38,7 @@ bool ImportExport::ouvrir(QIODevice *device, QDomDocument* domDocument)
     QDomElement listeDomArcs ;
     QTreeWidgetItem *listeArcs;
 
-    while (!root.isNull()) {
+    if (!root.isNull()) {
         rootTree=new QTreeWidgetItem(arbre);
         arbre->insertTopLevelItem(0,rootTree);
         rootTree->setExpanded(true);
@@ -58,14 +58,14 @@ bool ImportExport::ouvrir(QIODevice *device, QDomDocument* domDocument)
         if(graphe->isColore())
         {
             GrapheColore* graph=(GrapheColore*) graphe->getGraph();
-            parseGraphe(graph,listeDomSommets, listeSommets);
-            parseGraphe(graph,listeDomArcs, listeArcs);
+            parseGraphe(graph,listeDomSommets.firstChildElement(), listeSommets);
+            parseGraphe(graph,listeDomArcs.firstChildElement(), listeArcs);
         }
         else
         {
             Graphe* graph=(Graphe*) graphe->getGraph();
-            parseGraphe(graph,listeDomSommets, listeSommets);
-            parseGraphe(graph,listeDomArcs, listeArcs);
+            parseGraphe(graph,listeDomSommets.firstChildElement(), listeSommets);
+            parseGraphe(graph,listeDomArcs.firstChildElement(), listeArcs);
         }
 
         root = root.nextSiblingElement("Graphe");
@@ -85,15 +85,18 @@ bool ImportExport::enregistrer(QIODevice *device, QDomDocument* domDocument)
 
 
 void ImportExport::parseGraphe(Graphe* graph,
-                               const QDomElement &element,
+                               //const QDomElement &element,
+                               const QDomElement &child,
                                QTreeWidgetItem *parentItem)
 {
-    QDomElement child = element.firstChildElement();
-    while (!child.isNull()) {
+    //QDomElement child = element.firstChildElement();
+    if (!child.isNull()) {
         if (child.tagName() == "Sommet") {
             //Ajout au graphe
             Sommet *nvSom=new Sommet();
             graph->ajouterSommet(nvSom);
+
+
             QTreeWidgetItem *childItem = arbre->createItem(nvSom, parentItem);
 
             QString title = child.attribute(QObject::tr("id"));
@@ -132,16 +135,27 @@ void ImportExport::parseGraphe(Graphe* graph,
             //On s'occupe du reste
             arbre->parseElement(child, childItem, nvleArete);
         }
-        child = child.nextSiblingElement();
+        //child = child.nextSiblingElement();
+        //On continue la marche voir s'il reste des éléments à ajouter derrière
+        if(graphe->isColore()){
+            GrapheColore* grapheEnCours=(GrapheColore*) graphe->getGraph();
+            this->parseGraphe(grapheEnCours,child.nextSiblingElement(),parentItem);
+        }
+        else{
+            Graphe* grapheEnCours=(Graphe*) graphe->getGraph();
+            this->parseGraphe(grapheEnCours,child.nextSiblingElement(),parentItem);
+        }
+
     }
 }
 
 void ImportExport::parseGraphe(GrapheColore* graph,
-                               const QDomElement &element,
+                               //const QDomElement &element,
+                               const QDomElement &child,
                                QTreeWidgetItem *parentItem)
 {
-    QDomElement child = element.firstChildElement();
-    while (!child.isNull()) {
+    //QDomElement child = element.firstChildElement();
+    if (!child.isNull()) {
         if (child.tagName() == "Sommet") {
             //Ajout au graphe
             SommetColore *nvSom=new SommetColore();
@@ -184,6 +198,16 @@ void ImportExport::parseGraphe(GrapheColore* graph,
             //On s'occupe du reste
             arbre->parseElement(child, childItem, nvleArete);
         }
-        child = child.nextSiblingElement();
+        //child = child.nextSiblingElement();
+
+        //On continue la marche voir s'il reste des éléments à ajouter derrière
+        if(graphe->isColore()){
+            GrapheColore* grapheEnCours=(GrapheColore*) graphe->getGraph();
+            parseGraphe(grapheEnCours,child.nextSiblingElement(),parentItem);
+        }
+        else{
+            Graphe* grapheEnCours=(Graphe*) graphe->getGraph();
+            parseGraphe(grapheEnCours,child.nextSiblingElement(),parentItem);
+        }
     }
 }

@@ -18,8 +18,9 @@
 #include<QGraphicsView>
 #include<QHash>
 #include <QSvgWidget>
+#include<QDebug>
 #include<vector>
-#include <fstream>
+#include <iostream>
 
 #include "graphviz/gvc.h"
 
@@ -27,6 +28,8 @@
 //#include"Model/grapheoriente.h"
 #include"Model/graphecolore.h"
 #include"interfacegraph.h"
+
+using namespace std;
 
 class ImplemGraphviz : public QSvgWidget
 {

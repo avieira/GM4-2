@@ -66,22 +66,23 @@ void XMLTree::parseElement(const QDomElement &element,
     QDomElement child = element.firstChildElement();
 
     while (!child.isNull()) {
-        QTreeWidgetItem *childItem = createItem(*sommet, parentItem);
-
-        QString title = child.text();
-
-        childItem->setFlags(parentItem->flags() | Qt::ItemIsSelectable);
-        childItem->setText(0, child.tagName()+tr(" : "));
-        childItem->setText(1, title);
-
         //On ajoute ça au sommet
-        if (element.tagName()=="Valeur"){
-            /*SommetValue* sommetValue=(SommetValue*)sommet->sommetToValue();
+        if (child.tagName()=="Valeur"){
+            /*
+            QTreeWidgetItem *childItem = createItem(*sommet, parentItem);
+
+            QString title = child.text();
+
+            childItem->setFlags(parentItem->flags() | Qt::ItemIsSelectable);
+            childItem->setText(0, child.tagName()+tr(" : "));
+            childItem->setText(1, title);
+
+            SommetValue* sommetValue=(SommetValue*)sommet->sommetToValue();
             sommet=sommetValue;
             sommetColore->setValeur(element.tagName("Valeur"));*/
-        } else if (element.tagName()=="Forme"){
-            graphe->modifierForme(sommet,element.tagName());
-        } else if (element.tagName()=="Couleur"){
+        } else if (child.tagName()=="Forme"){
+            graphe->modifierForme(sommet,element.nodeValue());
+        } else if ((child.tagName()=="Couleur")){
             //GROSSE ASTUCE : je veux récupérer le sommet coloré qui correspond à mon sommet précédent. Normalement, en construisant mon graphe coloré,
             //mes sommets gardent le même ID ! Donc, j'utilise ça pour récupérer le bon sommet à colorer :
 
@@ -96,7 +97,8 @@ void XMLTree::parseElement(const QDomElement &element,
             SommetColore* sommetColore=(SommetColore*)graphe->obtenirSommet(idSom);
 
             //Je lui fixe sa couleur !
-            sommetColore->setCouleur(element.tagName().toStdString());
+            QString nvCouleur = QString("#")+child.text();
+            sommetColore->setCouleur(nvCouleur.toStdString());
         }
 
         child = child.nextSiblingElement();
