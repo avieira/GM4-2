@@ -1,3 +1,6 @@
+
+\section{Un peu d'hydrodynamique}
+Les équations de Saint-Venant sont utilisées lorsque la longueur sur laquelle nous travaillons est bien plus grande que sa hauteur. C'est par exemple le cas des océans, des tsunamis. Elles sont utilisées dans de nombreux domaines tels que la métérologie, la modélisation des océans. On peut aussi les utiliser pour modéliser des vagues rebondissants contre le bord dans une baignoire remplie d'eau ou le comportement d'un liquide après que l'on ait lancé une pierre dedans. Par exemple dans le manuel d'utilisation de Phoenics sur les équations de Saint-Venant, elles sont utilisées pour modéliser le comportement d'un flot dans un canal ouvert lorsque celui-ci forme un virage. Cet article est disponible à l'adresse suivante : \url{http://www.cham.co.uk/phoenics/d_polis/d_lecs/shallwat/shallwat.htm#References} \\
 \section{Les équations de Navier-Stokes}
 Équations de Navier-Stokes : deux équations :
 \begin{itemize}
@@ -26,7 +29,7 @@ On transforme l'expression de \ref{II-2-1-1} :
 \begin{eqnarray*}
 	\frac{d M(t)}{dt}&=&\frac{\partial}{\partial t} \int_{\Omega} \rho d\Omega + \underbrace{\int_{\partial\Omega} \rho \overrightarrow{U}.\overrightarrow{n} d\sigma}_{\text{Flux net à travers la surface} \partial\Omega}\\
 			&=& \int_{\Omega} \frac{\partial \rho}{\partial t} d\Omega + \int_{\partial \Omega} \rho \overrightarrow{U}.\overrightarrow{n} d\sigma \\
-			&=& \int_{\Omega} \left[ \frac{\partial \rho}{\partial t} + div\left(\rho \overrightarrow{U}\right)\right] d\Omega \text{ (Ostrogradki)}\\
+			&=& \int_{\Omega} \left[ \frac{\partial \rho}{\partial t} + div\left(\rho \overrightarrow{U}\right)\right] d\Omega \text{ (Ostrogradski)}\\
 			&=& 0
 \end{eqnarray*}
 

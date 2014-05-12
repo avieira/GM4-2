@@ -43,7 +43,7 @@ Le choix de notre espace $V_{h}$ est donc important. Cependant il n'est pas évi
 
 La méthode des éléments finis se base sur le maillage du domaine $\Omega$. Nous appelons maillage un pavage de l'espace en volumes élémentaires tels que les triangles, les carrés...Un maillage est constitué d'une collection de points que nous appelerons sommets ou noeuds du maillage. Un exemple de maillage est montré figure \ref{mail1}.
 \begin{figure}[!h]
-\hspace{-9em} \includegraphics[scale=0.85]{maillage.eps}\\
+\hspace{-9em} \includegraphics[scale=0.85]{maillage-eps-converted-to.pdf}\\
 \caption{Maillage triangulaire d'un carré}
 \label{mail1}
 \end{figure}
@@ -134,12 +134,12 @@ D'après l'inégalité de Poincaré. Donc notre forme est bien $V-$elliptique. M
 D'après l'inégalité de Cauchy-Schwarz. Donc nous pouvons appliquer le théorème de Lax-Milgram.
 \subsubsection{Méthode des éléments finis}
 Nous allons désormais approximer notre solution par la méthode des éléments finis. Pour cela nous choisissons de faire notre maillage sur le carré unité avec des triangles $\mathbb{P}_{1}$.\\
-Notre treillis $\Sigma_{k}$ est l'ensemble des coordonnées barycentriques de notre maillage. Prouvons qu'il est $\mathbb{P}_{1}\left(\mathbb{R}^ {2}\right)$-unisolvant.\\
+Notre treillis $\Sigma_{k}$ est l'ensemble des coordonnées cartésiennes de notre maillage. Prouvons qu'il est $\mathbb{P}_{1}\left(\mathbb{R}^ {2}\right)$-unisolvant.\\
 Nous allons travailler sur un des triangles de notre maillage. Nous rappellons ici que $\mathbb{P}_{1}\left(\mathbb{R}^ {2}\right)=vect\left\{1, x, y\right\}$. Pour prouver l'unisolvance nous allons tout d'abord montrer que la dimension de $\mathbb{P}_{1}$ est égal au cardinal de notre treillis. Puis nous allons tenter de démontrer qu'il n'existe qu'une unique fonction telle que $\forall a\in \Sigma_{k}\; p(a)=0\Rightarrow p=0$\\
 \begin{align*}
 \mathtt{dim}\mathbb{P}_{1}\left(\mathbb{R}^ {2}\right)=\frac{\left(n+k\right)!}{n!k!}=\frac{3!}{2!}=3
 \end{align*}
-Or $\mathtt{card}\Sigma_{k}=3$ puisque nous avons dans un seul triangle trois points barycentriques. La première partie est donc vérifiée.\\
+Or $\mathtt{card}\Sigma_{k}=3$ puisque nous avons dans un seul triangle trois sommets. La première partie est donc vérifiée.\\
 Soit$a_{1}, a_{2}, a_{3}$ les trois sommets de notre triangle. On sait que toute fonction $p$ peut s'écrire sous la forme $p(v)=a+bx+cy, v\in\mathbb{P}_{1}\left(\mathbb{R}^{2}\right)$.\\
 On pose $a_{1}=\begin{pmatrix}
 x_{1}\\
@@ -184,4 +184,29 @@ b(x_2-x_1)=0\\
 b(x_3-x_1)=0
 \end{matrix}\right.
 \end{align*}
-Or il est impossible que $x_1=x_2=x_3$ donc obligatoirement $b=0$ On déduit alors aisément que $a=0$. Nous avons donc prouvé que notre treillis était $\mathbb{P}_1\left(\mathbb{R}^2\right)-$unisolvant.
+Or il est impossible que $x_1=x_2=x_3$ donc obligatoirement $b=0$ On déduit alors aisément que $a=0$. Nous avons donc prouvé que notre treillis était $\mathbb{P}_1\left(\mathbb{R}^2\right)-$unisolvant.\\
+
+Comme nous avons vu précédemment, il est alors possible de mettre notre équation sous la forme d'un système linéaire : $\mathcal{K}_{h}U_{h}=b_{h}$. Par exemple, si on prend $f$ égal à 0.001, on obtient :
+\begin{align*}
+\mathcal{K}_{h}=\left(
+\begin{matrix}
+4  &    -1    &  0   &   -1    &  0  &    0   &   0  &    0  &    0\\
+-1   &   4  &    -1  &    0     & -1  &    0  &    0  &    0  &    0\\
+0    &  -1    &  4   &   0    &  0   &   -1 &     0   &   0 &     0\\
+-1  &    0   &   0    &  4   &   -1 &     0   &   -1  &    0  &    0\\
+0  &    -1   &   0   &   -1  &    4    &  -1  &    0   &   -1  &    0\\
+0   &   0  &    -1   &   0   &   -1  &    4   &   0  &    0  &    -1\\
+0   &   0   &   0   &   -1    &  0    &  0  &    4   &   -1   &   0\\
+0    &  0    &  0   &   0    &  -1    &  0   &   -1  &    4    &  -1\\
+0    &  0  &    0   &   0    &  0   &   -1   &   0    &  -1   &   4\\
+\end{matrix}\right)
+\end{align*}
+\begin{align*}
+b_h =\left(
+\begin{matrix}
+6.25\times 10^{-5}\\
+\vdots\\
+6.25\times 10^{-5}
+\end{matrix}\right)
+\end{align*}
+Nous pouvons alors résoudre notre système.
