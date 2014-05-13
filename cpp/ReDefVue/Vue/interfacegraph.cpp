@@ -103,7 +103,6 @@ void InterfaceGraph::grapheToColore()
     SommetColore* nvSom;
     vector<Sommet*> listeG;
 
-    vector<SommetColore*> listeSommets=vector<SommetColore*>();
     listeG=grapheNormal.getListeSommets();
 
     for(i=0;i<listeG.size();i++){

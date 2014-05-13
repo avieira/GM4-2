@@ -24,6 +24,8 @@ public:
     void colorerDirect();
     void colorerH(int k);
 
+    friend ostream& operator<<( ostream &flux, GrapheColore& graph );
+
 protected:
     vector<SommetColore*> listeSommets;
 

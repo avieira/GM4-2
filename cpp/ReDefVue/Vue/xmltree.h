@@ -54,6 +54,7 @@ public:
     void ajouterArc(Arete*,QDomElement*);
 
     void changerNom(const Sommet *sommet, QString nvNom);
+    void changerCouleur(const Sommet *sommet);
 
     QTreeWidgetItem* createItem(const Sommet &element,
                                 QTreeWidgetItem *parentItem=0);

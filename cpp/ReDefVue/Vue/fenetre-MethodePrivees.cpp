@@ -189,11 +189,10 @@ void Fenetre::modifSommetNom(Sommet *sommet)
     //On traîte la demande
     if(fenDiag.exec()){ //Si on a cliqué sur ok !
         QString nvid=lineEdit->text();
-        QString ancienId=graphe.obtenirId(sommet);
         if(graphe.modifierId(sommet,nvid))
         {
             xmltree->changerNom(sommet, nvid);
-            domDocument.changerNom(sommet, ancienId);
+            domDocument.changerNom(sommet);
         }
         else
             QMessageBox::warning(window(), tr("GraphCalculus"),

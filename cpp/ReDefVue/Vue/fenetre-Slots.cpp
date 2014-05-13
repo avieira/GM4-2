@@ -120,6 +120,7 @@ void Fenetre::ouvrir()
 
     affichageSVG->drawGraph();
     ui->afficheGraphe->adjustSize();
+
     //TODO : problème au niveau du schéma
 }
 
