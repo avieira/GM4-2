@@ -1,0 +1,26 @@
+- Reprendre le but du projet : pourquoi on fait ça ? Qu'est-ce qu'on fait ?
+	Système de gestion des cheptels vifs au niveau national.
+	Spécification sur les animaux (poids maturité, nombre par enclos, etc)
+- Attente du projet : MOE
+	Gestion d'un cheptel vif avec interface utilisateur (cas d'utilisation ici).
+	Différents cas : administrateur ou utilisateur. 
+- Contraintes techniques : Linux, Java, MySQL
+- Diagramme de classe
+- Tests d'intégration
+	- Toutes les infos sont modélisées
+	- Tout utilisateur a le droit de consulter les données, et d’utiliser les fonctions de recherche.
+	- Seul l’Administrateur des nomenclatures peut modifier les nomenclatures.
+	- Chaque éleveur peut déclarer une nouvelle tête et enregistrer les évènements qui lui sont associés. Lors de la déclaration d’une nouvelle tête, un numéro d’identification national est généré automatiquement et attribué au nouveau candidat.
+
+
+- MOE : organisation temporelle, de l'équipe
+	- Diagramme de Gantt, OBS
+	- Relation MOA-MOE (date de rendu, livraisons, réponses, etc)
+- Mise en place de la gestion des anomalies
+- WebService
+	- Accès à la base de données (visualisation, ajout de bêtes, etc)
+- tests unitaires, MySQL, ANT
+
+
+Bonjour à tous. Nous allons vous présenter le projet que nous avons suivi lors de ce semestre : la création d'un système de gestion d'un cheptel vif. Nous allons tout d'abord vous présenter le cadre dans lequel se place ce projet. Nous verrons ensuite les différentes contraintes qu'implique ce projet. De plus, nous vous présenterons l'organisation que nous avons mis en place, et enfin, les différentes techniques mises en place lors de l'implémentation.
+ 	
