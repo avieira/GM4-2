@@ -1,0 +1,13 @@
+A présent que les éléments finis ont été définis de manière théorique, on va chercher à l'implémenter informatiquement. Cependant, plutôt que de faire un programme de manière à résoudre l'exemple de l'équation de Poisson ci-dessus (ce qui serait relativement simple car on a déjà la forme de la matrice qu'il faut -juste- inverser), nous allons faire un programme le plus extensble possible.\\
+Pour cela, nous allons écrire un programme en C++. En effet, ce programme présente plusieurs avantages :
+\begin{itemize}
+	\item Un langage à objets, ce qui permet d'étendre facilement ce qui a été déjà fait grâce à l'héritage
+	\item Une exécution rapide, ce qui est un bon argument lors de calculs pour l'analyse numérique
+	\item L'accès à d'énormes librairies, qu'elles viennent du C ou purement du C++
+\end{itemize}
+
+Cependant, afin que ce code soit bien le plus extensible possible, nous devrons bien définir les différentes classes créées. La suite de ce rapport explique comment ce programme a été pensé.
+
+\subsection{Le maillage}
+De manière la plus générale possible, un maillage est constitué d'un ensemble de points, d'un ensemble d'éléments finis, et de fonctions de base sur ce maillage. Cependant, pour définir chacun de ces ensembles, on a besoin de préciser un peu plus le type de notre maillage.\\
+On s'approche un peu plus de notre exemple 
