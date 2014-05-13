@@ -172,22 +172,24 @@ Gràce à la figure\ref{figrem1Vit110},on s'aperçoit que le tourbillon situé a
 
 \begin{figure}[!h]
 \centering
-\includegraphics[scale=0.4]{resultsCx/remorque2-110_pressure.png}
-\caption{Champ de pression pour le camion avec remorque plus grande à 110 km.h$^{-1}$}
-\label{figRem2Pres110}
+\includegraphics[scale=0.4]{resultsCx/forces_rem1.png}
+\caption{Détail des forces pour le camion avec remorque aussi haute à 110 km.h$^{-1}$}
+\label{resultanteForces1}
 \end{figure}
-
 A l'aide de ces résultats, on confirme que le vent s'oppose fortement au mouvement avec des forces très importantes à l'avant du camion et encore une fois, que la dépression à l'arrière aspire le camion et donc le freine.
+
+\clearpage
 
 \subsection{Étude avec cabine de hauteur inférieure à la remorque}
 Les lignes de courant montrées dans la figure \ref{figRem2Stream110} montrent encore un tourbillon à l'arrière du camion ainsi que vers le capot. Cependant, on remarque en plus un petit tourbillon supplémentaire au dessus de la cabine, devant la remorque. \\ 
 
 \begin{figure}[!h]
 \centering
-\includegraphics[scale=0.4]{resultsCx/force_rem1.png}
-\caption{Détail des forces pour le camion avec remorque aussi haute à 110 km.h$^{-1}$}
+\includegraphics[scale=0.4]{resultsCx/remorque2_110_stream.png}
+\caption{Lignes de courant pour le camion avec remorque plus grande à 110 km.h$^{-1}$}
 \label{figRem2Stream110}
 \end{figure}
+\clearpage
 
 On étudie ces tourbillons de plus près grâce aux vecteurs vitesse figure \ref{figRem2Vit110} et surtout grâce à la figure \ref{figRem2Vit110-coin}. La première nous montre le même tourbillon que vu précédemment. La deuxième figure nous montre un petit tourbillon qui se forme juste au-dessus de la cabine dû au fait que la remorque est plus haute que la cabine.\\
 \begin{figure}[!h]
@@ -196,6 +198,7 @@ On étudie ces tourbillons de plus près grâce aux vecteurs vitesse figure \ref
 \caption{Vecteur vitesse pour le camion avec remorque plus grande à 110 km.h$^{-1}$}
 \label{figRem2Vit110}
 \end{figure}
+
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.4]{resultsCx/remorque2-hautCabineAbsorption.png}
@@ -281,22 +284,60 @@ Encore une fois, les trois tourbillons sont mis en évidence par la figure \ref{
 \caption{Vecteur vitesse pour le camion avec remorque plus grande à 110 km.h$^{-1}$}
 \label{figRem3Vit110}
 \end{figure}
-\begin{figure}[!h]
 
-Ainsi, on réalise une nouvelle fois que ce tourbillon participe une nouvelle fois au mouvement avec une force tangentielle positive sur le "toitremorque".
+Ainsi, on réalise une nouvelle fois que ce tourbillon participe au mouvement avec une force tangentielle positive sur le "toitremorque" (figure \ref{resultantesForces3}).
 \begin{figure}[!h]
 \centering
 \includegraphics[scale=0.4]{resultsCx/force-rem3.png}
 \caption{Détail des forces pour le camion avec remorque inférieure à 110 km.h$^{-1}$}
-\label{figRem2Stream110}
+\label{resultantesForces3}
 \end{figure}
 
+\clearpage
+
 \section{Commentaires}
-Au vu des 4 récapitulatifs de forces, à vitesse égale, on peut établir un ordre pour les différentes remorques, de celle qui induit le moins de forces contraires au mouvement à la moins aérodynamique:
-..
-..
-..
-..
+Comparons les différentes remorques. On va s'intéresser principalement à trois points :
+\begin{itemize}
+	\item La tenue de route
+	\item La consommation
+	\item L'optimisation de la géométrie de la remorque
+\end{itemize}
+
+\subsection{Tenue de route}
+La tenue de route tient essentiellement de la position du centre de gravité du camion : plus il est bas, plus la tenue de route sera bonne. Dans le cadre de notre étude, on s'intéresse uniquement aux forces de pression. On remarque ici qu'elles seront bien trop faibles pour avoir une importance par rapport au poids du camion. En effet, si on prends les forces totales orientées selon $y$ dans nos précédents exemples, on obtient :
+\begin{center}\begin{tabular}{|l|l|}
+\hline
+Remorque 1 & 4 798\\
+\hline
+Remorque 2 & 1 503 \\
+\hline
+Remorque 3 & 3 723\\
+\hline
+\end{tabular}\end{center}
+
+Réexprimé en kg, cela correspond à un poids entre 150 et 480kg, ce qui n'est pas significatif pour un camion pouvant aller jusqu'à 3,5 tonnes.\\
+Si on désire donc jouer sur la géométrie, on va plutôt s'intéresser aux force selon $x$, et donc jouer pour optimiser la consommation et la quantité de marchandise transportée.
 
 
+\subsection{Consommation}
+Pour optimiser la consommation, on va essayer de réduire les forces de trainée. Cela dépend essentiellement de deux caractéristiques :
+\begin{itemize}
+	\item la pression à l'avant du camion
+	\item l'aspiration du camion dûe aux différents tourbillons.
+\end{itemize}
+
+Pour la pression à l'avant, on remarque que le pare-choc et le pare-brise portent la plupart des forces appliquées selon $x$. Afin de réduire les forces appliquées sur ces parois, il faudrait donc modifier la géométrie de la cabine afin qu'elle ait une meilleure pénétration dans l'air. Cependant, toutes les cabines ont ici la même forme, et il est donc difficile de voir quelle serait la meilleure configuration possible.\\
+Cependant, lorsque l'on compare les résultats obtenus pour la composante de frottements en $x$ sur la partie toitremorque, on peut remarquer que la configuration optimale pour la remorque est celle où la remorque est plus haute que la cabine, suivie par celle où la cabine et la remorque sont à la même hauteur, et que la pire est celle où la remorque est plus basse que la cabine. En effet, dans le cas d'une remoruqe plus haute, on crée une depression poussant le camion dans le bon sens. On ne retrouve pas le même cas dans les autres configurations.\\
+On en déduit donc que la meilleure configuration est celle avec une remorque plus haute que la cabine.
+
+\subsection{Optimisation de la géométrie de la remorque}
+Comme nous avons pu le constater, l'effort vertical sur le toit de la remorque est assez négligeable, ainsi si l'on veut pouvoir transporter plus de marchandises, il vaudra mieux jouer sur la longueur de la remorque que sur sa hauteur, et ainsi privilégier la minimisation de la consommation dûe à l'effort de trainée.\\
+De plus, allonger la remorque n'apportera pas plus de forttements. En effet, si on regarde les forces selon $x$ en dessous et au-dessous du camion, elles sont toujours nulles ! On risque au pire d'apporter quelques forces de frottement qui sont, comme on l'a déjà dit, clairement négligeable.\\
+On allonge donc la longueur de la remorque au maximum, ce qui ne sera finalement limité que par des considérations techniques (par exemple, un camion trop long aura du mal à tourner dans certains virages où à aller dans certains ronds-points). Cela est bien évidemment limité par les différentes légisations.
 %comment optimiser la forme du camion pour aider le mouvement.
+% Centre de gravité pour la tenue de route : le plus bas possible
+% vitesse au carré
+
+\subsection{Remarque complémentaire}
+Au cours de cette étude, nous nous sommes peu attachés aux résultats obtenus lorsque le camion se déplace à 60km/h. En effet, ceux-ci montraient toujours les mêmes tendances que ceux obtenus avec une vitesse de 110km/h. Cependant, nous avons pu remarqué que les efforts de pression de l'air sur les parois du camion étaient proportionels au carré de la vitesse du camion; ce qui est probablement dû à la modélisation des frottements de l'air choisie par Fluent.
+

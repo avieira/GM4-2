@@ -25,3 +25,12 @@ void Arete::setArrivee(Sommet* arr)
 {
     arrivee=arr;
 }
+
+ostream& operator<<( ostream &flux, Arete& arc )
+{
+    flux<<"Arc : ";
+    flux<<*(arc.getDepart());
+    flux<<" , ";
+    flux<<*(arc.getArrivee());
+    flux<<endl;
+}

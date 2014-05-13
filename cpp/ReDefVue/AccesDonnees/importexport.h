@@ -7,6 +7,7 @@
 #include<QMessageBox>
 #include <QHash>
 #include <QTextStream>
+#include <QDebug>
 #include"Model/graphecolore.h"
 #include"Vue/xmltree.h"
 

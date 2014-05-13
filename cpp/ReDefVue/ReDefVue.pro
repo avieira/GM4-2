@@ -28,7 +28,11 @@ SOURCES += Vue/main.cpp\
     Vue/fenetre-Slots.cpp \
     Vue/fenetre-MethodePrivees.cpp \
     Vue/fenetre-ConDestructeur.cpp \
-    Vue/interfacegraph.cpp
+    Vue/interfacegraph.cpp \
+    Model/solution.cpp \
+    ../Tests/testgraphe.cpp \
+    ../Tests/testsommet.cpp \
+    ../Tests/testsommetcolore.cpp
 
 HEADERS  += Vue/fenetre.h \
     AccesDonnees/importexport.h\
@@ -41,9 +45,10 @@ HEADERS  += Vue/fenetre.h \
     Vue/messagehandler.h \
     AccesDonnees/documentxml.h \
     Vue/implemgraphviz.h \
-    Vue/interfacegraph.h
+    Vue/interfacegraph.h \
+    Model/solution.h
 
 
 FORMS    += Vue/fenetre.ui
 
-unix|win32: LIBS += -lgvc -lcdt -lgraph
+unix|win32: LIBS += -lgvc -lcdt -lgraph -std=c++11

@@ -4,12 +4,17 @@
 #include <QString>
 #include <QStringList>
 #include <QHash>
+#include <cstdlib>
+#include <string>
 #include"Model/graphecolore.h"
+
+using namespace std;
 
 class InterfaceGraph
 {
 public:
     InterfaceGraph();
+    InterfaceGraph(bool m);
 
     void* getGraph();
     QStringList getListeForme();

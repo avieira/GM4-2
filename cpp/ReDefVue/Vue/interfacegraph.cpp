@@ -2,12 +2,184 @@
 
 InterfaceGraph::InterfaceGraph()
 {
-    grapheNormal=Graphe();
+    /*grapheNormal=Graphe();
     grapheColore=GrapheColore();
     colore=false;
 
     //Liste des formes actuellement supportées
-    listeFormes<<"box"<<"ellipse"<<"circle"<<"square"<<"star"<<"diamond"<<"pentagon"<<"septagon";
+    listeFormes<<"box"<<"ellipse"<<"circle"<<"square"<<"star"<<"diamond"<<"pentagon"<<"septagon";*/
+
+    colore=true;
+
+    Arete *a;
+    SommetColore *s;
+    vector<SommetColore*> lSommet;
+    vector<Arete*> lArete;
+    QString nom;
+
+    for(int i=0;i<22;i++)
+    {
+        s=new SommetColore(true);
+        lSommet.push_back(s);
+
+        nom=QString("id")+QString::number(i);
+        stringForSommet.insert(s,nom);
+        sommetForString.insert(nom,s);
+    }
+
+    a=new Arete(lSommet[0],lSommet[2]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[0],lSommet[3]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[0],lSommet[4]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[0],lSommet[5]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[0],lSommet[6]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[0],lSommet[7]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[0],lSommet[8]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[0],lSommet[9]);
+    lArete.push_back(a);
+
+    a=new Arete(lSommet[1],lSommet[3]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[1],lSommet[4]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[1],lSommet[5]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[1],lSommet[6]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[1],lSommet[7]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[1],lSommet[8]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[1],lSommet[9]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[1],lSommet[10]);
+    lArete.push_back(a);
+
+    a=new Arete(lSommet[2],lSommet[4]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[2],lSommet[5]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[2],lSommet[6]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[2],lSommet[7]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[2],lSommet[8]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[2],lSommet[9]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[2],lSommet[10]);
+    lArete.push_back(a);
+
+    a=new Arete(lSommet[3],lSommet[5]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[3],lSommet[6]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[3],lSommet[7]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[3],lSommet[8]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[3],lSommet[9]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[3],lSommet[10]);
+    lArete.push_back(a);
+
+    a=new Arete(lSommet[4],lSommet[6]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[4],lSommet[7]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[4],lSommet[8]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[4],lSommet[9]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[4],lSommet[10]);
+    lArete.push_back(a);
+
+    a=new Arete(lSommet[5],lSommet[7]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[5],lSommet[8]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[5],lSommet[9]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[5],lSommet[10]);
+    lArete.push_back(a);
+
+    a=new Arete(lSommet[6],lSommet[8]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[6],lSommet[9]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[6],lSommet[10]);
+    lArete.push_back(a);
+
+    a=new Arete(lSommet[7],lSommet[9]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[7],lSommet[10]);
+    lArete.push_back(a);
+
+    a=new Arete(lSommet[8],lSommet[10]);
+    lArete.push_back(a);
+
+    a=new Arete(lSommet[0],lSommet[21]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[1],lSommet[20]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[2],lSommet[19]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[3],lSommet[18]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[4],lSommet[17]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[5],lSommet[16]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[6],lSommet[15]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[7],lSommet[14]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[8],lSommet[13]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[9],lSommet[12]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[10],lSommet[11]);
+    lArete.push_back(a);
+
+    a=new Arete(lSommet[21],lSommet[20]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[20],lSommet[19]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[18],lSommet[19]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[17],lSommet[18]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[16],lSommet[17]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[15],lSommet[16]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[14],lSommet[15]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[13],lSommet[14]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[12],lSommet[13]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[11],lSommet[12]);
+    lArete.push_back(a);
+    a=new Arete(lSommet[21],lSommet[11]);
+    lArete.push_back(a);
+
+    grapheColore=GrapheColore();
+    grapheColore.setListeSommets(lSommet);
+    grapheColore.setListeArcs(lArete);
+    cout<<grapheColore;
+    grapheColore.colorerDirect();
+    cout<<grapheColore;
+}
+
+InterfaceGraph::InterfaceGraph(bool m)
+{
 }
 
 void* InterfaceGraph::getGraph()

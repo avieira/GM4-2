@@ -4,6 +4,7 @@
 Fenetre::Fenetre(InterfaceGraph graph, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Fenetre),
+    graphe(true), //A ENLEVER TODO
     domDocument(&graph)
 {
     //Touche initiale !

@@ -84,8 +84,6 @@ void ImplemGraphviz::creerListeEdges(Graphe* graph)
         Sommet* depart=areteCour->getDepart();
         Sommet* arrivee=areteCour->getArrivee();
 
-        string txt=depart->getId()+"->"+arrivee->getId();
-        char* nom=(char*)txt.c_str();
         Agedge_t* agedg=agedge(G,tableNodes[depart],tableNodes[arrivee]);
         tableEdges.insert(areteCour,agedg);
     }
@@ -95,7 +93,7 @@ void ImplemGraphviz::drawGraph()
 {
     GVC_t *gvc=gvContext();
 
-    G=agopen("G",AGDIGRAPH); //Ici pour modifier afin que le graphe soit orienté : Agundirected -> Agdirected
+    G=agopen("G",AGRAPH); //Ici pour modifier afin que le graphe soit orienté : AGRAPH -> AGDIGRAPH
 
     if(graphe->isColore())
     {

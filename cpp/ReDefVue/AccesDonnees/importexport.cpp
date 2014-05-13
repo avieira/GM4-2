@@ -116,6 +116,10 @@ void ImportExport::parseGraphe(Graphe* graph,
             Arete *nvleArete=new Arete(sommet1, sommet2);
             graph->ajouterArc(nvleArete);
 
+            //A SUPPRIMER
+            for(int incr=0;incr<graph->getListeArcs().size();incr++)
+                std::cout<<*(graph->getListeArcs().at(incr));
+
             //Ajout à l'arbre
             QTreeWidgetItem *childItem = arbre->createItem(nvleArete, parentItem);
 
@@ -178,6 +182,10 @@ void ImportExport::parseGraphe(GrapheColore* graph,
             SommetColore* sommet2=(SommetColore*) graphe->obtenirSommet(child.attribute("Arrivee"));
             Arete *nvleArete=new Arete(sommet1, sommet2);
             graph->ajouterArc(nvleArete);
+
+            //A SUPPRIMER
+            for(int incr=0;incr<graph->getListeArcs().size();incr++)
+                qDebug()<<graph->getListeArcs().at(incr);
 
             //Ajout à l'arbre
             QTreeWidgetItem *childItem = arbre->createItem(nvleArete, parentItem);
