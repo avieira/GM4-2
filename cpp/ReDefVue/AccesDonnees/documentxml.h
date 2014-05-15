@@ -53,8 +53,8 @@ public:
     QDomElement* changerForme(Sommet* sommet);
 
 private:
-    QHash<const Sommet*, QDomElement*> sommetForElmt;
-    QHash<const Sommet*, QDomElement*> formeSommet;
+    QHash<Sommet*, QDomElement*> sommetForElmt;
+    QHash<Sommet*, QDomElement*> formeSommet;
     InterfaceGraph* graphe;
 };
 

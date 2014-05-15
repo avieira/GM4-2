@@ -46,9 +46,9 @@ void Fenetre::slotButtonArc()
     if(graphe.isColore())
     {
         GrapheColore* graph=(GrapheColore*)graphe.getGraph();
-        vector<SommetColore*> listeSommets=graph->getListeSommets();
-        Sommet *nvSommet1=listeSommets[comboBoxArc1->currentIndex()];
-        Sommet *nvSommet2= listeSommets[comboBoxArc2->currentIndex()];
+        vector<SommetColore*>* listeSommets=graph->getListeSommets();
+        Sommet *nvSommet1=listeSommets->at(comboBoxArc1->currentIndex());
+        Sommet *nvSommet2= listeSommets->at(comboBoxArc2->currentIndex());
         Arete *nvArc=new Arete(nvSommet1,nvSommet2);
         graph->ajouterArc(nvArc);
 
@@ -61,9 +61,9 @@ void Fenetre::slotButtonArc()
     else
     {
         Graphe* graph=(Graphe*)graphe.getGraph();
-        vector<Sommet*> listeSommets=graph->getListeSommets();
-        Sommet *nvSommet1=listeSommets[comboBoxArc1->currentIndex()];
-        Sommet *nvSommet2= listeSommets[comboBoxArc2->currentIndex()];
+        vector<Sommet*>* listeSommets=graph->getListeSommets();
+        Sommet *nvSommet1=listeSommets->at(comboBoxArc1->currentIndex());
+        Sommet *nvSommet2= listeSommets->at(comboBoxArc2->currentIndex());
         Arete *nvArc=new Arete(nvSommet1,nvSommet2);
         graph->ajouterArc(nvArc);
 
@@ -164,7 +164,7 @@ void Fenetre::changeAttributSommet()
 void Fenetre::changeAttributArc()
 {
     Graphe* graph=(Graphe*)graphe.getGraph();
-    vector<Arete*> listeArcs=graph->getListeArcs();
+    vector<Arete*>* listeArcs=graph->getListeArcs();
     //Création d'une boîte de dialogue
     QDialog fenDiag;
 
@@ -180,8 +180,8 @@ void Fenetre::changeAttributArc()
 
     //Création de la liste des arcs
     QComboBox *boxArcs=new QComboBox;
-    for (int i = 0 ; i < listeArcs.size(); i++){
-        boxArcs->addItem(graphe.obtenirId(listeArcs[i]->getDepart())+"->"+graphe.obtenirId(listeArcs[i]->getDepart()));
+    for (int i = 0 ; i < listeArcs->size(); i++){
+        boxArcs->addItem(graphe.obtenirId(listeArcs->at(i)->getDepart())+"->"+graphe.obtenirId(listeArcs->at(i)->getDepart()));
     }
 
     //Ajout de tout ça à la fenêtre de dialogu
@@ -196,7 +196,7 @@ void Fenetre::changeAttributArc()
 
     //On traîte la demande
     if(fenDiag.exec()){ //Si on a cliqué sur ok !
-        Arete *arcModif=listeArcs[boxArcs->currentIndex()];
+        Arete *arcModif=listeArcs->at(boxArcs->currentIndex());
 
         //On demande ce qu'on veut modifier à ce sommet
         QDialog fenDiag2;

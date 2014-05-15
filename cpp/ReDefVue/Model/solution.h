@@ -6,7 +6,7 @@
 using namespace std;
 
 class Solution{
-    private :
+    /*private :
         int nbCouleurs;
         vector<int> leTableau;
         Sommet sommetModifie;
@@ -15,7 +15,7 @@ class Solution{
         Solution(int k, vector<int> tab);
         int calculerCout();
         vector<Sommet> calculerSommetsModifiables();
-        Solution genererSolVoisine(vector<Sommet> sommetsModifiables);
+        Solution genererSolVoisine(vector<Sommet> sommetsModifiables);*/
 };
 
 #endif

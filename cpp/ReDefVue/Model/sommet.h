@@ -73,13 +73,13 @@ public:
 
     void setId(int);
     void setMarque(bool b);
-    int getId();
+    int getId() const;
     bool isMarque();
     int getNombreSommets();
 
     virtual void* sommetToColore();
     
-    friend ostream& operator<<( ostream &flux, Sommet& som );
+    friend ostream& operator<<( ostream &flux, const Sommet& som );
 
     //void setForme(string);
     //string getForme();

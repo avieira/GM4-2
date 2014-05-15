@@ -1,6 +1,6 @@
 #include"Solution.h"
 
-Solution::Solution(int k, vector<int> tab)
+/*Solution::Solution(int k, vector<int> tab)
 {
     nbCouleurs = k;
     leTableau = tab;
@@ -43,4 +43,4 @@ Solution Solution::genererSolVoisine(vector<Sommet> sommetsModifiables)
 bool Solution::appartientA(queue<Solution> T)
 {
 
-}
+}*/

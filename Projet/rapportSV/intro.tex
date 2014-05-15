@@ -1,0 +1,22 @@
+\chapter*{Introduction}
+
+Les équations différentielles modélisent un grand nombre de phénomènes (entre autres) physiques, biologiques ou financiers. Ils gagnent donc par ce biais un grand intérêt pour leur étude théorique et numérique.\\
+Les exemples sont en effet nombreux.
+\begin{itemize}
+	\item L'équation du pendule simple : \[\ddot{\theta}+ \omega_0^2\sin \theta=0\]
+	\item Les modèles de Lotka Volterra : \[\left\{\begin{array}{c c c} \frac{dx(t)}{dt}&=&x(t)\left(\alpha-\beta y(t)\right)\\\frac{dy(t)}{dt} &=& -y(t)\left(\gamma-\delta x(t)\right)\end{array}\right.\]
+	\item L'équation des circuits RC : \[LC\frac{d^2u}{dt}+RC\frac{du}{dt} +u = E\]
+	\item L'équation de la chaleur : \[\frac{\partial u}{\partial t}-c\Delta u=f\]
+	\item L'équation de Klein-Gordon : \[-h^2\frac{\partial^2 \psi}{\partial t^2} =-h^2c^2\Delta \psi +m^2x^4 \psi\]
+\end{itemize}
+
+Le problème des équations différentielles (ordinaires ou aux dérivées partielles) est que bien souvent, on ne sait pas les résoudre. On utilise pour cela plusieurs méthodes numériques pour arriver à donner une solution approchée à ces équations.
+
+\bigskip
+Dans le cadre de ce projet, nous nous intéresserons à des équations différentielles utilisées en mécanique des fluides. Les modèles sont variés et s'appliquent avec plus ou moins de précision. Dans ce projet, nous nous intéresserons plus précisément aux équations de Saint-Venant, utilisés pour décrire les écoulements en milieu peu profond.\\
+Le projet s'est donc organisé en 3 parties :
+\begin{enumerate}
+	\item Après une brève introduction aux équations de Saint-Venant, celles-ci sont retrouvées à partir des équations de Navier-Stokes
+	\item La méthode des éléments finis sera présentée et implémentée sur un exemple
+	\item Une première approche de la solution numérique des équations de Saint-Venant grâce aux volumes finis cloturera ce rapport
+\end{enumerate}

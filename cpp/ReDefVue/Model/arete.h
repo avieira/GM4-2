@@ -47,9 +47,9 @@ using namespace std;
 class Arete
 {
 public:
-    Arete(Sommet*, Sommet*);
-    Sommet *getDepart();
-    Sommet *getArrivee();
+    Arete(const Sommet*, const Sommet*);
+    const Sommet *getDepart();
+    const Sommet *getArrivee();
     void setDepart(Sommet*);
     void setArrivee(Sommet*);
 
@@ -57,8 +57,8 @@ public:
 
 
 protected:
-    Sommet *depart;
-    Sommet *arrivee;
+    const Sommet *depart;
+    const Sommet *arrivee;
 };
 
 #endif // ARETE_H

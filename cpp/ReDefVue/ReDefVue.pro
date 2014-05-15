@@ -30,9 +30,6 @@ SOURCES += Vue/main.cpp\
     Vue/fenetre-ConDestructeur.cpp \
     Vue/interfacegraph.cpp \
     Model/solution.cpp \
-    ../Tests/testgraphe.cpp \
-    ../Tests/testsommet.cpp \
-    ../Tests/testsommetcolore.cpp
 
 HEADERS  += Vue/fenetre.h \
     AccesDonnees/importexport.h\

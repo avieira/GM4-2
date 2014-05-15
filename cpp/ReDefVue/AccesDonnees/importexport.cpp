@@ -54,17 +54,25 @@ bool ImportExport::ouvrir(QIODevice *device, QDomDocument* domDocument)
         //listeArcs->setExpanded(true);
         listeArcs->setText(0,listeDomArcs.tagName());
 
-
         if(graphe->isColore())
         {
             GrapheColore* graph=(GrapheColore*) graphe->getGraph();
             parseGraphe(graph,listeDomSommets.firstChildElement(), listeSommets);
-            parseGraphe(graph,listeDomArcs.firstChildElement(), listeArcs);
         }
         else
         {
             Graphe* graph=(Graphe*) graphe->getGraph();
             parseGraphe(graph,listeDomSommets.firstChildElement(), listeSommets);
+        }
+
+        if(graphe->isColore())
+        {
+            GrapheColore* graph=(GrapheColore*) graphe->getGraph();
+            parseGraphe(graph,listeDomArcs.firstChildElement(), listeArcs);
+        }
+        else
+        {
+            Graphe* graph=(Graphe*) graphe->getGraph();
             parseGraphe(graph,listeDomArcs.firstChildElement(), listeArcs);
         }
 
@@ -96,29 +104,25 @@ void ImportExport::parseGraphe(Graphe* graph,
             Sommet *nvSom=new Sommet();
             graph->ajouterSommet(nvSom);
 
+            qDebug()<<nvSom;//TODO : enlever
+            //Correspondance id<->Sommet
+            QString title = child.attribute(QObject::tr("id"));
+            graphe->insertSommet(nvSom,title);
 
             QTreeWidgetItem *childItem = arbre->createItem(nvSom, parentItem);
-
-            QString title = child.attribute(QObject::tr("id"));
 
             childItem->setFlags(parentItem->flags() | Qt::ItemIsSelectable);//Refus du noeud à être modifié
             childItem->setText(0, title);
 
-            //Correspondance id<->Sommet
-            graphe->insertSommet(nvSom,title);
 
             //On s'occupe des attributs du sommet
             arbre->parseElement(child, childItem, nvSom);
         } else if (child.tagName() == "Arc") {
             //Ajout au graphe
-            Sommet* sommet1=graphe->obtenirSommet(child.attribute("Depart"));
-            Sommet* sommet2=graphe->obtenirSommet(child.attribute("Arrivee"));
+            const Sommet* sommet1=graphe->obtenirSommet(child.attribute("Depart"));
+            const Sommet* sommet2=graphe->obtenirSommet(child.attribute("Arrivee"));
             Arete *nvleArete=new Arete(sommet1, sommet2);
             graph->ajouterArc(nvleArete);
-
-            //A SUPPRIMER
-            for(int incr=0;incr<graph->getListeArcs().size();incr++)
-                std::cout<<*(graph->getListeArcs().at(incr));
 
             //Ajout à l'arbre
             QTreeWidgetItem *childItem = arbre->createItem(nvleArete, parentItem);
@@ -159,20 +163,23 @@ void ImportExport::parseGraphe(GrapheColore* graph,
                                QTreeWidgetItem *parentItem)
 {
     //QDomElement child = element.firstChildElement();
+
     if (!child.isNull()) {
         if (child.tagName() == "Sommet") {
             //Ajout au graphe
             SommetColore *nvSom=new SommetColore();
             graph->ajouterSommet(nvSom);
-            QTreeWidgetItem *childItem = arbre->createItem(nvSom, parentItem);
 
+            qDebug()<<nvSom;//TODO : enlever
+
+            //Correspondance id<->Sommet
             QString title = child.attribute(QObject::tr("id"));
+            graphe->insertSommet(nvSom,title);
+
+            QTreeWidgetItem *childItem = arbre->createItem(nvSom, parentItem);
 
             childItem->setFlags(parentItem->flags() | Qt::ItemIsSelectable);//Refus du noeud à être modifié
             childItem->setText(0, title);
-
-            //Correspondance id<->Sommet
-            graphe->insertSommet(nvSom,title);
 
             //On s'occupe des attributs du sommet
             arbre->parseElement(child, childItem, nvSom);
@@ -182,10 +189,6 @@ void ImportExport::parseGraphe(GrapheColore* graph,
             SommetColore* sommet2=(SommetColore*) graphe->obtenirSommet(child.attribute("Arrivee"));
             Arete *nvleArete=new Arete(sommet1, sommet2);
             graph->ajouterArc(nvleArete);
-
-            //A SUPPRIMER
-            for(int incr=0;incr<graph->getListeArcs().size();incr++)
-                qDebug()<<graph->getListeArcs().at(incr);
 
             //Ajout à l'arbre
             QTreeWidgetItem *childItem = arbre->createItem(nvleArete, parentItem);

@@ -77,3 +77,20 @@ Avec \[\textbf{U}=\begin{pmatrix} h\\hu\\hv\end{pmatrix},\ F(\textbf{U})=\begin{
 Les tests ont été réalisés sur une grille $[-10,10]\times[-5,5]$ maillés par des triangles P1. On initialise la solution par une fonction pouvant ressembler à une vague avec des vitesses initiales nulles :
 	\[h(x,y,0)=\frac{4}{\cosh^2(3(x+2))}\]
 	\[u(x,y,0)=v(x,y,0)=0\]
+
+Cependant, les différents tests essayés ne donnent pas des résultats convaincants. En effet, si la vague semble satisfaisante au début, on a jamais deux fronts distincts se démarquant. Le code doit encore être passé en revue pour arriver à le faire tourner parfaitement. La figure \ref{freeFemSV} présente les résultats obtenus.
+
+\includegraphics[scale=0.3]{images/capture1.png}
+\includegraphics[scale=0.3]{images/capture2.png}\\
+\includegraphics[scale=0.3]{images/capture3.png}
+\includegraphics[scale=0.3]{images/capture4.png}\\
+\begin{figure}[!h]
+\begin{center}
+\includegraphics[scale=0.3]{images/capture5.png}
+\includegraphics[scale=0.3]{images/capture6.png}\\
+\includegraphics[scale=0.3]{images/capture7.png}
+\includegraphics[scale=0.3]{images/capture8.png}
+\end{center}
+\caption{Captures d'écran obtenus par le logiciel FreeFem++ à différents moments}
+\label{freeFemSV}
+\end{figure}

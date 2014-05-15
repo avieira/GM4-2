@@ -13,9 +13,9 @@ ImplemGraphviz::ImplemGraphviz(InterfaceGraph *graph, QWidget *parent) : QSvgWid
 void ImplemGraphviz::creerListeNodes(Graphe* graph)
 {
     tableNodes.clear();
-    vector<Sommet*> liste=graph->getListeSommets();
-    for(int i=0; i<liste.size(); i++){
-        Sommet* som=liste[i];
+    vector<Sommet*>* liste=graph->getListeSommets();
+    for(int i=0; i<liste->size(); i++){
+        Sommet* som=liste->at(i);
         char* nom=(char*)(graphe->obtenirId(som).toStdString().c_str());
 
         Agnode_t* agnod=agnode(G,nom);
@@ -39,9 +39,9 @@ void ImplemGraphviz::creerListeNodes(Graphe* graph)
 void ImplemGraphviz::creerListeNodes(GrapheColore* graph)
 {
     tableNodes.clear();
-    vector<SommetColore*> liste=graph->getListeSommets();
-    for(int i=0; i<liste.size(); i++){
-        SommetColore* som=liste[i];
+    vector<SommetColore*>* liste=graph->getListeSommets();
+    for(int i=0; i<liste->size(); i++){
+        SommetColore* som=liste->at(i);
         char* nom=(char*)(graphe->obtenirId(som).toStdString().c_str());
 
         Agnode_t* agnod=agnode(G,nom);
@@ -78,11 +78,11 @@ void ImplemGraphviz::creerListeNodes(GrapheColore* graph)
 void ImplemGraphviz::creerListeEdges(Graphe* graph)
 {
     tableEdges.clear();
-    vector<Arete*> liste=graph->getListeArcs();
-    for(int i=0;i<liste.size();i++){
-        Arete* areteCour=liste[i];
-        Sommet* depart=areteCour->getDepart();
-        Sommet* arrivee=areteCour->getArrivee();
+    vector<Arete*>* liste=graph->getListeArcs();
+    for(int i=0;i<liste->size();i++){
+        Arete* areteCour=liste->at(i);
+        const Sommet* depart=areteCour->getDepart();
+        const Sommet* arrivee=areteCour->getArrivee();
 
         Agedge_t* agedg=agedge(G,tableNodes[depart],tableNodes[arrivee]);
         tableEdges.insert(areteCour,agedg);

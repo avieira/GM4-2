@@ -2,184 +2,12 @@
 
 InterfaceGraph::InterfaceGraph()
 {
-    /*grapheNormal=Graphe();
+    grapheNormal=Graphe();
     grapheColore=GrapheColore();
     colore=false;
 
     //Liste des formes actuellement supportées
-    listeFormes<<"box"<<"ellipse"<<"circle"<<"square"<<"star"<<"diamond"<<"pentagon"<<"septagon";*/
-
-    colore=true;
-
-    Arete *a;
-    SommetColore *s;
-    vector<SommetColore*> lSommet;
-    vector<Arete*> lArete;
-    QString nom;
-
-    for(int i=0;i<22;i++)
-    {
-        s=new SommetColore(true);
-        lSommet.push_back(s);
-
-        nom=QString("id")+QString::number(i);
-        stringForSommet.insert(s,nom);
-        sommetForString.insert(nom,s);
-    }
-
-    a=new Arete(lSommet[0],lSommet[2]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[0],lSommet[3]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[0],lSommet[4]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[0],lSommet[5]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[0],lSommet[6]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[0],lSommet[7]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[0],lSommet[8]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[0],lSommet[9]);
-    lArete.push_back(a);
-
-    a=new Arete(lSommet[1],lSommet[3]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[1],lSommet[4]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[1],lSommet[5]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[1],lSommet[6]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[1],lSommet[7]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[1],lSommet[8]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[1],lSommet[9]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[1],lSommet[10]);
-    lArete.push_back(a);
-
-    a=new Arete(lSommet[2],lSommet[4]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[2],lSommet[5]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[2],lSommet[6]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[2],lSommet[7]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[2],lSommet[8]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[2],lSommet[9]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[2],lSommet[10]);
-    lArete.push_back(a);
-
-    a=new Arete(lSommet[3],lSommet[5]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[3],lSommet[6]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[3],lSommet[7]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[3],lSommet[8]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[3],lSommet[9]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[3],lSommet[10]);
-    lArete.push_back(a);
-
-    a=new Arete(lSommet[4],lSommet[6]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[4],lSommet[7]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[4],lSommet[8]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[4],lSommet[9]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[4],lSommet[10]);
-    lArete.push_back(a);
-
-    a=new Arete(lSommet[5],lSommet[7]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[5],lSommet[8]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[5],lSommet[9]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[5],lSommet[10]);
-    lArete.push_back(a);
-
-    a=new Arete(lSommet[6],lSommet[8]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[6],lSommet[9]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[6],lSommet[10]);
-    lArete.push_back(a);
-
-    a=new Arete(lSommet[7],lSommet[9]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[7],lSommet[10]);
-    lArete.push_back(a);
-
-    a=new Arete(lSommet[8],lSommet[10]);
-    lArete.push_back(a);
-
-    a=new Arete(lSommet[0],lSommet[21]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[1],lSommet[20]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[2],lSommet[19]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[3],lSommet[18]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[4],lSommet[17]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[5],lSommet[16]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[6],lSommet[15]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[7],lSommet[14]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[8],lSommet[13]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[9],lSommet[12]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[10],lSommet[11]);
-    lArete.push_back(a);
-
-    a=new Arete(lSommet[21],lSommet[20]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[20],lSommet[19]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[18],lSommet[19]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[17],lSommet[18]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[16],lSommet[17]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[15],lSommet[16]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[14],lSommet[15]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[13],lSommet[14]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[12],lSommet[13]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[11],lSommet[12]);
-    lArete.push_back(a);
-    a=new Arete(lSommet[21],lSommet[11]);
-    lArete.push_back(a);
-
-    grapheColore=GrapheColore();
-    grapheColore.setListeSommets(lSommet);
-    grapheColore.setListeArcs(lArete);
-    cout<<grapheColore;
-    grapheColore.colorerDirect();
-    cout<<grapheColore;
-}
-
-InterfaceGraph::InterfaceGraph(bool m)
-{
+    listeFormes<<"box"<<"ellipse"<<"circle"<<"square"<<"star"<<"diamond"<<"pentagon"<<"septagon";
 }
 
 void* InterfaceGraph::getGraph()
@@ -205,12 +33,12 @@ bool InterfaceGraph::isColore()
     return colore;
 }
 
-QString InterfaceGraph::obtenirId(Sommet* som)
+QString InterfaceGraph::obtenirId(const Sommet* som)
 {
     return stringForSommet[som];
 }
 
-Sommet* InterfaceGraph::obtenirSommet(QString id)
+const Sommet* InterfaceGraph::obtenirSommet(QString id)
 {
     return sommetForString[id];
 }
@@ -245,13 +73,14 @@ bool InterfaceGraph::modifierId(Sommet* sommet, QString nvId)
     return noErreur;
 }
 
-bool InterfaceGraph::modifierForme(Sommet* sommet, QString nvlleForme)
+bool InterfaceGraph::modifierForme(const Sommet* sommet, QString nvlleForme)
 {
     tableForme[sommet]=nvlleForme;
 }
 
-void InterfaceGraph::insertSommet(Sommet* sommet, QString id, QString forme)
+void InterfaceGraph::insertSommet(const Sommet* sommet, QString id, QString forme)
 {
+    qDebug()<<sommet;
     sommetForString.insert(id,sommet);
     stringForSommet.insert(sommet,id);
     tableForme.insert(sommet,forme);
@@ -267,38 +96,38 @@ void InterfaceGraph::grapheToColore()
     grapheColore=GrapheColore();
 
     //On construit la liste des sommets. On construit en même temps les nouvelles tables d'association.
-    map<Sommet*,SommetColore*> tableSommets;
-    QHash<Sommet*, QString> nvStringForSommet;
-    QHash<QString, Sommet*> nvSommetForString;
-    QHash<Sommet*,QString> nvTableForme;
+    map<const Sommet*,const SommetColore*> tableSommets;
+    QHash<const Sommet*, QString> nvStringForSommet;
+    QHash<QString, const Sommet*> nvSommetForString;
+    QHash<const Sommet*,QString> nvTableForme;
     Sommet* ancSom;
     SommetColore* nvSom;
-    vector<Sommet*> listeG;
+    vector<Sommet*>* listeG;
 
     listeG=grapheNormal.getListeSommets();
 
-    for(i=0;i<listeG.size();i++){
+    for(i=0;i<listeG->size();i++){
         //Ancien et nouveau sommet
-        ancSom=listeG[i];
+        ancSom=listeG->at(i);
         nvSom=(SommetColore*)ancSom->sommetToColore();
         //Ajout au graphe
         grapheColore.ajouterSommet(nvSom);
         //Ajout aux nouvelles tables de correspondance
-        tableSommets[listeG[i]]=nvSom;
+        tableSommets[listeG->at(i)]=nvSom;
         nvStringForSommet.insert(nvSom,stringForSommet[ancSom]);
         nvSommetForString.insert(stringForSommet[ancSom],nvSom);
         nvTableForme.insert(nvSom,tableForme[ancSom]);
     }
 
     //On fait la liste d'arêtes
-    vector<Arete*> listeA=grapheNormal.getListeArcs();
-    SommetColore* nvDepart;
-    SommetColore* nvArrivee;
+    vector<Arete*>* listeA=grapheNormal.getListeArcs();
+    const SommetColore* nvDepart;
+    const SommetColore* nvArrivee;
     Arete* nvleArete;
-    for(i=0;i<listeA.size();i++){
+    for(i=0;i<listeA->size();i++){
         //Sommets reliés par l'arc en question
-        nvDepart=tableSommets[listeA[i]->getDepart()];
-        nvArrivee=tableSommets[listeA[i]->getArrivee()];
+        nvDepart=tableSommets.at(listeA->at(i)->getDepart());
+        nvArrivee=tableSommets.at(listeA->at(i)->getArrivee());
 
         //Ajout au graph
         nvleArete=new Arete(nvDepart,nvArrivee);
@@ -315,6 +144,6 @@ void InterfaceGraph::grapheToColore()
     tableForme=nvTableForme;
 
     //Pour l'id : on supprime les sommets normaux, histoire de remettre le nombre de sommets comme il faut
-    for(i=0;i<listeG.size();i++)
-        delete listeG[i];
+    for(int incr=0;incr<listeG->size();incr++)
+        delete listeG->at(incr);
 }

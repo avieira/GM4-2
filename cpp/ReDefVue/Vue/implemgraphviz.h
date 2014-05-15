@@ -18,7 +18,6 @@
 #include<QGraphicsView>
 #include<QHash>
 #include <QSvgWidget>
-#include<QDebug>
 #include<vector>
 #include <iostream>
 
@@ -51,7 +50,7 @@ public:
 private:
     QString lienSVG;
     Agraph_t* G;
-    QHash<Sommet*, Agnode_t*> tableNodes;
+    QHash<const Sommet*, Agnode_t*> tableNodes;
     QHash<Arete*, Agedge_t*> tableEdges;
     InterfaceGraph* graphe;
 

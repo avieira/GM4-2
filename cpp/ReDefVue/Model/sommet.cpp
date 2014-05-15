@@ -17,7 +17,7 @@ Sommet::~Sommet()
     nombreSommets--;
 }
 
-int Sommet::getId()
+int Sommet::getId() const
 {
     return id;
 }
@@ -53,10 +53,11 @@ void *Sommet::sommetToColore(){
     return nvSom;
 }
 
-ostream& operator<<( ostream &flux, Sommet& som )
+ostream& operator<<( ostream &flux, const Sommet& som )
 {
+    const int numero=som.getId();
     flux<<"Sommet n° ";
-    flux<<som.getId();
+    flux<<numero;
     flux<<endl;
 
 }
