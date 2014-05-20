@@ -28,7 +28,7 @@ void XMLTree::ajouterSommet(SommetColore* sommet, QDomElement* elmt)
 {
     //Ajout à l'arbre
     QTreeWidgetItem *parentItem=topLevelItem(0)->child(0);
-    QTreeWidgetItem *childItem = createItem(sommet,parentItem);
+    QTreeWidgetItem *childItem = createItem(elmt,parentItem);
 
     QString title = elmt->attribute("id");
 
@@ -41,7 +41,7 @@ void XMLTree::ajouterSommet(SommetColore* sommet, QDomElement* elmt)
 void XMLTree::ajouterArc(Arete* arc, QDomElement* elmt){
     //Ajout à l'arbre
     QTreeWidgetItem *parentItem=topLevelItem(0)->child(1);
-    QTreeWidgetItem *childItem = createItem(arc, parentItem);
+    QTreeWidgetItem *childItem = createItem(elmt, parentItem);
 
     QString title = elmt->tagName();
 
@@ -132,7 +132,7 @@ void XMLTree::parseElement(const QDomElement &element,
 }
 
 
-QTreeWidgetItem* XMLTree::createItem(const Sommet* element,
+QTreeWidgetItem* XMLTree::createItem(const Sommet &element,
                                      QTreeWidgetItem *parentItem)
 {
     QTreeWidgetItem *item;
@@ -141,12 +141,13 @@ QTreeWidgetItem* XMLTree::createItem(const Sommet* element,
     } else {
         item = new QTreeWidgetItem(this);
     }
-    sommetForItem.insert(element, item);
+    sommetForItem.insert(&element, item);
+
     //TODO : relier sommet->Item pour implémentation Observeur
     return item;
 }
 
-QTreeWidgetItem* XMLTree::createItem(const Arete* element,
+QTreeWidgetItem* XMLTree::createItem(const Arete &element,
                                      QTreeWidgetItem *parentItem)
 {
     QTreeWidgetItem *item;
@@ -155,7 +156,7 @@ QTreeWidgetItem* XMLTree::createItem(const Arete* element,
     } else {
         item = new QTreeWidgetItem(this);
     }
-    arcForItem.insert(element, item);
+    arcForItem.insert(&element, item);
 
     //TODO : relier arete->Item pour implémentation Observeur
     return item;
@@ -163,9 +164,6 @@ QTreeWidgetItem* XMLTree::createItem(const Arete* element,
 
 void XMLTree::changerNom(Sommet* sommet)
 {
-    qDebug()<<"Dans changerNom : "<<sommet<<endl;
-    qDebug()<<sommetForItem.keys();
-    qDebug()<<graphe->stringForSommet.keys();
     QTreeWidgetItem* itemSommet=sommetForItem[sommet];
     itemSommet->setText(0,graphe->obtenirId(sommet));
 }

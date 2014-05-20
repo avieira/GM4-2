@@ -6,7 +6,7 @@
 using namespace std;
 
 class Solution{
-    /*private :
+/*    private :
         int nbCouleurs;
         vector<int> leTableau;
         Sommet sommetModifie;

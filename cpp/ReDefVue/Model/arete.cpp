@@ -1,17 +1,17 @@
 #include "arete.h"
 
-Arete::Arete(const Sommet *dep, const Sommet *arr)
+Arete::Arete(Sommet *dep, Sommet *arr)
 {
     depart=dep;
     arrivee=arr;
 }
 
-const Sommet *Arete::getDepart()
+Sommet *Arete::getDepart()
 {
     return depart;
 }
 
-const Sommet *Arete::getArrivee()
+Sommet *Arete::getArrivee()
 {
     return arrivee;
 }

@@ -4,10 +4,12 @@
 #include <QString>
 #include <QStringList>
 #include <QHash>
-#include <QDebug>
 #include <cstdlib>
 #include <string>
+#include <QDomDocument>
+#include <QTreeWidget>
 #include"Model/graphecolore.h"
+
 
 using namespace std;
 
@@ -15,29 +17,33 @@ class InterfaceGraph
 {
 public:
     InterfaceGraph();
+    InterfaceGraph(bool m);
 
     void* getGraph();
     QStringList getListeForme();
     void setColore(bool coloration);
     bool isColore();
 
-    QString obtenirId(const Sommet*);
-    QString obtenirId(const SommetColore*); //TODO
-    const Sommet* obtenirSommet(QString);
+    QString obtenirId(Sommet*);
+    Sommet* obtenirSommet(QString);
     QString obtenirForme(Sommet*);
-    QString obtenirForme(SommetColore*); //TODO
+    QTreeWidgetItem* obtenirTreeItem(Sommet*);
+    QDomElement* obtenirDomElmt(Sommet*);
+    QDomElement* obtenirDomElmt(Arete*);
+    QDomElement* obtenirFormDomElmt(Sommet*);
 
     bool contains(QString);
 
     bool modifierId(Sommet* sommet, QString nvId);
-    bool modifierId(SommetColore* sommet, QString nvId); //TODO
+    bool modifierForme(Sommet* sommet, QString nvlleForme);
+    bool modifierTreeItem(Sommet* sommet, QTreeWidgetItem* nvlItem);
+    bool modifierElement(Sommet* sommet, QDomElement* nvlElmt);
+    bool modifierElement(Arete* arc, QDomElement* nvlElmt);
 
-    bool modifierForme(const Sommet* sommet, QString nvlleForme);
-    bool modifierForme(const SommetColore* sommet, QString nvlleForme); //TODO
+    void insertSommet(Sommet*sommet, QString id, QString forme="ellipse");
+    void insertSommet(Sommet* sommet, QTreeWidgetItem* item);
+    void insertSommet(Sommet* sommet, QDomElement* item);
 
-
-    void insertSommet(const Sommet*sommet, QString id, QString forme="ellipse");
-    void insertSommet(const SommetColore* sommet, QString id, QString forme="ellipse");    //TODO
     void grapheToColore();
 
 private:
@@ -45,14 +51,21 @@ private:
     GrapheColore grapheColore;
     bool colore;
 
-    QHash<QString, const Sommet*> sommetForStringNormal;
-    QHash<const Sommet*, QString> stringForSommetColore;
+    //ID<->Sommet
+    QHash<const Sommet*, QString> stringForSommet;
+    QHash<QString, Sommet*> sommetForString;
+    QHash<const Sommet*,QString> tableForme;
 
-    QHash<QString, const SommetColore*> sommetForStringNormal;
-    QHash<const SommetColore*, QString> stringForSommetColore;
+    //XMLTree<->Sommet/Arc TODO
+    QHash<const Sommet*, QTreeWidgetItem*> sommetForItem;
+    QHash<const Arete*, QTreeWidgetItem*> arcForItem;
 
-    QHash<const Sommet*,QString> tableFormeNormal;
-    QHash<const SommetColore*,QString> tableFormeColore;
+    //QDomElement<->Sommet TODO
+    QHash<const Sommet*, QDomElement*> sommetForElmt;
+    QHash<const Sommet*, QDomElement*> formeSommet;
+
+    //QDomElement<->Arc TODO
+    QHash<const Arete*, QDomElement*> areteForElmt;
 
     QStringList listeFormes;
 };

@@ -54,6 +54,7 @@ bool ImportExport::ouvrir(QIODevice *device, QDomDocument* domDocument)
         //listeArcs->setExpanded(true);
         listeArcs->setText(0,listeDomArcs.tagName());
 
+        //D'abord les sommets
         if(graphe->isColore())
         {
             GrapheColore* graph=(GrapheColore*) graphe->getGraph();
@@ -65,6 +66,7 @@ bool ImportExport::ouvrir(QIODevice *device, QDomDocument* domDocument)
             parseGraphe(graph,listeDomSommets.firstChildElement(), listeSommets);
         }
 
+        //Puis les arcs
         if(graphe->isColore())
         {
             GrapheColore* graph=(GrapheColore*) graphe->getGraph();
@@ -75,6 +77,7 @@ bool ImportExport::ouvrir(QIODevice *device, QDomDocument* domDocument)
             Graphe* graph=(Graphe*) graphe->getGraph();
             parseGraphe(graph,listeDomArcs.firstChildElement(), listeArcs);
         }
+
 
         root = root.nextSiblingElement("Graphe");
     }
@@ -104,23 +107,23 @@ void ImportExport::parseGraphe(Graphe* graph,
             Sommet *nvSom=new Sommet();
             graph->ajouterSommet(nvSom);
 
-            qDebug()<<nvSom;//TODO : enlever
-            //Correspondance id<->Sommet
-            QString title = child.attribute(QObject::tr("id"));
-            graphe->insertSommet(nvSom,title);
 
             QTreeWidgetItem *childItem = arbre->createItem(nvSom, parentItem);
+
+            QString title = child.attribute(QObject::tr("id"));
 
             childItem->setFlags(parentItem->flags() | Qt::ItemIsSelectable);//Refus du noeud à être modifié
             childItem->setText(0, title);
 
+            //Correspondance id<->Sommet
+            graphe->insertSommet(nvSom,title);
 
             //On s'occupe des attributs du sommet
             arbre->parseElement(child, childItem, nvSom);
         } else if (child.tagName() == "Arc") {
             //Ajout au graphe
-            const Sommet* sommet1=graphe->obtenirSommet(child.attribute("Depart"));
-            const Sommet* sommet2=graphe->obtenirSommet(child.attribute("Arrivee"));
+            Sommet* sommet1=(Sommet*)graphe->obtenirSommet(child.attribute("Depart"));
+            Sommet* sommet2=(Sommet*)graphe->obtenirSommet(child.attribute("Arrivee"));
             Arete *nvleArete=new Arete(sommet1, sommet2);
             graph->ajouterArc(nvleArete);
 
@@ -163,23 +166,20 @@ void ImportExport::parseGraphe(GrapheColore* graph,
                                QTreeWidgetItem *parentItem)
 {
     //QDomElement child = element.firstChildElement();
-
     if (!child.isNull()) {
         if (child.tagName() == "Sommet") {
             //Ajout au graphe
             SommetColore *nvSom=new SommetColore();
             graph->ajouterSommet(nvSom);
-
-            qDebug()<<nvSom;//TODO : enlever
-
-            //Correspondance id<->Sommet
-            QString title = child.attribute(QObject::tr("id"));
-            graphe->insertSommet(nvSom,title);
-
             QTreeWidgetItem *childItem = arbre->createItem(nvSom, parentItem);
+
+            QString title = child.attribute(QObject::tr("id"));
 
             childItem->setFlags(parentItem->flags() | Qt::ItemIsSelectable);//Refus du noeud à être modifié
             childItem->setText(0, title);
+
+            //Correspondance id<->Sommet
+            graphe->insertSommet(nvSom,title);
 
             //On s'occupe des attributs du sommet
             arbre->parseElement(child, childItem, nvSom);

@@ -78,6 +78,7 @@
 #include"graphe.h"
 #include"sommetcolore.h"
 #include"Solution.h"
+#include<QDebug>
 #include<set>
 #include<map>
 #include<vector>
@@ -88,11 +89,11 @@
 class GrapheColore : public Graphe
 {
 public:
-    GrapheColore(vector<SommetColore *> *lSommets = new vector<SommetColore*>() , vector<Arete *> *lArcs = new vector<Arete*>());
+    GrapheColore();
     ~GrapheColore();
-    void setListeSommets(vector<SommetColore *> *);
+    void setListeSommets(vector<SommetColore*>);
     void ajouterSommet(SommetColore*);
-    vector<SommetColore *>* getListeSommets();
+    vector<SommetColore*> getListeSommets();
 
     vector<SommetColore*> obtenirListeAdj(SommetColore*);
 
@@ -102,7 +103,7 @@ public:
     friend ostream& operator<<( ostream &flux, GrapheColore& graph );
 
 protected:
-    vector<SommetColore*>* listeSommets;
+    vector<SommetColore*> listeSommets;
 
     int comparerEtiquettes(set<int> L1, set<int> L2);
     vector<int> lexBFS();

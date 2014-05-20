@@ -5,7 +5,6 @@
 #include<QDomDocument>
 #include<QHash>
 #include<QHeaderView>
-#include<QDebug>
 #include"Model/graphecolore.h"
 #include"interfacegraph.h"
 
@@ -57,9 +56,9 @@ public:
     void changerNom(Sommet *sommet);
     void changerCouleur(const Sommet *sommet);
 
-    QTreeWidgetItem* createItem(const Sommet *element,
+    QTreeWidgetItem* createItem(const Sommet &element,
                                 QTreeWidgetItem *parentItem=0);
-    QTreeWidgetItem* createItem(const Arete* element,
+    QTreeWidgetItem* createItem(const Arete &element,
                                 QTreeWidgetItem *parentItem=0);
     void parseElement(const QDomElement &element,
                       QTreeWidgetItem *parentItem,
@@ -70,8 +69,6 @@ public:
 
 
 private:
-    QHash<const Sommet*, QTreeWidgetItem*> sommetForItem;
-    QHash<const Arete*, QTreeWidgetItem*> arcForItem;
     InterfaceGraph* graphe;
 };
 

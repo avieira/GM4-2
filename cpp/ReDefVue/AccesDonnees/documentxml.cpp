@@ -60,8 +60,6 @@ QDomElement* DocumentXML::changerNom(Sommet* sommet)
     QDomElement* domSommet=sommetForElmt[sommet];
 
     domSommet->setAttribute("id",graphe->obtenirId(sommet));
-    //Hé, coco, tu changes pas aussi le nom pour l'arc par hasard ?
-    //TODO
 
     return domSommet;
 }

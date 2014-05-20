@@ -1,40 +1,43 @@
 #include "graphecolore.h"
 
-GrapheColore::GrapheColore(vector<SommetColore *> *lSommets, vector<Arete *> *lArcs):Graphe()
+GrapheColore::GrapheColore():Graphe()
 {
-    listeSommets=lSommets;
-    listeArcs=lArcs;
 }
 
 GrapheColore::~GrapheColore()
 {
-    //delete listeSommets;
+    int i;
+    for(i=0;i<listeSommets.size();i++)
+        delete listeSommets[i];
+
+    /*for(i=0;i<listeArcs.size();i++)
+        delete listeArcs[i];*/
 }
 
-void GrapheColore::setListeSommets(vector<SommetColore*>* liste)
+void GrapheColore::setListeSommets(vector<SommetColore*> liste)
 {
 	listeSommets=liste;
 }
 
-vector<SommetColore*>* GrapheColore::getListeSommets()
+vector<SommetColore*> GrapheColore::getListeSommets()
 {
-    return listeSommets;
+	return listeSommets;
 }
 
 void GrapheColore::ajouterSommet(SommetColore* sommet)
 {
-    listeSommets->push_back(sommet);
+    listeSommets.push_back(sommet);
 }
 
 vector<SommetColore*>  GrapheColore::obtenirListeAdj(SommetColore * s)
 {
     vector<SommetColore *> lAdj = vector<SommetColore*>();
-    for(int i=0;i<listeArcs->size();i++)
+    for(int i=0;i<listeArcs.size();i++)
     {
-        if(((*listeArcs)[i]->getDepart()->getId()) == (s->getId()) )
-            lAdj.push_back((SommetColore*)(*listeArcs)[i]->getArrivee());
-        else if(((*listeArcs)[i]->getArrivee()->getId()) == (s->getId()) )
-            lAdj.push_back((SommetColore*)(*listeArcs)[i]->getDepart());
+        if((listeArcs[i]->getDepart()->getId()) == (s->getId()) )
+            lAdj.push_back((SommetColore*)listeArcs[i]->getArrivee());
+        else if((listeArcs[i]->getArrivee()->getId()) == (s->getId()) )
+            lAdj.push_back((SommetColore*)listeArcs[i]->getDepart());
     }
 
     return lAdj;
@@ -89,7 +92,7 @@ int GrapheColore::comparerEtiquettes(set<int> L1, set<int> L2)
 
 vector<int> GrapheColore::lexBFS()
 {
-    int n = listeSommets->size();
+    int n = listeSommets.size();
     set<int> L[n];
     vector<int> theta = vector<int>(n);
     vector<SommetColore*> voisins;
@@ -97,9 +100,9 @@ vector<int> GrapheColore::lexBFS()
     SommetColore* s;
 
     for(k=0;k<n;k++)
-        listeSommets->at(k)->setMarque(false);
+        listeSommets[k]->setMarque(false);
 
-    s = listeSommets->at(0);
+    s = listeSommets[0];
     for(i=0; i<n-1; i++)
     {
         voisins = obtenirListeAdj(s);
@@ -141,7 +144,7 @@ vector<int> GrapheColore::inverser(vector<int> ordre)
 {
     int i, n, temp;
 
-    n = listeSommets->size();
+    n = listeSommets.size();
     for(i=0; i<(n/2); i++)
     {
         temp = ordre[i];
@@ -156,7 +159,7 @@ void GrapheColore::colorerSommets(vector<int> couleurs)
     SommetColore* sommet;
     int couleur;
     for(int i=0;i<couleurs.size();i++){
-        sommet=getListeSommets()->at(i);
+        sommet=getListeSommets()[i];
         couleur=couleurs[i];
         sommet->setCouleur(couleur);
     }
@@ -169,7 +172,7 @@ void GrapheColore::colorerDirect()
         vector<SommetColore*> voisins;
         bool mauvaiseCouleur = false;
 
-        n = listeSommets->size();
+        n = listeSommets.size();
         couleur = vector<int>(n);
 
         ordre = lexBFS();
@@ -190,8 +193,8 @@ void GrapheColore::colorerDirect()
                 while (ordre[j] != i)
                         j++;
                 // On colore avec la plus basse couleur telle qu'il n'y ait aucune contradiction.
-        vector<SommetColore*>* listeMachin=getListeSommets();
-        SommetColore* machin=listeMachin->at(j);
+        vector<SommetColore*> listeMachin=getListeSommets();
+        SommetColore* machin=listeMachin[j];
                 voisins = obtenirListeAdj(machin);
                 nbVoisins = voisins.size();
                 laCouleur = 1;
@@ -218,7 +221,7 @@ void GrapheColore::colorerDirect()
 
 void GrapheColore::colorerH(int k)
 {
-   /* // Initialisation des constantes "arbitraires"
+    /*// Initialisation des constantes "arbitraires"
     int i, n, nbSol, nbIter;
     int longT = 7;
     int rep = 10;
@@ -273,6 +276,6 @@ void GrapheColore::colorerH(int k)
 
 ostream& operator<<( ostream &flux, GrapheColore& graph ){
     flux<<"Sommets existant : "<<"\n";
-    for(int i=0;i<graph.getListeSommets()->size();i++)
-        flux<<*(graph.getListeSommets()->at(i));
+    for(int i=0;i<graph.getListeSommets().size();i++)
+        flux<<*(graph.getListeSommets().at(i));
 }

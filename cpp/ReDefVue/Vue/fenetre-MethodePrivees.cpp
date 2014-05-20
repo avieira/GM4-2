@@ -3,7 +3,7 @@
 
 void Fenetre::changeAttributSommetGraphe(Graphe* graph)
 {
-    vector<Sommet*>* listeSommets=graph->getListeSommets();
+    vector<Sommet*> listeSommets=graph->getListeSommets();
     //Création d'une boîte de dialogue
     QDialog fenDiag;
 
@@ -19,8 +19,8 @@ void Fenetre::changeAttributSommetGraphe(Graphe* graph)
 
     //Création de la liste des sommets
     QComboBox *boxSommets=new QComboBox;
-    for (int i = 0 ; i < listeSommets->size(); i++){
-        boxSommets->addItem(graphe.obtenirId(listeSommets->at(i)));
+    for (int i = 0 ; i < listeSommets.size(); i++){
+        boxSommets->addItem(graphe.obtenirId(listeSommets[i]));
     }
 
     //Ajout de tout ça à la fenêtre de dialogue
@@ -36,7 +36,7 @@ void Fenetre::changeAttributSommetGraphe(Graphe* graph)
     //On traîte la demande
     if(fenDiag.exec()){ //Si on a cliqué sur ok !
         int currentIndex=boxSommets->currentIndex();
-        Sommet *sommetModif=listeSommets->at(currentIndex);
+        Sommet *sommetModif=listeSommets[currentIndex];
 
         //On demande ce qu'on veut modifier à ce sommet
         QDialog fenDiag2;
@@ -73,7 +73,7 @@ void Fenetre::changeAttributSommetGraphe(Graphe* graph)
                 if(!(graphe.isColore()))
                     graphe.grapheToColore();
                 GrapheColore* grapheColore=(GrapheColore*)graphe.getGraph();
-                SommetColore* sommetColore=grapheColore->getListeSommets()->at(currentIndex);
+                SommetColore* sommetColore=(grapheColore->getListeSommets())[currentIndex];
                 modifSommetCouleur(sommetColore);
                 break;
             }
@@ -84,7 +84,7 @@ void Fenetre::changeAttributSommetGraphe(Graphe* graph)
 
 void Fenetre::changeAttributSommetGraphe(GrapheColore* graph)
 {
-    vector<SommetColore*>* listeSommets=graph->getListeSommets();
+    vector<SommetColore*> listeSommets=graph->getListeSommets();
     //Création d'une boîte de dialogue
     QDialog fenDiag;
 
@@ -100,8 +100,8 @@ void Fenetre::changeAttributSommetGraphe(GrapheColore* graph)
 
     //Création de la liste des sommets
     QComboBox *boxSommets=new QComboBox;
-    for (int i = 0 ; i < listeSommets->size(); i++){
-        boxSommets->addItem(graphe.obtenirId(listeSommets->at(i)));
+    for (int i = 0 ; i < listeSommets.size(); i++){
+        boxSommets->addItem(graphe.obtenirId(listeSommets[i]));
     }
 
     //Ajout de tout ça à la fenêtre de dialogue
@@ -116,9 +116,8 @@ void Fenetre::changeAttributSommetGraphe(GrapheColore* graph)
 
     //On traîte la demande
     if(fenDiag.exec()){ //Si on a cliqué sur ok !
-        SommetColore *sommetModif=listeSommets->at(boxSommets->currentIndex());
+        SommetColore *sommetModif=listeSommets[boxSommets->currentIndex()];
 
-        qDebug()<<"Dans changeAttributSommetGraphe : "<<sommetModif;
         //On demande ce qu'on veut modifier à ce sommet
         QDialog fenDiag2;
 
@@ -161,7 +160,6 @@ void Fenetre::changeAttributSommetGraphe(GrapheColore* graph)
 
 void Fenetre::modifSommetNom(Sommet *sommet)
 {
-    qDebug()<<"Dans modifSommetNom : "<<sommet;
     //Création d'une boîte de dialogue
     QDialog fenDiag;
 
@@ -260,7 +258,7 @@ void Fenetre::modifSommetCouleur(SommetColore *sommet)
 void Fenetre::modifArcDepart(Arete* arc)
 {
     Graphe* graph=(Graphe*)graphe.getGraph();
-    vector<Sommet*>* listeSommets=graph->getListeSommets();
+    vector<Sommet*> listeSommets=graph->getListeSommets();
     //Création d'une boîte de dialogue
     QDialog fenDiag;
 
@@ -276,8 +274,8 @@ void Fenetre::modifArcDepart(Arete* arc)
 
     //Création de la liste des sommets
     QComboBox *boxSommets=new QComboBox;
-    for (int i = 0 ; i < listeSommets->size(); i++){
-        boxSommets->addItem(graphe.obtenirId(listeSommets->at(i)));
+    for (int i = 0 ; i < listeSommets.size(); i++){
+        boxSommets->addItem(graphe.obtenirId(listeSommets[i]));
     }
 
     //Ajout de tout ça à la fenêtre de dialogue
@@ -292,7 +290,7 @@ void Fenetre::modifArcDepart(Arete* arc)
 
     //On traîte la demande
     if(fenDiag.exec()){ //Si on a cliqué sur ok !
-        arc->setDepart(listeSommets->at(boxSommets->currentIndex()));
+        arc->setDepart(listeSommets[boxSommets->currentIndex()]);
         //TODO : modifier affichage, xmltree, domdocument via observer
     }
 }
@@ -300,7 +298,7 @@ void Fenetre::modifArcDepart(Arete* arc)
 void Fenetre::modifArcArrivee(Arete* arc)
 {
     Graphe* graph=(Graphe*)graphe.getGraph();
-    vector<Sommet*>* listeSommets=graph->getListeSommets();
+    vector<Sommet*> listeSommets=graph->getListeSommets();
     //Création d'une boîte de dialogue
     QDialog fenDiag;
 
@@ -316,8 +314,8 @@ void Fenetre::modifArcArrivee(Arete* arc)
 
     //Création de la liste des sommets
     QComboBox *boxSommets=new QComboBox;
-    for (int i = 0 ; i < listeSommets->size(); i++){
-        boxSommets->addItem(graphe.obtenirId(listeSommets->at(i)));
+    for (int i = 0 ; i < listeSommets.size(); i++){
+        boxSommets->addItem(graphe.obtenirId(listeSommets[i]));
     }
 
     //Ajout de tout ça à la fenêtre de dialogue
@@ -332,7 +330,7 @@ void Fenetre::modifArcArrivee(Arete* arc)
 
     //On traîte la demande
     if(fenDiag.exec()){ //Si on a cliqué sur ok !
-        arc->setArrivee(listeSommets->at(boxSommets->currentIndex()));
+        arc->setArrivee(listeSommets[boxSommets->currentIndex()]);
         //TODO : modifier affichage, xmltree, domdocument via observer
     }
 

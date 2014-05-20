@@ -33,10 +33,27 @@
 \item Filtre d'un signal AR. AR(1) : expression de a et de $\sigma_x^2$.
 \item Équations normales de Yule-Walker. 
 \item Mêmes questions avec AR(p)
-\end{enumerate}
-\section{Révisions}
-\begin{enumerate}
-\item Réalisable physiquement
+\item Estimation en moyenne quadratique :
+	\begin{itemize}
+		\item Fonctionnelle à minimiser ?  
+		\item Risque moyen ? Expression de $\hat{x}_{EMQ}(z)$
+		\item $\mathbb{E}(\hat{x}_{EMQ}(z))$ ? Innovation ?
+		\item Variance de l'innovation ?
+	\end{itemize}
+\item Maximum à postériori : 
+	\begin{itemize}
+		\item Fonctionnelle à minimiser ?
+		\item Risque moyen ?
+		\item Expression de $\hat{x}_{MAP}(z)$ ?
+		\item Que se passe-t-il dans le cas gaussien ?
+	\end{itemize}
+\item Maximum de vraisemblance :
+	\begin{itemize}
+		\item Inégalités de Cramer-Rao
+		\item Équation à résoudre pour obtenir $\hat{x}_{MV}(z)$ ?
+		\item Condition pour que l'estimateur soit efficace ?
+	\end{itemize}
+\item Refaire le truc sur les équations d'état
 \end{enumerate}
 
 \part{Optimisation combinatoire}
@@ -72,7 +89,7 @@
 	\item Définition de matroïde
 	\item Propriété des matroïdes sur l'algorithme glouton
 	\item Propriété sur garantie de performance
-\section{Cheminement des les graphes}
+\section{Cheminement dans les graphes}
 	\item Définition d'un problème de plus court chemin. Condition d'existence.
 	\item Propriété des sous-chemins de plus court chemins
 	\item Algorithme de Ford
@@ -95,8 +112,19 @@
 	\item Algorithme de Ford-Fulkerson
 	\item Définition : Graphe d'écart
 	\item Algorithme de Roy
+\section{Programmation linéaire en nombres entiers}
+	\item Définition d'un polyhèdre
+	\item Si polyèdre borné ?
+	\item Définition : polyèdre entier.
+	\item Si P entier, difficulté problème de minimisation ?
+	\item Meilleure formulation
+	\item Inégalité valide
+	\item Hyperplan séparateur pour $\bar{x}$ et $P$, coupe
+	\item conv$\Pi$
+	\item Équivalence pour la difficulté polynomial.
 \end{enumerate}
 
+\newpage
 \part{EDP}
 \section{Cas d'une EDP en espace}
 \begin{enumerate}
@@ -163,10 +191,12 @@
 
 \part{Finance}
 \begin{enumerate}
+\section{Introduction}
 \item Agent économique : qui supporte un besoin et qui dégage une capacité ?
 \item Financement intermédié
 \item Définition de marché, marché des capitaux. Titres, émetteurs
 \item Marchés monétaires et financiers. Actions, Obligations. Marché primaire, secondaire.
+\section{Politique monétaire de la zone euro}
 \item Politique monétaire. 
 \item Membres zone euro. 2 définitions des autorités monétaires
 \item Objectif de la BCE.
@@ -175,5 +205,42 @@
 \item 3 formes de la monnaie. 
 \item 3 types de comptes bancaires. 
 \item Définition d'agrégat monétaire, M1, M2 et M3. 
+\item Taux de M3 à ne pas dépasser, conséquence si c'est le cas.
+\item Deux types de fuite.
+\begin{itemize}
+	\item 1er type : deux types existants
+	\item 2ème type : créé par qui ? Consiste en quoi ? Taux de RO ?
+\end{itemize}
+\item 2 types de refinancement auprès de la BC.
+\begin{itemize}
+	\item OM : quand ? Durée de crédit ? 
+	\item Noms des taux d'intérêt pratiqués. Taux actuel (annuel !)
+	\item Montant réellement prêté par ce biais
+	\item FP : Accessible quand ? Montant prêté ? Nom du refinancement et du taux pratiqué
+	\item Durée du créedit, différence entre les deux taux
+\end{itemize}
+\item Taux minimum : nom, signification, taux actuel
+\section{Marché interbancaire}
+\item Trois catégories de banque. 
+\begin{itemize}
+	\item les établissements de crédit : deux type de banques. Où se situe la différence ?
+	\item banques publiques : 2 exemples
+	\item Banques d'affaire : rôle
+\end{itemize}
+\item Durée d'emprunt, nom des deux taux pratiqués selon la durée
+\begin{itemize}
+	\item Taux JLJ : différence avec le taux EONIA.
+	\item Taux à T : autre nom
+\end{itemize}
+\item Placement de chacun des taux entre la BCE et le MIB. Problème dans ce schéma : d'où ça vient ?
+\section{Les titres de court terme}
+\item Définition. 
+\item Déficit budgétaire : définition. Différentes mesures pour financer le déficit. 
+\item Dette publique : définition. Définition du service de la dette.
+\item 3 étapes de contrôle de la dette
+\item Définition du déficit structurel.
+\item Deux catégories de bons du trésor : valeur unitaire, durée de vie, rémunération, remboursement
+\item Deux catégories de titres de court terme émis par les entreprises et les banques. (avec les noms selon entreprise ou banque)
+\item Valeur unitaire, durée de vie, réminération, remboursement.
 \end{enumerate}
 \end{document}
