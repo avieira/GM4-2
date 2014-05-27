@@ -38,8 +38,9 @@
 \subsection[Hydrodynam.]{Un peu d'hydrodynamique} %Exemples
  
 \begin{frame}
-	\frametitle{Bouah}
-
+	\frametitle{Cas d'utilisation des équations de Saint-Venant}
+		Valables lorsque la hauteur du liquide est négligeable par rapport à sa largeur. Exemple : une baignoire\\
+		Utilisées en météorologie, modélisation des océans. 
 \end{frame}
 
 \subsection[Équations]{Présentation des équations}
@@ -88,8 +89,19 @@
 \section{Méthode des éléments finis}
 \subsection[Présentation]{Présentation rapide de la méthode}
 \begin{frame}
-	\frametitle{Bouah}
+	\frametitle{Equation de départ}
+	On part de l'équation suivante :\\
+	$\left\{\begin{matrix}
+		-\Delta\left(u\right)=f, u\in\Omega\\
+		u=0 \textit{ sur } \Gamma
+		\end{matrix}\right.$
+\end{frame}
 
+\begin{frame}
+	\frametitle{Théorème de Lax-Milgram}
+	On transforme ce problème en : trouver u solution de \\
+	$a\left(u, v\right)=L\left(v\right)$\\
+	D'après le théorème de Lax-Milgram, si $a\left(.,.\right)$ est une forme bilinéaire continue et V-elliptique et si $L\left(v\right)$ est une forme linéaire continue, alors notre problème admet une solution et elle est unique.
 \end{frame}
 
 \subsection[Simulation]{Simulation sur un exemple}

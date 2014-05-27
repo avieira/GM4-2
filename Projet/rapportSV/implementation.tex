@@ -8,6 +8,131 @@ Pour cela, nous allons écrire un programme en C++. En effet, ce programme prés
 
 Cependant, afin que ce code soit bien le plus extensible possible, nous devrons bien définir les différentes classes créées. La suite de ce rapport explique comment ce programme a été pensé.
 
-\subsection{Le maillage}
-De manière la plus générale possible, un maillage est constitué d'un ensemble de points, d'un ensemble d'éléments finis, et de fonctions de base sur ce maillage. Cependant, pour définir chacun de ces ensembles, on a besoin de préciser un peu plus le type de notre maillage.\\
-On s'approche un peu plus de notre exemple 
+\subsection{Sommet - SommetR2}
+\paragraph{} Les géométries que l'on maille, et donc les maillages, ont besoin de la notion de point, de sommet. Nous avons décidé qu'un Sommet aurait un numéro qui lui est propre. Cela nous permettra d'identifier les fonctions de la base de $V_h$, puisque nous sommes sur des éléments finis lagrangiens. \\
+
+Ils ont une liste de coordonnées et une dimension, celle-ci correspondant au nombre de coordonnées. Un SommetR2 possède deux coordonnées, puisqu'il s'agit d'un Sommet de $\mathbb{R}^2$. Les méthodes définies ne sont que des méthodes de manipulations: geteurs, seteurs. Une méthode d'affichage console a aussi été implémentée afin de s'assurer des résultats obtenus.\\
+
+\subsection{Geometrie - GeometrieR2 - Carre - Triangle}
+\paragraph{} Une Geometrie possède deux interêts dans l'implémentation qui a été mise en place:
+\begin{enumerate}
+\item C'est ce que l'on maille;
+\item Certaines géométrie constituent le domaine physique d'un élément fini et donc le support des restrictions des fonctions de base de $V_h$ , c'est à dire des polynômes lagrangiens de $\mathbb{P}_1(\mathbb{R}^2)$ ici.
+\end{enumerate} 
+
+Une Geometrie doit connaître la dimension de l'espace dans lequel elle existe afin de connaître le nombre de composantes des sommets qu'elle comporte. Elle doit donc aussi disposer du nombre de ces sommets. La liste des points est celle des sommets composants l'enveloppe convexe ici. On dispose pour une Geometrie générale uniquement des accesseurs. Une GeometrieR2 est un cas particulier dans le cadre de $\mathbb{R}^2$. Les sommets sont alors des SommetR2.\\
+
+Dans le cadre de ce projet, nous nous interressions à un domaine carré, c'est pour cela que l'on dispose d'une classe Carré. Celui-ci est une GeometrieR2 par procédé d'héritage. Nous avons besoin de la longueur du côté et des quatres sommets le composant. c'est le Carré qui génère par la méthode \texttt{mailler(float pas)} son maillage. Cependant, afin de ne pas nous compliquer la tâche ici, nous ne nous sommes interressé à la génération de maillage d'un carré que dans le cas où ses côtés sont parrallèles aux axes du repère orthonormal cartésien.\\
+
+Les triangles sont nécessaires puisque l'on utilise ici des éléments finis $\mathbb{P}_1(\mathbb{R}^2)$. Nous avons défini une méthode de calcul d'aire à l'aide du déterminant, puisque nous aurons besoin de l'aire de ceux-ci dans le cadre des formules d'intégration numériques.\\
+
+\subsection{RestFctBaseR2P1}
+\paragraph{} Comme nous venons de le dire, nous avons des éléments finis $\mathbb{P}_1(\mathbb{R}^2)$, cette classe est une implémentation des polynômes de la forme $a\times x + b\times y + c$. On a donc trois paramètres à retenir. Nous disposons bien entendu d'une méthode de calcul pour une abscisse et une ordonnée données.\\
+
+\subsection{ElementFini - ElementFiniR2 }
+\paragraph{} Il est bien entendu normal d'avoir une telle classe, puisque nous implémentons ici une méthode d'éléments finis. Un élément fini possède un numéro pour pouvoir être identifié. Il possède aussi un domaine qui est une Géométrie. Ici ce domaine sera à chaque fois un Triangle puisque nous sommes dans le cas $\mathbb{P}_1(\mathbb{R}^2)$ sur l'ensemble de notre maillage. Enfin, un tel élément fini possède un triplet de RestFctBaseR2P1 afin de pouvoir calculer la matrice de rigidité à partir des sommets du domaine. A ces fins, l'ordre de stockage de ces RestFctBaseR2P1 est le même que celui des sommets du domaine et dépend donc de la parité du numéro de l'élément fini (c.f. explications sur la méthode de maillage).\\
+
+Nous avons aussi défini une méthode d'affichage afin de vérifier les résultats de la génération du maillage.\\
+
+\subsection{Maillage - MaillageR2}
+\paragraph{} Nous implémentons une méthode d'éléments finis, on s'attend bien sûr à trouver une telle classe. Elle comprend plusieurs listes: une comprenant tous les sommets, une autres uniquement les sommets du bord ,une  les sommets intérieurs au domaine, et la denrière, celle des éléments finis, ainsi que leur taille respective.\\
+
+C'est à l'aide de cette classe et par itérations sur ses listes que nous calculerons la matrice de rigidité et le second membre.\\ 
+
+\subsection{fonctionsMath}
+\paragraph{}Cette classe contient une méthode d'inversion de matrice: la méthode du gradient conjugué pour les moindres carrés (Introduction aux méthodes numériques , Franck Jedrzejewski), dont nous nous servirons pour inverser le système.
+
+\subsection{FormBilinR2P1}
+\paragraph{} Il s'agit de la classe qui implémente la forme bilinéaire obtenue dans la formulation variationelle. Elle possède une méthode de calcul sur un élément fini donné, à partir de deux restrictions des fonctions de base de $V_h$, à savoir des polynômes de $\mathbb{P}_1(\mathbb{R}^2)$  à son domaine. On effectue ce calcul sur un élément fini, car comme nous le verrons, pour calculer la matrice de rigidité, nous parcourons la liste des éléments finis. La formule de calcul utilise directement les paramètres des RestFctBaseR2P1, car les gradients sont constants ici, et on peut donc sortir leur produit scalaire de l'intégrale définissant notre équation dans sa forme variationnelle:\\
+\[ \int_{K}{\nabla \phi _ i . \nabla \phi _ j dxdy} = \nabla \phi _ i . \nabla \phi _ j \times \int_{K}dxdy\]
+\[ \int_{K}{\nabla \phi _ i . \nabla \phi _ j dxdy} = \nabla \phi _ i . \nabla \phi _ j \times mes(K)\]
+\[ \int_{K}{\nabla \phi _ i . \nabla \phi _ j dxdy} = (\frac{\partial \phi _ i}{\partial x}\frac{\partial \phi _ j}{\partial x}+\frac{\partial \phi _ i}{\partial y}\frac{\partial \phi _ j}{\partial y}) \times mes(K)\]
+\[ \int_{K}{\nabla \phi _ i . \nabla \phi _ j dxdy} = ((\phi _ i \rightarrow a)\times(\phi _ j \rightarrow a)+(\phi _ i \rightarrow b)\times(\phi _ j \rightarrow b)) \times mes(K) \]
+
+\subsection{Fonction - FormLinR2P1}
+\paragraph{} Dans notre équation de départ, nous avons une fonction $f$ pour second membre. La classe implémentant cette fonction est la classe homonyme. Elle possède une méthode permettant de calculer la valeur qu'elle prend pour un point $(x;y)$ donné. Si on souhaite changer de fonction, il suffit d'aller changer cette méthode.\\
+
+Mais dans la méthode des éléments finis, nous travaillons avec une formulation variationnelle, cette fonction n'intervient donc qu'indirectement par l'intermédiaire d'une forme linéaire, d'où la classe FormLinR2P1. Celle-ci possède une méthode pour pouvoir évaluer numériquement l'intégrale la définissant pour une restriction d'une fonction de base de $V_h$ à un élément fini donnée.\\
+\[ \int_{K}{\phi _i f dxdy} = \frac{mes(K)}{3}\times((\phi _i f)(a_{12})+(\phi _i f)(a_{13})+(\phi _i f)(a_{23})) \]
+
+\subsection{Probleme}
+\paragraph{}C'est en quelque sorte une classe qui gère un peu tout. En effet, on y trouve le domaine sur lequel est défini l'équation et à partir duquel on va générer le maillage: un Carré ici. Un Problème possède aussi une FormBilinR2P1 et une FormLinR2P1 puisque celles-ci sont caractéristiques d'un problème donné. Il a aussi pour attribut un maillage, les matrices de rigidité de Neumann homogène et Dirichlet homogène, et les second membres associés, ainsi que les vecteurs solutions associés.\\
+
+C'est la classe qui gère la méthode, car c'est sur cette classe que l'on va lancer les méthodes dans le main. En effet, elle possède:
+\begin{enumerate}
+\item Une méthode \texttt{genererMaillage()} qui affecte à son attribut maillage le résultat de la méthode de maillage de son domaine ( Carré ici);
+\item Une méthode \texttt{calculerMatrices()} qui calcule les matrices de rigidité et les second membres des systèmes linéaires;\\
+\item Une méthode \texttt{resoudreProbleme()} qui résoud le système linéaire associé au problème de Dirichlet homogène ici;\\
+\item Une méthode \texttt{calculerSolutionPoints()} qui calcule pour différents points la valeur prise par la solution numérique et les écrit dans un fichier pour pouvoir ensuite afficher à l'aide de Gnuplot la solution.\\
+\item Une méthode pour visionner la matrice de rigidité afin de s'assurer des résultats.\\
+\end{enumerate}
+
+\subsection{Main}
+\paragraph{} C'est ni plus ni moins le programme que l'on lance après compilation. Dans la version actuelle, la fonction du second membre est à modifier dans le fichier fonction.cpp, la forme linéaire dans formlinr2p1.cpp et la forme bilinéaire dans formbilinr2p1.cpp. Nous n'avons modifié pour notre part que le fichier fonction.cpp pour implémenter les cas d'un second membre constant, polynomial ou exponentiel, puisque nous ne nous sommes interressés dans le cadre de ce projet qu'à l'équation de Poisson.\\
+
+On commence par instancier une Fonction, une FormLinR2P1, une FormBilinR2P1, puis un Carré afin d'instancier à son tour à partir de ceux-ci un Problème. Puis on génère le maillage en passant un flottant en paramètre de la méthode \texttt{genererMaillage(float pas)} dont nous avons parlé précedemment. Dans ce projet, le carré ayant pour côté 1, il est plus prudent de prendre ce pas de maillage comme étant une puissance négative de 2 à cause de la représentation flottante: sinon le maillage ne tombe pas juste. On lance ensuite toujours sur l'instance de Problème les méthodes \texttt{calculerMatrices()} puis \texttt{resoudreProbleme()}. Enfin, dans le but d'afficher ensuite la solution sous Gnuplot, on lance la procédure \texttt{calculerSolutionPoints()}.\\ 
+
+\subsection{Méthode de génération du maillage}
+\paragraph{} Expliquons quelque peu notre méthode de maillage de la classe Carré à l'aide de la figure \ref{maill}. Nous avons distingué deux cas : les éléments finis au numéro pairs d'une part, impairs de l'autre. Cette distinction est importante puisque les restrictions des polynômes lagrangiens ne sont pas les mêmes puisqu'il faut effectuer une rotation. Dans le cas présent, nous n'avons pas voulu nous charger en calculant le déterminant de la transformation comme il est courant de le faire dans les méthodes. Nous nous contentons de rentrer mes paramètres $a$,$b$ et $c$ ($a\times x+b\times y +c$) en fonction de la parité. Tous les éléments pairs auront les mêmes paramètres de rentrés, idem pour les impairs. Il sera donc nécessaire lors du calcul de ces polynômes sur un élément fini de recourir à un changement de repère. Notons sur les éléments finis 1 et 2 en blanc, l'ordre dans lequel sont stockés les sommets suivant la parité de l'élément. C'est cette ordre qui fait que l'on crée les sommets dans un certain ordre.\\
+
+On commence bien évidemment par générer le premier élément fini du maillage et donc les points 1,2 et 3. On génère ensuite la suite de la première ligne du maillage: les éléments 2 avec la création du point 4, puis les éléments 3, 4, 5 et 6, produisant à chaque fois un point supplémentaire. C'est ensuite le tour des lignes supérieures, où les sommets crées sont cette fois tous ceux du dessus. Notons qu'afin de disposer d'une liste des sommets du bord ou intérieurs au domaine, nous avons besoin d'effecteur des tests sur leur abscisse et leur ordonnée.\\
+
+Cette génération en ligne est possible puisque nous connaissons le nombre d'éléments finis par "ligne" : $\frac{2\times \text{cote}}{\text{h}} $ et le nombre total :  $\frac{2\times \text{cote}^2}{\text{h}^2}$.\\
+
+A la fin de la méthode, un maillage est crée et retourné.\\ 
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.8]{mail.png}
+\caption{\label{maill}Illustration du procédé de maillage}
+\end{center}
+\end{figure}
+\clearpage 
+
+\subsection{Méthode de calcul de la matrice de rigidité}
+\paragraph{} On va calculer la matrice dans le cas de conditions de Neumann homogène et son second membre, et on va en extraire la matrice et le second membre pour des conditions de Dirichlet homogène.\\
+\begin{enumerate}
+\item On commence bien evidemment par initialiser la matrice et le second membre à 0.\\
+\item On met dans une matrice $9\times9$ les valeurs de la forme bilinéaire pour le premier élément fini qui est impair. Cette matrice est $9\times 9$ car on fait une double boucle sur les sommets du domaine qui est un triangle. Et à chaque couple de sommet:$(s_i,s_j)$, on associe la restriction des fonctions de base de $V_h$ à cet élément fini:$(\phi _i^K,\phi _j^K)$; couple pour lequel on calcule la forme bilinéaire.\\
+\item On procède de même pour l'élément fini 2 qui est pair. Nous avons donc deux matrices de référence.
+\item On parcourt ensuite la liste des éléments finis que nous procure le maillage. Et pour chacun de ces éléments, on fait une double boucle sur les sommets de son domaine (un triangle ici). A chaque itération, pour chaque couple de sommets $(s_i,s_j)$, on associe leurs identifiants: $(id_i,id_j)$. On peut choisir de manière naturelle le numéro du sommet comme étant aussi le numéro de la fonction de la base de $V_h$ valant 1 en ce sommet  et 0 pour les autres. Or, les indices d'un élément de la matrice de rigidité correspondent justement à ces numéros de fonction de base de part sa définition. On a donc : \texttt{matRigNeum[$ind_i$][$ind_j$]+=valRef[$i$][$j$]}. En fait il faut soustraire 1 à $ind_k$ car on a fait partir les numéros des sommets à 1 en générant le maillage.\\
+ A la sortie de la boucle la plus interne (celle sur le second sommet), on calcule le second membre. \\
+Il est important de remarquer que l'on n'affecte pas, mais que l'on ajoute les valeurs de références. C'est normal: un sommet appartient à plusieurs domaines du maillage , et donc à plusieurs éléments finis, il faut donc à chaque fois sommer l'intégrale que l'on obtient sur l'élément fini. Cela est dû au fait que le support des fonctions de $V_h$ est composé de plusieurs éléments finis, et qu'alors l'intersection des supports de deux fonctions de base de $V_h$ peut composer plusieurs éléments finis.
+\item On extrait ensuite la matrice de rigidité pour des conditions de Dirichlet. Pour cela, on fait une double boucle sur les éléments de cette matrice. On a donc le couple d'indices $(i;j)$. On va chercher dans la liste des sommets intérieurs que nous fournit le maillage les sommets $s_i$ et $s_j$. On extrait leur identifiant et on obtient le couple : $(id_i,id_j)$, et on va utiliser l'élément matRigNeum[$ind_i$][$ind_j$]. On a donc: \texttt{matRigDir[$i$][$j$]=matRigNeum[$ind_i$][$ind_j$]}. Sauf qu'une nouvelle fois il faudra décaler de 1 pour les indices dans la matrice de rigidité pour des conditions de Neumann homogènes.\\
+ En sortie de boucle interne, on fait de même avec le second membre.
+\end{enumerate}
+
+\subsection{Amélioration envisageables}
+\paragraph{} Il y a plusieurs types d'améliorations. Le premier concerne la méthode des élément finis implémentée. En effet, nous stockons ici entièrement la matrice, étant creuse, il serait plus judicieux d'implémenter une méthode permettant de gagner de la place. Une autre concerne l'implémentation: il serait commode de définir des classes plus générales et virtuelles pour qu'à partir de relations d'héritage, on puisse instancier un problème plus proprement qu'en modifiant directement les fichiers. Il serait aussi interressant de regarder si une API C++ de gnuplot existe afin de se passer du script et qu'à partir d'une méthode on puisse afficher directement la solution. Il serait aussi préférable d'essayer de lire des maillages générés par d'autres logiciels. Enfin, une petite interface console avec un pourcentage d'avancement permettrait de mieux manipuler la méthode. 
+
+\subsection{Résultats}
+\paragraph{} Nous avons implémenté la méthode pour différents seconds membres. Nous avons d'abord regardé la solution obtenue pour une fonction constante : $f(x)=2$. Nous avons commencé avec un pas de $0.125$, nous avions donc 36 fonctions de base pour $V_h$. Comme on peut le voir sur la Figure \ref{sol1} la solution est grossière, mais on voit déjà une forme de cloche qui s'applatit sur les côtés et vérifie donc les conditions de Dirichlet homogènes imposées. Afin d'étudier la convergence de la solution, nous avons diminué le pas à $0.03125$ afin de bénéficier de 900 fonctions de base. Les calculs sont bien entendus plus longs. Mais la solution plus lisse comme on peut le voir sur la Figure \ref{sol2}. La solution semble donc bien converger. Nous avons tout de même tenu à comparer nos résultats avec ceux de FreeFM++, dont la solution fournie est celle de la Figure \ref{pol}. Nous observons la même courbe en cloche et les mêmes valeurs, nous pouvons donc être assez satisfaits de ces premiers résultats.\\
+
+Nous avons aussi voulu tester ces solutions fournies. Pour cela, nous savions que dans le cas d'un second membre nul dans l'équation de Poisson, la fonction solution serait harmonique et aurait donc son minimum et son maximum sur son bord. Or ici, nous avions des conditions de Dirichlet homogènes, ce qui impliquait qu'une telle solution serait la fonction identiquement nulle. Nous avons donc diminué le second membre : $f(x)=0.1$ puis $f(x)=0.001$. Et effectivement, la solution possède toujours une allure de surface en cloche, mais les valeurs prises par celle-ci sont alors de l'ordre de $10^-5$, nous tendons donc bien vers la fonction nulle.\\
+
+Nous avons ensuite voulu implémenter cette méthode dans le cas d'un second membre polynomial : $f(x)=17x^3-16.2x^2+2x+1$. Nous pouvons voir sur les figures \ref{sol3} et \ref{sol4} que la solution numérique semble une nouvelle fois converger. Nous avons voulu comparer nos résultats à ceux de FreeFem++ que nous retrouvons sur la figure \ref{polFm}. Nous retrouvons bien les deux "bosses" que nous avons sur nos résultats, une étant un peu plus haute que l'autre.\\
+
+Soulignons tout de même que FreeFem++ est beaucoup plus rapide que le programme que nous avons implémenté. C'est sur la méthode d'inversion que nous prenons beaucoup de temps. Peut-être celle-ci n'est pas adaptée au cas des matrices creuses.  
+ 
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.6]{solution.png}
+\caption{\label{sol1}Solution numérique obtenue pour $f(x)=2$ avec un pas de 0.125}
+\includegraphics[scale=0.6]{solution2.png}
+\caption{\label{sol2}Solution numérique obtenue pour $f(x)=2$ avec un pas de 0.03125}
+\includegraphics[scale=0.15]{2.png}
+\caption{\label{pol}Solution numérique obtenue pour $f(x)=2$ sous FreeFem++}
+\end{center}
+\end{figure}
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.6]{solution4.png}
+\caption{\label{sol3}Solution numérique obtenue pour $f(x)=17x^3-16.2x^2+2x+1$ avec un pas de 0.125}
+\includegraphics[scale=0.6]{solution3.png}
+\caption{\label{sol4}Solution numérique obtenue pour $f(x)=17x^3-16.2x^2+2x+1$ avec un pas de 0.03125}
+\includegraphics[scale=0.15]{pol.png}
+\caption{\label{polFm}Solution numérique obtenue pour $f(x)=17x^3-16.2x^2+2x+1$ sous FreeFem++}
+\end{center}
+\end{figure}
+
+\clearpage 

@@ -1,0 +1,17 @@
+On fait plusieurs hypothèses afin de simplifier le modèle donné par Navier-Stokes, telles que l'hypothèse de Boussinesq où on considère la densité rho comme constante, on prend l'accéleration comme étant dûe uniquement à la gravité, et surtout, une vitesse moyenne sur la hauteur suivant x ou y. On transforme ainsi les équations de Navier-Stokes selon des calculs bien compliqués pour arriver à une première forme des équations de Saint-Venant. Cependant, en réintégrant l'équation de continuité dans les deux équations de quantité de mouvement, on obtient le système suivant.
+	- u et v : moyenne des vitesses sur la hauteur selon x et y
+	- h : hateur de l'eau au-dessus du fond
+	- Fx et Fy : différentes forces selon x et y, par exemple forces de cisaillement au fond
+
+Enfin, avec des hypothèses encore plus simplificatrices, comme une variation de la hauteur d'eau faible par rapport à une certaine moyenne, et en négligeant les forces extérieures, on obtient les équations linéarisées suivante, où :
+	- g : acceleration de la gravité
+	- h0 : hauteur moyenne de l'eau au-dessus du fond
+	- eta : variation faible de l'eau par rapport à la moyenne
+
+On va maintenant passer à l'implémentation des équations de Saint-Venant sous FreeFem++. Tout d'abord, un petit constat : la méthode des éléments finis ne sont pas adaptés à ce type d'équations. En effet, la formulation variationnelle obtenue n'est pas vraiment exploitable et le cadre théorique n'est pas simple à appréhender.
+Cependant, une autre méthode est plus adapter à ces équations : la méthode des volumes finis. En effet, cette méthode a été initialement mise au point pour les lois de conservation, ce qui est totalement le cas des équations de Saint-Venant.
+Tout d'abord, petite présentation de la méthode. Cette méthode, comme beaucoup d'autre, s'appuie sur une discrétisation de l'espace. Cependant, on va choisir ici un point à l'intérieur des mailles, au niveau duquel on va chercher une valeur approchée de la solution. On prendra ensuite la valeur de la solution sur la maille comme étant la valeur approchée de la solution au point choisi.
+Le problème est toujours de trouver le système à résoudre pour trouver la solution approchée en ces points. On va pour cela utiliser les flux traversant les parois. Si on prend par exemple l'équation de Poisson : en intégrant de chaque côté de l'égalité, on obtient une intégrale définie sur les bords de chaque maille. On sépare cette intégrale entre chaque arête du polyèdre, et on approxime cette intégrale grâce à une méthode d'interpolation. On approxime ainsi le flux passant par une arête . Si on prend par exemple cette arête, on va ainsi relier la valeur en P et en E. On construit ainsi un système linéaire à résoudre, comme pour les autres méthodes.
+
+Pour Saint-Venant, on a utilisé un article publié par Georges Sadaka, dans lequel il a implémenté les équations de Saint-Venant par la méthode des volumes finis sous le logiciel FreeFem++. Ce logiciel permet de résoudre numériquement des EDP de façon assez simple.
+Sadaka présente ainsi une manière d'exprimer les équations sous une forme plus exploitable et un codage pour résoudre numériquement ces équations sous ce logiciel. Nous avons essayé de réimplémenter sa méthode dans ce projet. Cependant, on voit que le résultat n'est pas des plus convaincant. En effet, la vague affichée est assez convaincante au début. Cependant, les deux fronts qui devraient apparaître ne viennent finalement jamais. Le codage doit donc encore être repris pour être plus proche de la réalité.
