@@ -3,7 +3,6 @@
 \usepackage[frenchb]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8x]{inputenc}
-\usepackage{minted}
  
 \usetheme{Berkeley}
 \usecolortheme{crane}
@@ -104,7 +103,82 @@
 	D'après le théorème de Lax-Milgram, si $a\left(.,.\right)$ est une forme bilinéaire continue et V-elliptique et si $L\left(v\right)$ est une forme linéaire continue, alors notre problème admet une solution et elle est unique.
 \end{frame}
 
+\begin{frame}
+		\frametitle{Méthode des éléments finis : Définitions}
+		Maillage : pavage de l'espace en volumes élémentaires. Un maillage est constituté d'une suite de points que l'on appellera noeuds\\
+		Pour tout entier $k\geq 1$, on appelle treillis d'ordre $k$ l'ensemble :\\
+$\Sigma_{k}=\left\{ x\in K \text{ tel que } \lambda_{j}\left(x\right)\in\left\{0, \frac{1}{k},...,\frac{k-1}{k}, 1\right\} \text{ pour }1\leq j\leq N\right\}$
+$\phi_{j} $: base de $V_h$
+\end{frame}
+
+\begin{frame}
+	\frametitle{Méthode des éléments finis}
+	$v(x)=\sum_{i=1}^{n_{d_{l}}}v\left(\hat{a}_{i}\right)\phi_{i}\left(x\right)$\\
+	Matrice de rigidité : $\mathcal{K}_{h}=\left(\int_{\Omega}\nabla\phi_{j}.\nabla\phi_{i} dx\right)_{1\leq i, j\leq n_{d_{l}}}$\\
+	On obtient le système linéaire : $\mathcal{K}_{h}U_{h}=b_{h}$
+	
+
+\end{frame}
 \subsection[Simulation]{Simulation sur un exemple}
+\begin{frame}
+	\frametitle{Formulation variationelle}
+	Soit le problème suivant :
+\begin{align*}
+\left\{\begin{matrix}
+-\Delta\left(u\right)=f,  u\in\Omega\\
+u=0 \texttt{ sur }\Gamma
+\end{matrix}
+ \right.
+\end{align*}
+On a alors :
+$\forall v\in V a(u,v)=L(v)$
+avec\\
+\begin{equation*}
+a(u,v)=\int_{\Omega}\nabla u.\nabla v
+\end{equation*}
+\begin{equation*}
+L(v)=\int_{\Omega}fv
+\end{equation*}
+\begin{equation*}
+V=H_{0}^{1}=\left\{v\in L^{2}\left(\Omega\right), \nabla u\in L^{2}\left(\Omega\right), v=0 \texttt{ sur }\Gamma\right\}
+\end{equation*}
+Lax-Migram s'applique.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Méthode des éléments finis}
+Maillage sur le carré unité avec des triangles $\mathbb{P}_{1}$. Unisolvance vérifiée.\\
+équation sous la forme d'un système linéaire : $\mathcal{K}_{h}U_{h}=b_{h}$. Par exemple, si on prend $f$ égal à 0.001, on obtient :
+\end{frame}
+
+\begin{frame}
+	\frametitle{Méthode des éléments finis}\begin{align*}
+\mathcal{K}_{h}=\left(
+\begin{matrix}
+4  &    -1    &  0   &   -1    &  0  &    0   &   0  &    0  &    0\\
+-1   &   4  &    -1  &    0     & -1  &    0  &    0  &    0  &    0\\
+0    &  -1    &  4   &   0    &  0   &   -1 &     0   &   0 &     0\\
+-1  &    0   &   0    &  4   &   -1 &     0   &   -1  &    0  &    0\\
+0  &    -1   &   0   &   -1  &    4    &  -1  &    0   &   -1  &    0\\
+0   &   0  &    -1   &   0   &   -1  &    4   &   0  &    0  &    -1\\
+0   &   0   &   0   &   -1    &  0    &  0  &    4   &   -1   &   0\\
+0    &  0    &  0   &   0    &  -1    &  0   &   -1  &    4    &  -1\\
+0    &  0  &    0   &   0    &  0   &   -1   &   0    &  -1   &   4\\
+\end{matrix}\right)
+\end{align*}
+
+\begin{align*}
+b_h =\left(
+\begin{matrix}
+6.25\times 10^{-5}\\
+\vdots\\
+6.25\times 10^{-5}
+\end{matrix}\right)
+\end{align*}
+Nous pouvons alors résoudre notre système.
+\end{frame}
+
+\subsection[Implém.]{Implémentation de la méthode}
 \begin{frame}
 	\frametitle{Bouah}
 
