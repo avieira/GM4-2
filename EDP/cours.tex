@@ -1,0 +1,25 @@
+\documentclass{article}
+\input{../../preambule}
+
+\hypersetup{colorlinks=true, urlcolor=bleu, linkcolor=red}
+
+%Def = Definition
+%Theo = Théorème
+%Prop = Propriété
+%Coro = Corollaire
+%Lem = Lemme
+
+\makeatletter
+\@addtoreset{section}{part}
+\makeatother
+
+\begin{document}
+
+\setcounter{tocdepth}{4}
+\tableofcontents
+\newpage
+
+\include{part1}
+\include{part2}
+
+\end{document}

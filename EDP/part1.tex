@@ -1,0 +1,91 @@
+\part{Premi\`eres d\'efinitions}
+\Def{EDP}{Une Équation aux Dérivées Partielles est une équation contenant une fonction inconnue de plusieurs variables ainsi qu'une ou plusieurs de ses dérivées partielles.}
+\Def{Ordre}{L'ordre d'une EDP est un entier correspondant à l'ordre de la plus grande dérivée.}
+
+\section{Rappels}
+\Prop{}{Si $f\in \mathcal{C}^1(\bar{\Omega})$ et $g\in \mathcal{C}^1(\bar{\Omega})$, on a pour tout indice $i\in\{1,...,n\}$ :
+\[\int_{\Omega} \frac{\partial f}{\partial x_i}(x)g(x)dx = -\int_{\Omega}\frac{\partial g}{\partial x_i}(x)f(x) dx + \int_{\Gamma}f(x)g(x)\nu_i(x) d\Gamma(x)\]
+en notant $d\Gamma$ la mesure superficielle sur $\Gamma$, frontière de $\Omega$ et $\nu_i$, la composante d'indice $i$ de la normale unitaire $\nu$ à $\Gamma$ orientée vers l'extérieur de $\Omega$.}
+\Prop{}{Si $f\in \mathcal{C}^1(\bar{\Omega})$ et $g\in \mathcal{C}^1(\bar{\Omega})$, on a :
+\[\int_{\Omega} \Delta f(x)g(x)dx = -\int_{\Omega}\nabla f(x) . \nabla g(x)dx + \int_{\Gamma}\frac{\partial f}{\partial \nu}(x)g(x) d\Gamma(x)\]
+où $\Delta$ est l'opérateur laplacien et $\frac{\partial f}{\partial \nu}$ la projection du vecteur $\nabla f$ sur la normale $\nu$, ie : 
+\[\frac{\partial f}{\partial \nu}=\sum_{i=1}^n \frac{\partial f}{\partial x_i} \nu_i\]
+Enfin, la notation $\nabla f(x).\nabla g(x)$ désigne le produit scalaire dans $\mathbb{R}^n$ des vecteurs $\nabla f(x)$ et $\nabla g(x)$, ie :
+\[\nabla f(x).\nabla g(x) = \sum_{i=1}^n \frac{\partial f}{\partial x_i}(x)\frac{\partial g}{\partial x_i}(x)\]}
+\Prop{}{Si $f\in\mathcal{C}^2(\bar{\Omega})$ et $g\in\mathcal{C}^2(\bar{\Omega})$, on a :
+\[\int_{\Omega} \Delta f(x)g(x)dx = \int_{\Omega}f(x) \Delta g(x)dx + \int_{\Gamma}\left[\frac{\partial f}{\partial \nu}(x)g(x) - \frac{\partial g}{\partial \nu}(x)f(x)\right]d\Gamma(x)\]}
+
+\section{Classification des EDP linéaires d'ordre 2}
+On prend ici les EDP d'une fonction $u$ à deux variables $x$ et $y$. Une telle équation s'écrit :
+	\[a\frac{\partial^2 u}{\partial x^2}+b\frac{\partial^2 u}{\partial x\partial y}+c\frac{\partial^2 u}{\partial y^2}+d\frac{\partial u}{\partial x}+e\frac{\partial u}{\partial y}+fu=g\]
+avec $a,b,c,d,e$ constants.
+\Def{}{L'équation précédente est dite elliptique si $b^2-4ac<0$, parabolique si $b^2-4ac=0$ et hyperbolique si $b^2-4ac>0$}
+
+\section{Conditions aux limites}
+L'EDP seule est en générale insuffisante pour déterminer une solution de façon unique. Une information supplémentaire sur la frontière $\Gamma$ de $\Omega$ ou sur une partie de $\Gamma$ est nécessage. Une telle information s'appelle une condition à la limite.
+
+\part{Méthode des différences finies en espace}
+La méthode est simple : on va chercher différents points $u_i\approx u(x_i)$, solution approchée de l'EDP, à l'aide d'une approximation des dérivées. On arrive ainsi à un système linéaire qu'on cherchera à résoudre.
+Dans le cadre d'une fonction de dimension 1, on pourra par exemple approcher la dérivée première par :
+		\[\frac{du}{dx}\approx\frac{u(x+h)-u(x-h)}{2h}\]
+
+\Def{Erreur de consistance}{On appelle erreur de consistance du schéma $A_hu_h=b_h$ le vecteur de $\mathbb{R}^N$ noté $\varepsilon_h(u)$ défini par :
+	\[\varepsilon_h(u)=A_h\Pi_h(u)-b_h\]
+où \[\Pi_h(u)=\begin{pmatrix} u(x_1) \\ \vdots \\ u(x_N) \end{pmatrix}\] est le vecteur de $\mathbb{R}^N$ qui représente la projection de la solution exacte de $u$ du problème continu sur le maillage.}
+
+\Def{Consistant}{On dit que le schéma est consistant au sens de la norme $\|\bullet\|$ de $\mathbb{R}^N$ si : \[\lim_{h\to 0} \|\varepsilon_h(u)\|=0\]}
+\Def{Ordre de consistance}{S'il existe une constante $C$ positive indépendante de $h$ telle que pour tout $h\in]0,h_0]$ ($h_0>0$ donné), on ait : 
+\[\|\varepsilon_h(u)\|\leq C h^p\]
+alors on dit que le schéma est consistant d'ordre $p$}
+
+\section*{Rappels d'analyse matricielle}
+\Def{Positivité}{On dit qu'un vecteur $x$ est positif si toutes ses composantes sont positives.\\ Une matrice est site positive si tous ses coefficients sont positifs.}
+\Def{Matrice monotone}{On dit qu'une matrice est monotone si elle est inversible d'inverse positive.}
+\Lem{}{Une matrice $A\in\mathbb{R}^{N\times N}$ si et seulement si pour tout vecteur $x$ de $\mathbb{R}^N$, on a : \[Ax \geq 0\Rightarrow x\geq 0\]}
+
+\Lem{}{Soit $A$ la matrice réelle de taille $N\times N$ définie par :
+\[A=\begin{pmatrix} a & b & 0 & \cdots & \cdots & 0 \\
+b & a & b & \ddots & & \vdots \\
+0 & \ddots & \ddots & \ddots & \ddots & \vdots \\
+\vdots & \ddots & \ddots & \ddots & \ddots & 0 \\
+\vdots & & \ddots & b & a & b \\
+0 & \cdots & \cdots & 0 & b & a \end{pmatrix}\]
+Les valeurs propres de $A$ sont les nombres $\lambda_k$, $k\in\{1,...,N\}$ suivants : \[\lambda_k=a+2b\cos\left( \frac{k\pi}{N+1}\right)\]
+Le vecteur $V_k$ de composantes $(V_k)_j$, $j\in\{1,...,N\}$ définies par \[(V_k)_j=\sin\left( j\frac{k\pi}{N+1}\right)\]
+est un vecteur propre associé à la valeur propre $\lambda_k$ : il ne dépend pas des coeeficients $a$ et $b$ de la matrice $A$.}
+
+\part{Méthode des différences finies en espace et en temps}
+\section{Écriture générale d'un schéma numérique}
+De manière générale, les schémas peuvent s'écrire sous la forme vectorielle suivante ($U^{(j)}\in\mathbb{R}^N,\ B_k\in\mathbb{R}^{N\times N}$) :
+\[B_lU^{(j+l)}+B_{l-1}U^{(j+l-1)}+...+B_0U^{(j)}+...+B_{-m}U^{(j-m)}=C^{(j)}\]
+\[j\geq m,\ l\geq 0,\ m\geq 0,\ l+m\geq 1,\ B_l \text{ inversible}\]
+\[U^{(0)},\ ...\ ,U^{(l+m-1)} \text{ donnés.}\]
+
+Un tel schéma est à $l+m$ niveaux. Il est dit explicite si la matrice $B_l$ est diagonale et implicite sinon. Ce schéma numérique permet de calculer à chaque instant $t_j$ une solution discrète $U^{(j)}$ déstinée à approcher le vecteur $\pi_h u(t_j)$.
+
+\Def{Erreur de consistance}{On appelle erreur de consistance à l'instant $t_j$ associée au schéma précédent le vecteur de $\mathbb{R}^N$ noté $\varepsilon(u)^{(j)}$ défini par :
+\[\varepsilon(u)^{(j)}=B_l(\pi_hu)(t_{j+l})+...+B_0(\pi_hu)(t_j)+...+B_{-m}(\pi_hu)(t_{j-m})-C^{(j)}\]
+On dit que que ce schéma est consistant pour la norme $\|\bullet\|$ de $\mathbb{R}^N$ si :
+	\[\sup_{j,j\Delta t\leq T} \|\varepsilon(u)^{(j)}\|\xrightarrow[\Delta t, h\to 0]{}0\]
+Si par ailleurs, il existe une constante $C>0$ et deux nombres $p>0$ et $q>0$, tous trois indépendants de $\Delta t$ et $h$, tels qu'on ait :
+\[\sup_{j,j\Delta t\leq T} \|\varepsilon(u)^{(j)}\|\leq C\left( \Delta t^p+h^q\right)\]
+on dit que le schéma est consistant d'ordre $p$ en temps et $q$ en espace.}
+
+\Def{Convergent}{On suppose que les données initiales vérifient :
+	\[\max_{j_0\in\{0,...,l+m-1\}} \|U^{(j_0)}-\pi_hu(t_{j_0})\|\xrightarrow[\Delta t, h\to 0]{}0\]
+On dit alors que ce schéma est convergent si :
+	\[\sup_{j, j\Delta t\leq T} \|U^{(j)}-\pi_hu(t_j)\|\xrightarrow[\Delta t, h\to 0]{}0\]}
+
+\Def{Stabilité}{On dit que le schéma est stable pour la norme $\|\bullet\|$ dans $\mathbb{R}^N$ s'il existe des constantes positives $C_1(T)$ et $C_2(T)$, indépendantes de $\Delta t$ et $h$ telles qu'on ait :
+	\[\max_{j, j\Delta \leq T} \|U^{(j)}\|\leq C_1 \max_{j_0\in\{0,...,l+m-1\}} \|U^{(j_0)}\| + C_2(T)\max_{j, j\Delta t\leq T}\|C^{(j)}\|\]
+et ceci, quelles que soient les données initiales $U^{(j_0)}$ et les sours $C^{(j)}$.}
+
+\Theo{de Lax}{Le schéma est convergent si et seulement s'il est consistant et stable.}
+
+\section{Stabilité par la méthode de Fourier}
+On commence par rendre le schéma "continu" en espace puis on applique une transformation de Fourier. En notant la variable dual $\xi$, on arrive à un schéma du type :
+	\[\hat{u}^{(j+1)}(\xi)=a(\xi)\hat{u}^{(j)}(\xi)\]
+\Prop{}{Ce schéma est stable pour la norme dans l'espace $L^2(\mathbb{R})$ si et seulement s'il existe une constante positive $C(t)$, indépendante de $\Delta t$ et $h$ telle que, pour tout $j$,
+ $j\Delta t\leq T$ : \[\left[ \sup_{\xi\in\mathbb{R}}|a(\xi)|\right]^j\leq C(T)\]}
+
+\Def{}{Le coefficient $a(\xi)$ s'appelle le coefficient d'amplification du schéma et on dit que ce schéma est stable au sens de Von Neumann si on a : \[\sup_{\xi\in\mathbb{R}}|a(\xi)|\leq 1\]}

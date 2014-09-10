@@ -1,0 +1,89 @@
+\part{Méthode des caractéristiques}
+\section{Équations quasi-linéaires}
+\Def{EDP quasi-linéaire}{Une EDP est dit quasi-linéaire si elle est linéaire par rapport aux dérivées partielles d'ordre le plus élebé en chacune des variables.}
+\Def{Homogène}{Une EDP est dite homogène quand elle ne contient que des termes faisant intervernir une fonction et ses dérivées partielles.}
+
+\section{Forme conservative}
+\Def{Forme conservative}{Une EDP est dite sous forme conservative lorsque tous les termes de dérivation en $u$ peuvent entrer à l'intérieur d'un opérateur de divergence.}
+\Theo{}{Une équation peut-être mise sous forme conservative si et seulement si elle admet une forme quasi-linéaire.}
+
+\section{EDP du premier ordre}
+On note : \[u_x=\frac{\partial u}{\partial x} \text{ et } u_y=\frac{\partial u}{\partial y}\]
+Une EDP quasi linéaire du 1\ier ordre à deux variables indépendantes s'écrit de façon la plus générale :
+	\begin{equation} \label{eq} Pu_x+Qu_y=R \end{equation}
+où $P$, $Q$ et $R$ sont au plus fonctions de $x$, $y$ et $u$. \\
+Pour une EDP quasi-linéaire du premier ordre, la méthode des caractéristiques cherche des courbes appelées caractéristiques le long desquelles l'EDP se réduit à une simple équation différentielle ordinaire.
+
+\subsection{Recherche de surface solution}
+Soit $\Pi$ la surface solution de (\ref{eq}). Une paramétrisation cartesienne de cette surface est donnée par l'application vectorielle : 
+\[f:\begin{pmatrix}x\\y\end{pmatrix}\mapsto \begin{pmatrix}x\\y\\u(x,y)\end{pmatrix}\]
+
+Soient $v_1$ et $v_2$ les vecteurs tangents aux courbes résultant de l'intersection de $(\Pi)$ avec le plan $y=y_0$ (constante) d'une part, et $x=x_0$ d'autre part en un point $M$ de $(\Pi)$.\\
+On note $\mathcal{C}_1$ la courbe résultant de l'intersection de $(\Pi)$ avec le plan $y=y_0$. Une paramétrisation de $\mathcal{C}_1$ est donnée par :
+	\[f_1:x\mapsto\begin{pmatrix} x\\y_0\\y(x,y_0)\end{pmatrix}\]
+et \[v_1=\frac{df_1}{dx}(x_0)=\begin{pmatrix}1\\0\\\frac{\partial u}{\partial x}(x_0,y_0)\end{pmatrix}\]
+De même, on note $\mathcal{C}_2$ la courbe résultant de l'intersection de $(\Pi)$ avec le plan $x=x_0$. Une paramétrisation de $\mathcal{C}_2$ est donnée par :
+	\[f_2:y\mapsto\begin{pmatrix} x_0\\y\\y(x_0,y)\end{pmatrix}\]
+et \[v_1=\frac{df_2}{dy}(y_0)=\begin{pmatrix}0\\1\\\frac{\partial u}{\partial y}(x_0,y_0)\end{pmatrix}\]
+
+Les vecteurs $v_1$ et $v_2$ ne sont pas colinéaires : 
+	\[v_1\wedge v_2=\begin{pmatrix} -\frac{\partial u}{\partial x} (x_0, y_0) \\ -\frac{\partial u}{\partial y}(x_0, y_0) \\ 1 \end{pmatrix} \neq 0\]
+et ils sont par construction tangents à la surface solution au point M. Le plan tangent à la surface $(\Pi)$en M est donc le plan endendré par $v_1$ et $v_2$.
+
+\subsection{Comportement du champ $F= (P,Q,R)^T$}
+Par définition du produit mixte :
+\begin{eqnarray*}
+	[v_1,v_2,F]&=&\langle v_1\wedge v_2, F\rangle_{\mathbb{R}^3}\\
+		&=&-\frac{\partial u}{\partial x}(x_0,y_0)P(x_0,y_0,u(x_0,y_0)) - \frac{\partial u}{\partial y}(x_0,y_0)Q(x_0,y_0,u(x_0,y_0))+R(x_0,y_0,u(x_0,y_0))\\
+		&=&0
+\end{eqnarray*}
+
+Le vecteur F est donc orthogonal au vecteur $v_1\wedge v_2$, lui-même normal au plan endengré par $v_1$ et $v_2$. Le vecteur $F$ est donc dans le plan tangent à $(\Pi)$ au point M. Il est tangent à la surface solution.
+
+\subsection{Définition des courbes caractéristiques}
+La solution de (\ref{eq}) est constituée des courbes intégrales du champ $F$ appelées courbes caractéristiques. \\
+Au champ de vecteurs $X$ tracé sur l'ouvert $U$, on peut associer l'équation différentielle $X'=\gamma(X)$. Les solutions maximales de cette équation différentielle sont appelées courbes intégrales. Le vecteur dérivé en chaque point est donné par le champ en ce point.\\
+
+\subsubsection{Système déterminant les courbes caractéristiques}
+Soit $\Gamma$ une courbe caractéristique de (\ref{eq}) admettant la paramétrisation suivante :
+	\[s\mapsto \begin{pmatrix} x(s)\\y(s)\\u(s) \end{pmatrix}\]
+et $T=\begin{pmatrix} x'(s) \\ y'(s) \\ u'(s) \end{pmatrix}$ un vecteur tangent à $\Gamma$ au point M de paramètre $s$. \\
+On sait d'après ce qui précède que $T$ et $F$ sont colinéaires, donc il existe $\alpha$ tel que $T=\alpha F$, soit :
+\[\left\{ \begin{array}{c c c}
+\frac{dx}{ds}&=&\alpha P \\
+\frac{dy}{ds}&=&\alpha Q\\
+\frac{du}{ds}&=&\alpha R
+\end{array}\right.\]
+Ainsi, $\alpha ds = \frac{dx}{P}=\frac{dy}{Q}=\frac{du}{R}$.
+
+\Propo{}{L'équation caratéristique de l'équation (\ref{eq}) est donnée par le système : \[\frac{du}{P}=\frac{dy}{Q}=\frac{du}{R}\]}
+
+\Rem{}{Ceci n'est que pour mémorisation. En effet, pour les calculs, il faut vraiment utiliser les relations de base, et qui n'ont aucun problème lorsque $P$ ou $Q$ est nul.\\
+D'abord on intègre $Pdy=Qdx$ pour déterminer les lignes caractéristiques, puis on intègre $Rdx=Pdu$ ou bien $Qdu=Rdy$ pour déterminer la variation de $u$ le long de chaque caractéristique.\\
+On exprime la solution sous la forme \[\left\{ \begin{array}{c c c}
+f(x,y,u)&=&\alpha\\
+g(x,y,u)&=&\beta
+\end{array}\right.\]
+Géométriquement, la courbe caractéristique apparaît comme l'intersection de deux surfaces.}
+
+\subsubsection{Solution générale de (\ref{eq})}
+Une surface engendrée par une famille de courbes caractéristiques est une surface intégrale de l'équation (\ref{eq}). 
+\Rem{}{Deux fonctions $f$ et $g$ sont dites fonctionnellement indépendantes dans $\Omega\subset\mathbb{R}^3$ si et seulement si : \[\nabla f \wedge \nabla g\neq 0 \text{ dans } \Omega\]
+Pour que le problème admette une solution, il faut que les surfaces engendrées aient une interserction non vide. $f$ et $g$ doivent donc être fonctionnellement indépendantes.}
+
+\subsubsection{Solution particulière de (\ref{eq})}
+On appelle solution particulière de (\ref{eq}) une solution de (\ref{eq}) passant par une courbe $\gamma$ donnée.
+
+\subsection{Problème de Cauchy et courbes caractéristiques}
+\subsubsection{Problème de Cauchy}
+\Def{Problème de Cauchy}{On appelle problème de Cauchy le problème consistant à trouver une solution de (\ref{eq}) passant par une courbe $\gamma$ donnée.}
+
+\subsubsection{Solution du problème de Cauchy : condition d'existance et d'unicité}
+Soit $u$ donnée le long de la courbe paramétrée $\Gamma=(x(s),y(s))$
+
+\Theo{}{La solution du problème de Cauchy :
+\begin{itemize}
+	\item existe si $u$ est analytique (développable en série entoère) sur $\Gamma$
+	\item est unique si les données $u$ du problème ne sont pas fournies le long d'une caractéristique
+\end{itemize}
+En effet, la variation de $u$ le long de la caractéristique est déterminé par le système caractéristique. On ne peut donc pas l'imposer.}
